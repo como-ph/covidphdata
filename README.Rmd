@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+![R-CMD-check](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)
 <!-- badges: end -->
 
 The Philippines Department of Health has made COVID-19 related data publicly available as part of its mandate to promoting transparency and accountability in governance. The Philippines COVID-19 Data Drop is distributed via Google Drive with latest updated data provided daily. Data from previous days are archived and also made available through Google Drive. This package provides a coherent and performant API to the latest and archived Philippines COVID-19 data.
