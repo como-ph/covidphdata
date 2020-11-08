@@ -21,9 +21,9 @@ A tibble of metadata for the fields used in the various datasets
 distributed via the COVID-19 Data Drop
 }
 \description{
-A wrapper to googledrive and googlesheets4 functions to pull data from the
-Philppines' COVID-19 Data Drop resource that is publicly distributed via
-Google Drive
+A wrapper to googledrive functions to pull data from the Philppines'
+COVID-19 Data Drop resource that is publicly distributed via
+\href{https://drive.google.com}{Google Drive}
 }
 \examples{
 datadrop_fields()
