@@ -18,7 +18,6 @@ performant API to the latest and archived Philippines \emph{COVID-19} data.
 Useful links:
 \itemize{
   \item \url{https://como-ph.github.io/covidphdata/}
-  \item \url{https://github.com/como-ph/covidphdata}
   \item Report bugs at \url{https://github.com/como-ph/covidphdata/issues}
 }
 
