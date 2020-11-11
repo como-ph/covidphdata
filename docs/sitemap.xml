@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/index.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/covidphdata.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_cases.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_facilities.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_fields.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_ls.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_tests.html</loc>
+  </url>
+</urlset>
