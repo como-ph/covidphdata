@@ -2,16 +2,17 @@ Package: covidphdata
 Type: Package
 Title: An Interface to the Philippines Department of Health COVID-19 Data Drop
 Version: 0.1.0
-Authors@R: person("Ernest", "Guevarra", 
+Authors@R: person(given = "Ernest", 
+                  family = "Guevarra", 
                   comment = c(ORCID = "0000-0002-4887-4415"), 
                   email = "ernest@guevarra.io", 
                   role = c("aut", "cre"))
 Description: The Philippines Department of Health has made COVID-19 related data
     publicly available as part of its mandate to promoting transparency and 
     accountability in governance. The Philippines COVID-19 Data Drop is
-    distributed via Google Drive with latest updated data provided daily. Data
-    from previous days are archived and also made available through Google 
-    Drive. This package provides a coherent and performant API to the latest and 
+    distributed via 'Google Drive' with latest updated data provided daily. Data
+    from previous days are archived and also made available through 'Google 
+    Drive'. This package provides a coherent and performant API to the latest and 
     archived Philippines COVID-19 data.
 License: GPL-3
 Imports: 
@@ -25,7 +26,7 @@ Imports:
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
-URL: https://como-ph.github.io/covidphdata/, https://github.com/como-ph/covidphdata
-BugReports: https://github.com/como-ph/covidphdata/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+URL: https://como-ph.github.io/covidphdata/
+BugReports: https://github.com/como-ph/covidphdata/issues

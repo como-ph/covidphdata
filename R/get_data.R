@@ -46,9 +46,10 @@ datadrop_ls <- function(version = "current", .date = NULL) {
   message(
     strwrap(
       x = paste("Getting information on Google Drive directory structure of the
-                DoH Data Drop for latest available data up to ", dropDate, ".",
+                DoH Data Drop for latest available data up to ",
+                dropDate, ".",
                 sep = ""),
-      width = 80
+      width = 80, prefix = " ", initial = ""
     )
   )
 
@@ -100,7 +101,7 @@ datadrop_ls <- function(version = "current", .date = NULL) {
         strwrap(
           x = "Earliest COVID-19 Data Drop record is for 2020-04-14. Only provide
                dates as early as 2020-04-14 or later. Please try again.",
-          width = 80
+          width = 80, prefix = " ", initial = ""
         ),
         call. = TRUE
       )
@@ -120,16 +121,31 @@ datadrop_ls <- function(version = "current", .date = NULL) {
     gdriveID <- dropArchive$id[dropArchiveMonth == lubridate::month(lubridate::ymd(.date))]
 
     ## Process date
-    .date <- stringr::str_remove_all(string = .date, pattern = "-")
+    collapsedDate <- stringr::str_remove_all(string = .date, pattern = "-")
 
     ## Get list of contents directory specified by gdriveID
     w <- googledrive::drive_ls(googledrive::drive_get(id = gdriveID))
 
-    ## Get the unique identifier for directory for specified date
-    x <- w$id[stringr::str_extract(string = w$name, pattern = "[0-9]{8}") == .date]
+    ## Check of specified .date has corresponding archive data
+    if(any(stringr::str_detect(string = w$name, pattern = collapsedDate))) {
+      ## Get the unique identifier for directory for specified date
+      x <- w$id[stringr::str_extract(string = w$name, pattern = "[0-9]{8}") == collapsedDate]
 
-    ## Get listing of contents of specified directory
-    y <- googledrive::drive_ls(googledrive::drive_get(id = x))
+      ## Get listing of contents of specified directory
+      y <- googledrive::drive_ls(googledrive::drive_get(id = x))
+    } else {
+      warning(
+        strwrap(
+          x = paste("Data Drop archives do not contain a folder for the day of ",
+                    .date, ". Returning NULL.", sep = ""),
+          width = 80, prefix = " ", initial = ""
+        ),
+        call. = FALSE
+      )
+
+      ## Assign y as NULL
+      y <- NULL
+    }
   }
 
   ## Return list of contents
@@ -142,9 +158,9 @@ datadrop_ls <- function(version = "current", .date = NULL) {
 #' Pull Philippines data fields information from the publicly available
 #' Department of Health COVID-19 Data Drop
 #'
-#' A wrapper to googledrive and googlesheets4 functions to pull data from the
-#' Philppines' COVID-19 Data Drop resource that is publicly distributed via
-#' Google Drive
+#' A wrapper to googledrive functions to pull data from the Philppines'
+#' COVID-19 Data Drop resource that is publicly distributed via
+#' [Google Drive](https://drive.google.com)
 #'
 #' @param version A character value specifying whether to get the most
 #'   currently available dataset (`"current"`) or to get archive data
@@ -168,24 +184,30 @@ datadrop_fields <- function(version = "current", .date = NULL) {
   ## Get list of contents of specified Google drive directory
   y <- datadrop_ls(version = version, .date = .date)
 
-  ## Get identifier of Fields data
-  z <- y$id[stringr::str_detect(string = y$name, pattern = "Fields.csv")]
+  if(!is.null(y)) {
+    ## Get identifier of Fields data
+    z <- y$id[stringr::str_detect(string = y$name,
+                                  pattern = "Fields.csv")]
 
-  ## Get fields data CSV link
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
+    ## Get fields data CSV link
+    link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
 
-  ## Create temporary file
-  destFile <- tempfile()
+    ## Create temporary file
+    destFile <- tempfile()
 
-  ## Download Fields.csv to temp directory
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
+    ## Download Fields.csv to temp directory
+    googledrive::drive_download(file = googledrive::as_id(link),
+                                path = destFile, verbose = FALSE)
 
-  ## Read fields CSV
-  fields <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+    ## Read fields CSV
+    fields <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
 
-  ## Convert to tibble
-  fields <- tibble::tibble(fields)
+    ## Convert to tibble
+    fields <- tibble::tibble(fields)
+  } else {
+    ## Assign fields as NULL
+    fields <- NULL
+  }
 
   ## Return dataset
   return(fields)
@@ -223,37 +245,43 @@ datadrop_cases <- function(version = "current", .date = NULL) {
   ## Get list of contents of specified Google Drive directory
   y <- datadrop_ls(version = version, .date = .date)
 
-  ## Check if file named Case Information is available
-  if(!any(stringr::str_detect(string = y$name, pattern = "Case Information.csv"))) {
-    stop(
-      strwrap(
-        x = paste("No cases information on ", .date,
-                  ". Try a date earlier or later than date specified.",
-                  sep = ""),
-        width = 80
-      ),
-      call. = TRUE
-    )
+  ## Check if y is NULL
+  if(!is.null(y)) {
+    ## Check if file named Case Information is available
+    if(!any(stringr::str_detect(string = y$name, pattern = "Case Information.csv"))) {
+      stop(
+        strwrap(
+          x = paste("No cases information on ", .date,
+                    ". Try a date earlier or later than date specified.",
+                    sep = ""),
+          width = 80, prefix = " ", initial = ""
+        ),
+        call. = TRUE
+      )
+    }
+
+    ## Get unique identifier for Cases data
+    z <- y$id[stringr::str_detect(string = y$name, pattern = "Case Information.csv")]
+
+    ## Get link for Case Information.csv
+    link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
+
+    ## Create temporary file
+    destFile <- tempfile()
+
+    ## Download Cases Information.csv
+    googledrive::drive_download(file = googledrive::as_id(link),
+                                path = destFile, verbose = FALSE)
+
+    ## Read cases CSV
+    cases <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+
+    ## Convert to tibble
+    cases <- tibble::tibble(cases)
+  } else {
+    ## Set cases to NULL
+    cases <- NULL
   }
-
-  ## Get unique identifier for Cases data
-  z <- y$id[stringr::str_detect(string = y$name, pattern = "Case Information.csv")]
-
-  ## Get link for Case Information.csv
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
-
-  ## Create temporary file
-  destFile <- tempfile()
-
-  ## Download Cases Information.csv
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
-
-  ## Read cases CSV
-  cases <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
-
-  ## Convert to tibble
-  cases <- tibble::tibble(cases)
 
   ## Return dataset
   return(cases)
@@ -291,24 +319,43 @@ datadrop_tests <- function(version = "current", .date = NULL) {
   ## Get list of contents of specified Google Drive directory
   y <- datadrop_ls(version = version, .date = .date)
 
-  ## Get unique identifier for testing aggregates dataset
-  z <- y$id[stringr::str_detect(string = y$name, pattern = "Testing Aggregates.csv")]
+  ## Check if y is NULL
+  if(!is.null(y)) {
+    ## Check if file named Testing Aggregates is available
+    if(!any(stringr::str_detect(string = y$name, pattern = "Testing Aggregates.csv"))) {
+      stop(
+        strwrap(
+          x = paste("No testing aggregates information on ", .date,
+                    ". Try a date earlier or later than date specified.",
+                    sep = ""),
+          width = 80, prefix = " ", initial = ""
+        ),
+        call. = TRUE
+      )
+    }
 
-  ## Get testing aggregates CSV link
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
+    ## Get unique identifier for testing aggregates dataset
+    z <- y$id[stringr::str_detect(string = y$name, pattern = "Testing Aggregates.csv")]
 
-  ## Create temporary file
-  destFile <- tempfile()
+    ## Get testing aggregates CSV link
+    link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
 
-  ## Download Testing aggregates.csv
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
+    ## Create temporary file
+    destFile <- tempfile()
 
-  ## Read testing aggregates CSV file
-  tests <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+    ## Download Testing aggregates.csv
+    googledrive::drive_download(file = googledrive::as_id(link),
+                                path = destFile, verbose = FALSE)
 
-  ## Convert to tibble
-  tests <- tibble::tibble(tests)
+    ## Read testing aggregates CSV file
+    tests <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+
+    ## Convert to tibble
+    tests <- tibble::tibble(tests)
+  } else {
+    ## Set tests to NULL
+    tests <- NULL
+  }
 
   ## Return dataset
   return(tests)
@@ -346,25 +393,44 @@ datadrop_facilities <- function(version = "current", .date = NULL) {
   ## Get list of contents of specified Google Drive directory
   y <- datadrop_ls(version = version, .date = .date)
 
-  ## Get unique identifier for Daily Report CSV
-  z <- y$id[stringr::str_detect(string = y$name,
-                                pattern = "Collect - Daily Report.csv")]
+  ## Check if y is NULL
+  if(!is.null(y)) {
+    ## Check if file named Daily Report is available
+    if(!any(stringr::str_detect(string = y$name, pattern = "Case Information.csv"))) {
+      stop(
+        strwrap(
+          x = paste("No daily facilities report information on ", .date,
+                    ". Try a date earlier or later than date specified.",
+                    sep = ""),
+          width = 80, prefix = " ", initial = ""
+        ),
+        call. = TRUE
+      )
+    }
 
-  ## Get link for daily CSV
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
+    ## Get unique identifier for Daily Report CSV
+    z <- y$id[stringr::str_detect(string = y$name,
+                                  pattern = "Collect - Daily Report.csv")]
 
-  ## Create temporary file
-  destFile <- tempfile()
+    ## Get link for daily CSV
+    link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", z)
 
-  ## Download daily report.csv
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
+    ## Create temporary file
+    destFile <- tempfile()
 
-  ## Read daily report CSV
-  facilities <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+    ## Download daily report.csv
+    googledrive::drive_download(file = googledrive::as_id(link),
+                                path = destFile, verbose = FALSE)
 
-  ## Convert to tibble
-  facilities <- tibble::tibble(facilities)
+    ## Read daily report CSV
+    facilities <- utils::read.csv(file = destFile, stringsAsFactors = FALSE)
+
+    ## Convert to tibble
+    facilities <- tibble::tibble(facilities)
+  } else {
+    ## Set facilities to NULL
+    facilities <- NULL
+  }
 
   ## Return dataset
   return(facilities)
