@@ -1,0 +1,30 @@
+title: covidphdata
+
+url: https://como-ph.github.io/covidphdata
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics:
+
+#navbar:
+#  type: inverse
+
+home:
+  links:
+  - text: Read about CoMo Philippines
+    href: https://como-ph.github.io/
+
+reference:
+  - title: Description
+    contents:
+    - covidphdata
+
+  - title: Get data
+    contents:
+    - datadrop_ls
+    - datadrop_fields
+    - datadrop_facilities
+    - datadrop_tests
+    - datadrop_cases
+
