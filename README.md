@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# covidphdata: An Interface to the Philippines Department of Health COVID-19 Data Drop
+# covidphdata: An Interface to the Philippines Department of Health COVID-19 Data Drop <img src="man/figures/logo.png" width="200px" align="right" />
 
 <!-- badges: start -->
 
