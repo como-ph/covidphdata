@@ -1,10 +1,12 @@
 ################################################################################
 #
+#'
 #' Get Philippines Department of Health COVID-19 Data Drop Google Drive specific
 #' directory information
 #'
-#' A wrapper to `googledrive` package functions to extract information on
-#' contents of a specific **COVID-19 Data Drop Google Drive** directory
+#' A wrapper to [googledrive package](https://googledrive.tidyverse.org)
+#' functions to extract information on contents of a specific
+#' **COVID-19 Data Drop Google Drive** directory
 #'
 #' @param version A character value specifying whether to get the most
 #'   currently available dataset (`"current"`) or to get archive data
