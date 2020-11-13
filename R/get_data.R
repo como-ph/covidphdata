@@ -3,8 +3,8 @@
 #' Get Philippines Department of Health COVID-19 Data Drop Google Drive specific
 #' directory information
 #'
-#' A wrapper to [googledrive] functions to extract information on contents of
-#' a specific **COVID-19 Data Drop Google Drive** directory
+#' A wrapper to `googledrive` package functions to extract information on
+#' contents of a specific **COVID-19 Data Drop Google Drive** directory
 #'
 #' @param version A character value specifying whether to get the most
 #'   currently available dataset (`"current"`) or to get archive data
@@ -29,79 +29,104 @@ datadrop_ls <- function(version = "current", .date = NULL) {
   ## Google Drive deauthorisation
   googledrive::drive_deauth()
 
-  ## Get current data link folder information and contents
-  dropCurrent <- googledrive::drive_ls(
-    path = googledrive::drive_get(id = "1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o")
-  )
-
-  ## Get dropDate
-  dropDate <- stringr::str_extract(string = dropCurrent$name,
-                                   pattern = "[0-9]{2}/[0-9]{2}|[0-9]{2}\\_[0-9]{2}|[0-9]{2}\\-[0-9]{2}") %>%
-    paste(format(Sys.Date(), "%Y"), sep = "/") %>%
-    lubridate::mdy()
-
-  if(version == "archive") dropDate <- .date
-
-  ## Provide message to user
-  message(
-    strwrap(
-      x = paste("Getting information on Google Drive directory structure of the
-                DoH Data Drop for latest available data up to ",
-                dropDate, ".",
-                sep = ""),
-      width = 80, prefix = " ", initial = ""
+  if(version == "current") {
+    ## Get current data link folder information and contents
+    dropCurrent <- googledrive::drive_ls(
+      path = googledrive::drive_get(id = "1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o")
     )
-  )
 
-  ## Create temporary file
-  destFile <- tempfile()
+    ## Get dropDate
+    dropDate <- stringr::str_extract(string = dropCurrent$name,
+                                     pattern = "[0-9]{2}/[0-9]{2}|[0-9]{2}\\_[0-9]{2}|[0-9]{2}\\-[0-9]{2}") %>%
+      paste(format(Sys.Date(), "%Y"), sep = "/") %>%
+      lubridate::mdy()
 
-  ## Create link for download of README
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", dropCurrent$id)
+    ## Provide message to user
+    message(
+      paste(
+        strwrap(
+          x = paste("Getting information on Google Drive directory structure of the
+                    DoH Data Drop for latest available data up to ",
+                    dropDate, ".",
+                  sep = ""),
+          width = 80,
+        ),
+        collapse = "\n"
+      )
+    )
 
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
+    ## Create temporary file
+    destFile <- tempfile()
 
-  ## Extract information from PDF on link to folder of current data
-  readme <- pdftools::pdf_text(pdf = destFile) %>%
-    stringr::str_split(pattern = "\n|\r\n") %>%
-    unlist()
+    ## Create link for download of README
+    link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", dropCurrent$id)
 
-  ## Ged id for current data google drive folder
-  x <- stringr::word(readme[stringr::str_detect(string = readme,
-                                                pattern = "bit.ly/*")][1], -1)
+    googledrive::drive_download(file = googledrive::as_id(link),
+                                path = destFile, verbose = FALSE)
 
-  if(!stringr::str_detect(string = x, pattern = "http")) {
-    x <- paste("http://", x, sep = "")
+    ## Extract information from PDF on link to folder of current data
+    readme <- pdftools::pdf_text(pdf = destFile) %>%
+      stringr::str_split(pattern = "\n|\r\n") %>%
+      unlist()
+
+    ## Ged id for current data google drive folder
+    x <- stringr::word(readme[stringr::str_detect(string = readme,
+                                                  pattern = "bit.ly/*")][1], -1)
+
+    if(!stringr::str_detect(string = x, pattern = "http")) {
+      x <- paste("http://", x, sep = "")
+    }
+
+    x <- x %>%
+      stringr::str_replace(pattern = "https", replacement = "http") %>%
+      RCurl::getURL() %>%
+      stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
+      unlist()
+
+    ## Get google drive directory sturcture and information
+    y <- googledrive::drive_ls(googledrive::drive_get(id = x))
   }
 
-  x <- x %>%
-    stringr::str_replace(pattern = "https", replacement = "http") %>%
-    RCurl::getURL() %>%
-    stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
-    unlist()
-
-  ## Get google drive directory sturcture and information
-  y <- googledrive::drive_ls(googledrive::drive_get(id = x))
-
   if(version == "archive") {
+    ## Get dropDate
+    dropDate <- .date
+
     if(is.null(.date)) {
-      stop("Date needs to be specified if version is set to archive. Please try again.",
-           call. = TRUE)
+      stop(
+        paste(
+          strwrap(
+            x = "Date needs to be specified if version is set to archive. Please try again.",
+            width = 80
+          ),
+          collapse = "\n"
+        ),
+        call. = TRUE
+      )
     }
 
     if(lubridate::ymd(.date) == Sys.Date()) {
-      stop("Date should be earlier than current date to access data archive. Please try again.",
-           call. = TRUE)
+      stop(
+        paste(
+          strwrap(
+            x = "Date should be earlier than current date to access data archive. Please try again.",
+            width = 80
+          ),
+          collapse = "\n"
+        ),
+        call. = TRUE
+      )
     }
 
     ## Check whether date is within range
     if(!lubridate::ymd(.date) %within% lubridate::interval(lubridate::ymd("2020-04-14"), Sys.Date())) {
       stop(
-        strwrap(
-          x = "Earliest COVID-19 Data Drop record is for 2020-04-14. Only provide
-               dates as early as 2020-04-14 or later. Please try again.",
-          width = 80, prefix = " ", initial = ""
+        paste(
+          strwrap(
+            x = "Earliest COVID-19 Data Drop record is for 2020-04-14. Only provide
+                 dates as early as 2020-04-14 or later. Please try again.",
+            width = 80
+          ),
+          collapse = "\n"
         ),
         call. = TRUE
       )
@@ -113,36 +138,61 @@ datadrop_ls <- function(version = "current", .date = NULL) {
     )
 
     ## Get gdriveID based on date
-    dropArchiveMonth <- stringr::str_remove_all(string = dropArchive$name,
-                                                pattern = "DOH COVID-19 Data Drop \\(|\\)") %>%
-      lubridate::parse_date_time(orders = "my") %>%
-      lubridate::month()
+    dropArchiveDate <- dropArchive$name %>%
+      lubridate::parse_date_time(orders = "my")
 
-    gdriveID <- dropArchive$id[dropArchiveMonth == lubridate::month(lubridate::ymd(.date))]
+    dropArchiveDate <- paste(lubridate::month(dropArchiveDate),
+                             lubridate::year(dropArchiveDate), sep = "/")
 
-    ## Process date
-    collapsedDate <- stringr::str_remove_all(string = .date, pattern = "-")
+    ## Create specified date marker for .date
+    specifiedDate <- paste(lubridate::month(lubridate::ymd(.date)),
+                           lubridate::year(lubridate::ymd(.date)), sep = "/")
 
-    ## Get list of contents directory specified by gdriveID
-    w <- googledrive::drive_ls(googledrive::drive_get(id = gdriveID))
+    ## Check if archive contains data for the specified month/year
+    if(specifiedDate %in% dropArchiveDate) {
+      ## Get drive ID for folder of specified month
+      gdriveID <- dropArchive$id[dropArchiveDate == specifiedDate]
 
-    ## Check of specified .date has corresponding archive data
-    if(any(stringr::str_detect(string = w$name, pattern = collapsedDate))) {
-      ## Get the unique identifier for directory for specified date
-      x <- w$id[stringr::str_extract(string = w$name, pattern = "[0-9]{8}") == collapsedDate]
+      ## Get list of contents directory specified by gdriveID
+      w <- googledrive::drive_ls(googledrive::drive_get(id = gdriveID))
 
-      ## Get listing of contents of specified directory
-      y <- googledrive::drive_ls(googledrive::drive_get(id = x))
+      ## Process date
+      collapsedDate <- stringr::str_remove_all(string = .date, pattern = "-")
+
+      ## Check of specified .date has corresponding archive data
+      if(any(stringr::str_detect(string = w$name, pattern = collapsedDate))) {
+        ## Get the unique identifier for directory for specified date
+        x <- w$id[stringr::str_detect(string = w$name, pattern = collapsedDate)]
+
+        ## Get listing of contents of specified directory
+        y <- googledrive::drive_ls(googledrive::drive_get(id = x))
+      } else {
+        warning(
+          paste(
+            strwrap(
+              x = paste("Data Drop archives do not contain a folder for the day of ",
+                        .date, ". Returning NULL.", sep = ""),
+              width = 80
+            ),
+            collapse = "\n"
+          ),
+          call. = FALSE
+        )
+        ## Assign y as NULL
+        y <- NULL
+      }
     } else {
       warning(
-        strwrap(
-          x = paste("Data Drop archives do not contain a folder for the day of ",
-                    .date, ". Returning NULL.", sep = ""),
-          width = 80, prefix = " ", initial = ""
+        paste(
+          strwrap(
+            x = paste("Data Drop archives do not contain a folder for the day of ",
+                      .date, ". Returning NULL.", sep = ""),
+            width = 80
+          ),
+          collapse = "\n"
         ),
         call. = FALSE
       )
-
       ## Assign y as NULL
       y <- NULL
     }
@@ -250,11 +300,14 @@ datadrop_cases <- function(version = "current", .date = NULL) {
     ## Check if file named Case Information is available
     if(!any(stringr::str_detect(string = y$name, pattern = "Case Information.csv"))) {
       stop(
-        strwrap(
-          x = paste("No cases information on ", .date,
-                    ". Try a date earlier or later than date specified.",
-                    sep = ""),
-          width = 80, prefix = " ", initial = ""
+        paste(
+          strwrap(
+            x = paste("No cases information on ", .date,
+                      ". Try a date earlier or later than date specified.",
+                      sep = ""),
+            width = 80
+          ),
+          collapse = "\n"
         ),
         call. = TRUE
       )
