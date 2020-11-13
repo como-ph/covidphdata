@@ -21,8 +21,8 @@ A tibble containing information on the various files in a specified
 \strong{COVID-19 Data Drop Google Drive} directory
 }
 \description{
-A wrapper to \link{googledrive} functions to extract information on contents of
-a specific \strong{COVID-19 Data Drop Google Drive} directory
+A wrapper to \code{googledrive} package functions to extract information on
+contents of a specific \strong{COVID-19 Data Drop Google Drive} directory
 }
 \examples{
 datadrop_ls()
