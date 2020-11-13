@@ -2,30 +2,30 @@
 % Please edit documentation in R/get_data.R
 \name{datadrop_ls}
 \alias{datadrop_ls}
-\title{Get Philippines Department of Health COVID-19 Data Drop Google Drive specific
-directory information}
+\title{List files and folders within a specified DoH Data Drop Google Drive folder}
 \usage{
-datadrop_ls(version = "current", .date = NULL)
+datadrop_ls(id)
 }
 \arguments{
-\item{version}{A character value specifying whether to get the most
-currently available dataset (\code{"current"}) or to get archive data
-(\code{"archive"}). Default to \code{"current"}}
-
-\item{.date}{A character value for date in \emph{YYYY-MM-DD} format. This is the
-date up to which extracted data reports to. Only used when \code{version} is set to
-\code{"archive"} otherwise ignored.}
+\item{id}{A 33 character string for the Google Drive ID of the latest
+officially released DoH Data Drop. This can be obtained using the
+\code{\link[=datadrop_latest_id]{datadrop_latest_id()}} function or by manually expanding the shortened URL
+provided in \url{bit.ly/DataDropPH} and extracting the
+Google Drive ID.}
 }
 \value{
-A tibble containing information on the various files in a specified
-\strong{COVID-19 Data Drop Google Drive} directory
+A tibble containing information on the various files and folders in
+the specified Google Drive for DoH Data Drop.
 }
 \description{
-A wrapper to \href{https://googledrive.tidyverse.org}{googledrive package}
-functions to extract information on contents of a specific
-\strong{COVID-19 Data Drop Google Drive} directory
+List files and folders within a specified DoH Data Drop Google Drive folder
 }
 \examples{
-datadrop_ls()
+id <- datadrop_latest_id()
 
+datadrop_ls(id = id)
+
+}
+\author{
+Ernest Guevarra
 }
