@@ -29,17 +29,17 @@
 #'   ignored.
 #'
 #' @return A tibble of any of the following datasets:
-#'   * 1) *Metadata - Sheets*;
-#'   * 2) *Metadata - Fields*;
-#'   * 3) *Case Information*;
-#'   * 4) *DOH Data Collect - Daily Report*;
-#'   * 5) *DOH Data Collect - Weekly Report*;
-#'   * 6) *Testing Aggregates*;
-#'   * 7) *Quarantine Facility Data - Daily Report*;
-#'   * 8) *Quarantine Facility Data - Weekly Report*;
-#'   * 9) *DOH Data Collect v3 - Baseline*;
-#'   * 10) *DOH Data Collect v4 - Baseline*; and,
-#'   * 11) *DDC TTMF Tracker v1*.
+#'   1. *Metadata - Sheets*;
+#'   2. *Metadata - Fields*;
+#'   3. *Case Information*;
+#'   4. *DOH Data Collect - Daily Report*;
+#'   5. *DOH Data Collect - Weekly Report*;
+#'   6. *Testing Aggregates*;
+#'   7. *Quarantine Facility Data - Daily Report*;
+#'   8. *Quarantine Facility Data - Weekly Report*;
+#'   9. *DOH Data Collect v3 - Baseline*;
+#'   10. *DOH Data Collect v4 - Baseline*; and,
+#'   11. *DDC TTMF Tracker v1*.
 #'  For Changelog, a named list of two tibbles - *List of Changes* and
 #'  *Most Common Changes*. If `keep` is TRUE, a copy of the specified
 #'  **DoH Data Drop** *Google Drive* file is saved in the location specified by
@@ -354,7 +354,7 @@ datadrop_get_cdaily <- function(version = c("latest", "archive"),
   ## Get list of contents of specified Google drive directory
   y <- datadrop_id(version = version, .date = .date) %>%
     datadrop_ls() %>%
-    datadrop_id_file(fn = "ChangelCollect - Daily Report.csv")
+    datadrop_id_file(fn = "Collect - Daily Report.csv")
 
   if(is.null(y)) {
     warning(

@@ -29,18 +29,18 @@ available \strong{DoH Data Drop} (\code{latest}) or to get \strong{DoH Data Drop
 (\code{archive}). Default to \code{latest}.}
 
 \item{tbl}{A tibble output produced by \code{\link[=datadrop_ls]{datadrop_ls()}} that lists the files
-within a particular DoH Data Drop Google Drive folder}
+within a particular \strong{DoH Data Drop} \emph{Google Drive} folder}
 
 \item{fn}{A character string composed of a word or words that can be used to
-match to the name of a file within a particular DoH Data Drop Google Drive
-folder listed in \code{tbl}.}
+match to the name of a file within a particular \strong{DoH Data Drop}
+\emph{Google Drive} folder listed in \code{tbl}.}
 }
 \value{
 A 33-character string for the \emph{Google Drive} ID of the latest
 \strong{DoH Data Drop} or the archive \strong{DoH Data Drop}
 
-A 33-character string for the Google Drive ID of the specified DoH
-Data Drop file. If \code{fn} matches with more than one file, a vector of
+A 33-character string for the \emph{Google Drive} ID of the specified
+\strong{DoH Data Drop} file. If \code{fn} matches with more than one file, a vector of
 33-character strings for the Google Drive IDs of the specified DoH Data
 Drop files.
 }

@@ -93,8 +93,8 @@ gid <- datadrop_id()
 ## Step 2: List the files and folders available in the latest DoH Data Drop
 data_list <- datadrop_ls(id = gid)
 
-## Step 3: Get the Google Drive ID of the specific file required. In this example, retrieve Case 
-## Information
+## Step 3: Get the Google Drive ID of the specific file required. In this 
+## example, retrieve Case Information
 file_id <- datadrop_id_file(tbl = data_list, fn = "Case Information")
 
 ## Step 4: Retrieve the specified/required dataset and load into R
@@ -229,35 +229,22 @@ datadrop_get(id = file_id, path = tempfile())
 
 The `covidphdata` package is in active development. Following are the planned development milestones for `covidphdata` in order of priority:
 
-* :white_check_mark: Develop data retrieval functions
+* [X] **Develop data retrieval functions** - done
 
-* [ ] Develop basic data cleaning, processing and strucuturing functions
+* [ ] **Develop basic data cleaning, processing and structuring functions** - It should be noted that the current functions available for the `covidphdata` data retrieval workflow gets the data from the **DoH Data Drop** as is; that is no other processing or manipulation is done to the data. This component will be served by another set of functions for *cleaning*, *processing* and *structuring* of the retrieved datasets. These functions are currently under development.
 
-It should be noted that the current functions available for the `covidphdata` data retrieval workflow gets the data from the **DoH Data Drop** as is; that is no other processing or maninpulation is done to the data. This component will be served by another set of functions for *cleaning*, *processing* and *structuring* of the retrieved datasets. These functions are currently under development.
+* [ ] **Develop complex data checking and quality assessment functions** - Depending on feedback from users and fellow scientists and researchers using the package for their COVID-19-related [R](https://cran.r-project.org) workflows, it would be good to include more advanced and complex data checking and quality assessments which may include *partly-supervised or semi-automated duplicate records detection*, *data consistency checks*, *re-generation of dropped variables*. Once we are able to learn what users need in their usual workflows, we'll plan which ones to develop robust functions for.
 
-* [ ] Develop complex data checking and quality assessment functions
+* [ ] **Any other functionalities suggested by users** - These will be considered on a case-by-case basis.
 
-Depending on feedback from users and fellow scientists and researchers using the package for their COVID-19-related [R](https://cran.r-project.org) workflows, it would be good to include more advanced and complex data checking and quality assessments which may include *partly-supervised or semi-automated duplicate records detection*, *data consistency checks*, *re-generation of dropped variables*. Once we are able to learn what users need in their usual workflows, we'll plan which ones to develop robust functions for.
-
-* [ ] Any other functionalities suggested by users will be considered.
-
-* [ ] Once package reaches at least a [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) or a [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) development lifecyle, prepare and submit `covidphdata` package for inclusion in the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org).
+* [ ] **Submit to CRAN** - Once package reaches at least a [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) or a [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) development lifecycle, prepare and submit `covidphdata` package for inclusion in the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org).
 
 ## Current limitations and challenges
 
-The main limitations and challenges in the development of the `covidphdata` package are the uncertainties and instabilities of the **DoH Data Drop**. As described above, since the launch of the **DoH Data Drop**, several interface changes have been implemented that changed the way the **DoH Data Drop** is distributed and can be accessed. These types of changes will almost always require a syntax breaking update to the current data retrieval functions. The latest **README** document also indicates that the archive data has been limited to the current month (November 2020) because of ongoing efforts to transfer the archive data to a new website. This may indicate that archive data will be distributed via this new website and that latest updates may still be released via *Google Drive*. Depending on what these changes end up being, updates to the syntax of current data retrieval functions is likely. We will ensure that we monitor and watch out for these changes and adapt the functions as soon as possible to ensure compatiblity to the new interfaces.
+The main limitations and challenges in the development of the `covidphdata` package are the uncertainties and instabilities of the **DoH Data Drop**. As described above, since the launch of the **DoH Data Drop**, several interface changes have been implemented that changed the way the **DoH Data Drop** is distributed and can be accessed. These types of changes will almost always require a syntax breaking update to the current data retrieval functions. The latest **README** document also indicates that the archive data has been limited to the current month (November 2020) because of ongoing efforts to transfer the archive data to a new website. This may indicate that archive data will be distributed via this new website and that latest updates may still be released via *Google Drive*. Depending on what these changes end up being, updates to the syntax of current data retrieval functions is likely. We will ensure that we monitor and watch out for these changes and adapt the functions as soon as possible to ensure compatibility to the new interfaces.
 
-## Disclaimer
+## Community guidelines
 
-The `covidphdata` package development is an independent effort and its authors and developers are not affiliated or recognised by the Philippines Department of Health.
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/covidphdata/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://github.com/como-ph/covidphdata/blob/master/CONTRIBUTING.md).
 
-## Contributing
-
-## License
-
-
-
-
-
-
-
+This project is released with a [Contributor Code of Conduct](https://github.com/como-ph/covidphdata/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
