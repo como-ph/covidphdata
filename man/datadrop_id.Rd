@@ -4,21 +4,26 @@
 \alias{datadrop_latest_id}
 \alias{datadrop_archive_id}
 \alias{datadrop_id}
-\title{Get Google Drive IDs for DoH Data Drop}
+\title{Get Google Drive IDs for latest or archive DoH Data Drop folders}
 \usage{
 datadrop_latest_id(verbose = TRUE)
 
-datadrop_archive_id(verbose = TRUE)
+datadrop_archive_id(verbose = TRUE, .date = NULL)
 
-datadrop_id(version = c("latest", "archive"), verbose = TRUE)
+datadrop_id(verbose = TRUE, version = c("latest", "archive"), .date = NULL)
 }
 \arguments{
 \item{verbose}{Logical. Should message on operation progress be shown.
 Default is TRUE.}
 
+\item{.date}{A character value for date in \emph{YYYY-MM-DD} format. This is the
+date for the archive DoH Data Drop for which an ID is to be returned.
+Should be specified when using \code{\link[=datadrop_archive_id]{datadrop_archive_id()}}. For \code{\link[=datadrop_id]{datadrop_id()}},
+only used when \code{version} is set to \code{archive} otherwise ignored.}
+
 \item{version}{A character value specifying whether to get the latest
 available DoH Data Drop (\code{latest}) or to get DoH Data Drop archive
-(\code{archive}). Default to \code{latest}}
+(\code{archive}). Default to \code{latest}.}
 }
 \value{
 A 33-character string for the Google Drive ID of the latest
@@ -59,8 +64,9 @@ information and data from the Google Drive specified by this ID.
 }
 \examples{
 datadrop_latest_id()
-datadrop_archive_id()
+datadrop_archive_id(.date = "2020-11-01")
 datadrop_id()
+datadrop_id(version = "archive", .date = "2020-11-01")
 
 }
 \author{

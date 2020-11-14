@@ -122,7 +122,7 @@ Google Drive" />
     <div class="page-header">
     <h1>Pull Philippines data on cases information from the publicly available
 Department of Health COVID-19 Data Drop</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/get_data.R'><code>R/get_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/get_current_data.R'><code>R/get_current_data.R</code></a></small>
     <div class="hidden name"><code>datadrop_cases.Rd</code></div>
     </div>
 
@@ -132,7 +132,7 @@ Philppines' COVID-19 Data Drop resource that is publicly distributed via
 Google Drive</p>
     </div>
 
-    <pre class="usage"><span class='fu'>datadrop_cases</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"current"</span>, .date <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>datadrop_cases</span><span class='op'>(</span>version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>, .date <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,7 +140,7 @@ Google Drive</p>
     <tr>
       <th>version</th>
       <td><p>A character value specifying whether to get the most
-currently available dataset (<code>"current"</code>) or to get archive data
+currently available dataset (<code>current</code>) or to get archive data
 (<code>"archive"</code>). Default to <code>"current"</code></p></td>
     </tr>
     <tr>
@@ -158,20 +158,24 @@ via the COVID-19 Data Drop</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>datadrop_cases</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting information on Google Drive directory structure of the DoH Data Drop for latest available data up to 2020-11-12.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 402,820 x 22</span><span>
+</div><div class='output co'>#&gt; <span class='message'>Using an auto-discovered, cached token.</span>
+#&gt; <span class='message'>To suppress this message, modify your code or options to clearly consent to the use of a cached token.</span>
+#&gt; <span class='message'>See gargle's "Non-interactive auth" vignette for more details:</span>
+#&gt; <span class='message'>https://gargle.r-lib.org/articles/non-interactive-auth.html</span></div><div class='output co'>#&gt; <span class='message'>The googledrive package is using a cached token for ernest@guevarra.io.</span></div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
+#&gt; <span class='message'>2020-11-13.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 404,713 x 22</span><span>
 #&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C860065     20 20 to 24 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-28</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-29</span><span style='color: #949494;'>"</span><span>     2020-08-02 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C205865     69 65 to 69 FEMA… </span><span style='color: #949494;'>"</span><span>2020-03-28</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-03-30</span><span style='color: #949494;'>"</span><span>     2020-04-03 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C558689     25 25 to 29 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-23</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-28</span><span style='color: #949494;'>"</span><span>     2020-08-01 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C903678     23 20 to 24 FEMA… </span><span style='color: #949494;'>"</span><span>2020-04-09</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>""</span><span>               2020-04-15 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C445233     25 25 to 29 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-13</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-16</span><span style='color: #949494;'>"</span><span>     2020-07-19 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C291169     19 15 to 19 FEMA… </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>"</span><span>2020-08-21</span><span style='color: #949494;'>"</span><span>     2020-08-25 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C373135     44 40 to 44 FEMA… </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>"</span><span>2020-07-14</span><span style='color: #949494;'>"</span><span>     2020-08-05 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C463907     34 30 to 34 FEMA… </span><span style='color: #949494;'>"</span><span>2020-05-30</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-06-02</span><span style='color: #949494;'>"</span><span>     2020-06-04 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C764160     26 25 to 29 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-24</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span>     2020-08-01 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C578008     47 45 to 49 FEMA… </span><span style='color: #949494;'>"</span><span>2020-08-28</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-31</span><span style='color: #949494;'>"</span><span>     2020-09-06 
-#&gt; </span><span style='color: #949494;'># … with 402,810 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C320893     11 10 to 14 FEMA… 2020-04-21   2020-05-02       2020-05-31 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C334572     57 55 to 59 MALE  2020-07-13   2020-07-16       2020-08-08 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C648959     58 55 to 59 MALE  2020-06-09   2020-06-12       2020-06-14 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C827571     58 55 to 59 FEMA… 2020-07-12   2020-07-13       2020-08-08 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C899164     30 30 to 34 MALE  2020-05-05   2020-05-15       2020-05-15 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C172636     27 25 to 29 MALE  2020-08-06   2020-08-09       2020-08-12 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C560298     33 30 to 34 MALE  2020-05-23   2020-05-24       2020-05-28 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C493432     25 25 to 29 FEMA… 2020-06-25   2020-06-27       2020-06-30 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C855974     25 25 to 29 FEMA… 2020-07-10   2020-07-11       2020-07-17 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C264567     29 25 to 29 FEMA… 2020-05-09   2020-06-09       2020-07-26 
+#&gt; </span><span style='color: #949494;'># … with 404,703 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   DateRecover </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RemovalType </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Admitted </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RegionRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   ProvRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMunRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMuniPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, BarangayRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   BarangayPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, HealthStatus </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Quarantined </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, DateOnset </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>

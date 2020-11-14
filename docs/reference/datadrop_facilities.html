@@ -122,7 +122,7 @@ Google Drive" />
     <div class="page-header">
     <h1>Pull Philippines data on daily facilities status from the publicly available
 Department of Health COVID-19 Data Drop</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/get_data.R'><code>R/get_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/get_current_data.R'><code>R/get_current_data.R</code></a></small>
     <div class="hidden name"><code>datadrop_facilities.Rd</code></div>
     </div>
 
@@ -132,7 +132,7 @@ Philppines' COVID-19 Data Drop resource that is publicly distributed via
 Google Drive</p>
     </div>
 
-    <pre class="usage"><span class='fu'>datadrop_facilities</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"current"</span>, .date <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>datadrop_facilities</span><span class='op'>(</span>version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>, .date <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,20 +158,21 @@ Data Drop</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>datadrop_facilities</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting information on Google Drive directory structure of the DoH Data Drop for latest available data up to 2020-11-12.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 168,396 x 54</span><span>
+</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
+#&gt; <span class='message'>2020-11-13.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 169,677 x 54</span><span>
 #&gt;    hfhudcode    id cfname updateddate addeddate reportdate icu_v icu_o isolbed_v
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…   506 JNRAL… 2020-07-02… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>337 JNRAL… 2020-07-03… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>337 JNRAL… 2020-07-03… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>337 JNRAL… 2020-07-03… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>7</span><span>254 JNRAL… 2020-07-06… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>9</span><span>030 JNRAL… 2020-07-07… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>10</span><span>805 JNRAL… 2020-07-08… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>12</span><span>264 JNRAL… 2020-07-09… 2020-07-… 2020-07-0…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>12</span><span>264 JNRAL… 2020-07-09… 2020-07-… 2020-07-1…     0     0         0
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>12</span><span>264 JNRAL… 2020-07-09… 2020-07-… 2020-07-1…     0     0         0
-#&gt; </span><span style='color: #949494;'># … with 168,386 more rows, and 45 more variables: isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…   100 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-02… 2020-07-… 2020-07-0…     0     2         1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>1</span><span>005 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-03… 2020-07-… 2020-07-0…     0     2         1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>624 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-04… 2020-07-… 2020-07-0…     0     2         1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>4</span><span>273 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-05… 2020-07-… 2020-07-0…     0     2         1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>5</span><span>833 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-06… 2020-07-… 2020-07-0…     1     1         2
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>7</span><span>631 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-07… 2020-07-… 2020-07-0…     1     1         2
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000…  </span><span style='text-decoration: underline;'>9</span><span>352 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-08… 2020-07-… 2020-07-0…     1     1         2
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>11</span><span>175 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-09… 2020-07-… 2020-07-0…     1     1         3
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>12</span><span>929 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-10… 2020-07-… 2020-07-1…     2     0         3
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>14</span><span>791 </span><span style='color: #949494;'>"</span><span>SORS… 2020-07-11… 2020-07-… 2020-07-1…     2     0         3
+#&gt; </span><span style='color: #949494;'># … with 169,667 more rows, and 45 more variables: isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   beds_ward_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, beds_ward_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   icu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, icu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   mechvent_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qnurse </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qdoctor </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
