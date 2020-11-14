@@ -20,11 +20,27 @@ reference:
     contents:
     - covidphdata
 
-  - title: Get data
+  - title: Get identifiers
+    contents:
+    - datadrop_id
+
+  - title: List files and folders
     contents:
     - datadrop_ls
+
+  - title: Get data
+    contents:
+    - datadrop_changelog
+    - datadrop_sheets
     - datadrop_fields
-    - datadrop_facilities
-    - datadrop_tests
     - datadrop_cases
+    - datadrop_collect_daily
+    - datadrop_collect_weekly
+    - datadrop_tests
+    - datadrop_quarantine_daily
+    - datadrop_quarantine_weekly
+
+  - title: Utilities
+    contents:
+    - datadrop_download
 
