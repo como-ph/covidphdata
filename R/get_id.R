@@ -327,13 +327,13 @@ datadrop_id <- function(verbose = TRUE,
 #' Get Google Drive ID for specified file in DoH Data Drop
 #'
 #' @param tbl A tibble output produced by [datadrop_ls()] that lists the files
-#'   within a particular DoH Data Drop Google Drive folder
+#'   within a particular **DoH Data Drop** *Google Drive* folder
 #' @param fn A character string composed of a word or words that can be used to
-#'   match to the name of a file within a particular DoH Data Drop Google Drive
-#'   folder listed in `tbl`.
+#'   match to the name of a file within a particular **DoH Data Drop**
+#'   *Google Drive* folder listed in `tbl`.
 #'
-#' @return A 33-character string for the Google Drive ID of the specified DoH
-#'   Data Drop file. If `fn` matches with more than one file, a vector of
+#' @return A 33-character string for the *Google Drive* ID of the specified
+#'   **DoH Data Drop** file. If `fn` matches with more than one file, a vector of
 #'   33-character strings for the Google Drive IDs of the specified DoH Data
 #'   Drop files.
 #'
