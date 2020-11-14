@@ -1,58 +1,66 @@
 ################################################################################
 #
 #'
-#' Get Google Drive IDs for latest or archive DoH Data Drop folders
+#' Get Google Drive ID for latest or archive DoH Data Drop folders
 #'
-#' The Philippines Department of Health currently distributes the latest data
-#' drop via a fixed shortened URL ([bit.ly/DataDropPH](bit.ly/DataDropPH))
-#' which links/points to a new Google Drive endpoint daily or whenever the
-#' daily updated data drop is available. This Google Drive endpoint is a
+#' The **DoH Data Drop** is distributed using *Google Drive* with the latest
+#' data released through a new *Google Drive* folder and the older data archived
+#' into the same persistent *Google Drive* folder.
+#'
+#' The Philippines Department of Health (DoH) currently distributes the latest
+#' **Data Drop** via a fixed shortened URL ([bit.ly/DataDropPH](https://bit.ly/DataDropPH))
+#' which links/points to a new *Google Drive* endpoint daily or whenever the
+#' daily updated data drop is available. This *Google Drive* endpoint is a
 #' **README** document in portable document format (PDF) which contains a
 #' privacy and confidentiality statement, technical notes with regard to the
 #' latest data, technical notes with regard to previous (archive data) and two
-#' shortened URLs - one linking to the Google Drive folder that contains all
+#' shortened URLs - one linking to the *Google Drive* folder that contains all
 #' the latest officially released datasets, and the other linking to the
 #' datasets released previously (archives). Of these, the first shortened URL
-#' linking to the Google Drive folder containing the latest officially released
-#' datasets is different for everyday and can only be obtained through the
+#' linking to the *Google Drive* folder containing the latest officially released
+#' datasets is different for every release and can only be obtained through the
 #' **README** document released for a specific day.
 #'
-#' The function [datadrop_latest_id()] reads that PDF file, extracts the
+#' The function [datadrop_id_latest()] reads the **README** PDF file, extracts the
 #' shortened URL for the latest official released datasets written in that file,
-#' expands that shortened URL and then extracts the unique Google Drive ID for
-#' the latest officially released datasets. With this Google Drive ID, other
+#' expands that shortened URL and then extracts the unique *Google Drive* ID for
+#' the latest officially released datasets. With this *Google Drive* ID, other
 #' functions can then be used to retrieve information and data from the Google
 #' Drive specified by this ID.
 #'
-#' The DoH Data Drop archives, on the other hand, is distributed via a fixed
+#' The **DoH Data Drop** archives, on the other hand, is distributed via a fixed
 #' shortened URL ([bit.ly/DataDropArchives](https://bit.ly/DataDropArchives))
-#' which links/points to a Google Drive folder containing the previous Data Drop
-#' releases.
+#' which links/points to a *Google Drive* folder containing the previous
+#' **DoH Data Drop** releases.
 #'
-#' The function [datadrop_archive_id()] expands that shortened URL and then
-#' extracts the unique Google Drive ID for the DoH Data Drop archives folder.
-#' With this Google Drive ID, other functions can then be used to retrieve
-#' information and data from the Google Drive specified by this ID.
+#' The function [datadrop_id_archive()] expands that shortened URL and then
+#' extracts the unique *Google Drive* ID for the **DoH Data Drop** archives folder.
+#' With this *Google Drive* ID, other functions can then be used to retrieve
+#' information and data from the *Google Drive* specified by this ID.
 #'
 #' @param verbose Logical. Should message on operation progress be shown.
 #'   Default is TRUE.
 #' @param version A character value specifying whether to get the latest
-#'   available DoH Data Drop (`latest`) or to get DoH Data Drop archive
+#'   available **DoH Data Drop** (`latest`) or to get **DoH Data Drop** archive
 #'   (`archive`). Default to `latest`.
 #' @param .date A character value for date in *YYYY-MM-DD* format. This is the
-#'   date for the archive DoH Data Drop for which an ID is to be returned.
-#'   Should be specified when using [datadrop_archive_id()]. For [datadrop_id()],
+#'   date for the archive **DoH Data Drop** for which an ID is to be returned.
+#'   Should be specified when using [datadrop_id_archive()]. For [datadrop_id()],
 #'   only used when `version` is set to `archive` otherwise ignored.
 #'
-#' @return A 33-character string for the Google Drive ID of the latest
-#'   DoH Data Drop or the archive DoH Data Drop
+#' @return A 33-character string for the *Google Drive* ID of the latest
+#'   **DoH Data Drop** or the archive **DoH Data Drop**
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' datadrop_latest_id()
-#' datadrop_archive_id(.date = "2020-11-01")
+#' ## Two ways to get the Google Drive ID of the latest DoH Data Drop
+#' datadrop_id_latest()
 #' datadrop_id()
+#'
+#' ## Two ways to get the Google Drive ID of the archive DoH Data Drop for
+#' ## 1 November 2020
+#' datadrop_id_archive(.date = "2020-11-01")
 #' datadrop_id(version = "archive", .date = "2020-11-01")
 #'
 #' @rdname datadrop_id
@@ -61,7 +69,7 @@
 #
 ################################################################################
 
-datadrop_latest_id <- function(verbose = TRUE) {
+datadrop_id_latest <- function(verbose = TRUE) {
   ## Deauthorise
   googledrive::drive_deauth()
 
@@ -99,7 +107,7 @@ datadrop_latest_id <- function(verbose = TRUE) {
   link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", dropCurrent$id)
 
   googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = FALSE)
+                              path = destFile, verbose = verbose)
 
   ## Extract information from PDF on link to folder of current data
   readme <- pdftools::pdf_text(pdf = destFile) %>%
@@ -134,7 +142,7 @@ datadrop_latest_id <- function(verbose = TRUE) {
 #
 ################################################################################
 
-datadrop_archive_id <- function(verbose = TRUE,
+datadrop_id_archive <- function(verbose = TRUE,
                                 .date = NULL) {
   ## Deauthorise
   googledrive::drive_deauth()
@@ -303,12 +311,77 @@ datadrop_id <- function(verbose = TRUE,
 
   ## Get id
   if(version == "latest") {
-    id <- datadrop_latest_id(verbose = verbose)
+    id <- datadrop_id_latest(verbose = verbose)
   } else {
-    id <- datadrop_archive_id(verbose = verbose, .date = .date)
+    id <- datadrop_id_archive(verbose = verbose, .date = .date)
   }
 
   ## return id
   return(id)
 }
 
+
+################################################################################
+#
+#'
+#' Get Google Drive ID for specified file in DoH Data Drop
+#'
+#' @param tbl A tibble output produced by [datadrop_ls()] that lists the files
+#'   within a particular DoH Data Drop Google Drive folder
+#' @param fn A character string composed of a word or words that can be used to
+#'   match to the name of a file within a particular DoH Data Drop Google Drive
+#'   folder listed in `tbl`.
+#'
+#' @return A 33-character string for the Google Drive ID of the specified DoH
+#'   Data Drop file. If `fn` matches with more than one file, a vector of
+#'   33-character strings for the Google Drive IDs of the specified DoH Data
+#'   Drop files.
+#'
+#' @author Ernest Guevarra
+#'
+#' @examples
+#' ## Typical workflow
+#' tbl <- datadrop_ls(id = datadrop_id())
+#' datadrop_id_file(tbl = tbl, fn = "Case Information")
+#'
+#' ## Piped workflow using magrittr %>%
+#' library(magrittr)
+#'
+#' ## Get the id for the latest Case Information file
+#' datadrop_id() %>%
+#'   datadrop_ls() %>%
+#'   datadrop_id_file(fn = "Case Information")
+#'
+#' @rdname datadrop_id
+#' @export
+#'
+#
+################################################################################
+
+datadrop_id_file <- function(tbl, fn) {
+  ## Check if fn is found in tbl$name
+  if(any(stringr::str_detect(string = tbl[["name"]], pattern = fn))) {
+    ##
+    id <- tbl %>%
+      filter(stringr::str_detect(string = name, pattern = fn)) %>%
+      select(id) %>%
+      as.character()
+  } else {
+    ## Set id to NULL
+    id <- NULL
+    warning(
+      paste(
+        strwrap(
+          x = paste("File/s with the word/s ", fn, " was not found in the Data
+                    Drop folder. Please revise as needed and try again. Returning
+                    NULL.", sep = ""),
+          width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ##
+  return(id)
+}
