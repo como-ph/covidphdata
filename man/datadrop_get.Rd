@@ -128,55 +128,22 @@ A tibble of retrieved \strong{DoH Data Drop} file. If \code{keep} is TRUE, a
 file is also downloaded into specified \code{path}.
 
 A tibble of any of the following datasets:
-\itemize{
-\item 
 \enumerate{
 \item \emph{Metadata - Sheets};
-}
-\item 
-\enumerate{
 \item \emph{Metadata - Fields};
-}
-\item 
-\enumerate{
 \item \emph{Case Information};
-}
-\item 
-\enumerate{
 \item \emph{DOH Data Collect - Daily Report};
-}
-\item 
-\enumerate{
 \item \emph{DOH Data Collect - Weekly Report};
-}
-\item 
-\enumerate{
 \item \emph{Testing Aggregates};
-}
-\item 
-\enumerate{
 \item \emph{Quarantine Facility Data - Daily Report};
-}
-\item 
-\enumerate{
 \item \emph{Quarantine Facility Data - Weekly Report};
-}
-\item 
-\enumerate{
 \item \emph{DOH Data Collect v3 - Baseline};
-}
-\item 
-\enumerate{
 \item \emph{DOH Data Collect v4 - Baseline}; and,
-}
-\item 
-\enumerate{
 \item \emph{DDC TTMF Tracker v1}.
 For Changelog, a named list of two tibbles - \emph{List of Changes} and
 \emph{Most Common Changes}. If \code{keep} is TRUE, a copy of the specified
 \strong{DoH Data Drop} \emph{Google Drive} file is saved in the location specified by
 \code{path}.
-}
 }
 }
 \description{
