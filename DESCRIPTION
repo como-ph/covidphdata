@@ -22,7 +22,9 @@ Imports:
     RCurl,
     lubridate,
     tibble,
-    magrittr
+    magrittr,
+    dplyr,
+    readxl
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
