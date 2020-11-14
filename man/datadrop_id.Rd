@@ -39,8 +39,8 @@ privacy and confidentiality statement, technical notes with regard to the
 latest data, technical notes with regard to previous (archive data) and two
 shortened URLs - one linking to the Google Drive folder that contains all
 the latest officially released datasets, and the other linking to the
-datasets released previously (archives). Of these, the first shortend URL
-linking to the Google Drive folder containing the latest officially relased
+datasets released previously (archives). Of these, the first shortened URL
+linking to the Google Drive folder containing the latest officially released
 datasets is different for everyday and can only be obtained through the
 \strong{README} document released for a specific day.
 }
