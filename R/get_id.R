@@ -62,6 +62,9 @@
 ################################################################################
 
 datadrop_latest_id <- function(verbose = TRUE) {
+  ## Deauthorise
+  googledrive::drive_deauth()
+
   ## Get current data link folder information and contents
   dropCurrent <- googledrive::drive_ls(
     path = googledrive::drive_get(id = "1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o")
@@ -302,7 +305,7 @@ datadrop_id <- function(verbose = TRUE,
   if(version == "latest") {
     id <- datadrop_latest_id(verbose = verbose)
   } else {
-    id <- datadrop_archive_id(verbose = verbose)
+    id <- datadrop_archive_id(verbose = verbose, .date = .date)
   }
 
   ## return id
