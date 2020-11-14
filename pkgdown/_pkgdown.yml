@@ -30,15 +30,7 @@ reference:
 
   - title: Get data
     contents:
-    - datadrop_changelog
-    - datadrop_sheets
-    - datadrop_fields
-    - datadrop_cases
-    - datadrop_collect_daily
-    - datadrop_collect_weekly
-    - datadrop_tests
-    - datadrop_quarantine_daily
-    - datadrop_quarantine_weekly
+    - datadrop_get
 
   - title: Utilities
     contents:
