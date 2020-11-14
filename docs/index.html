@@ -145,8 +145,8 @@ install.packages("covidphdata")
 <span class="co">## Step 2: List the files and folders available in the latest DoH Data Drop</span>
 <span class="va">data_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
 
-<span class="co">## Step 3: Get the Google Drive ID of the specific file required. In this example, retrieve Case </span>
-<span class="co">## Information</span>
+<span class="co">## Step 3: Get the Google Drive ID of the specific file required. In this </span>
+<span class="co">## example, retrieve Case Information</span>
 <span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">data_list</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
 
 <span class="co">## Step 4: Retrieve the specified/required dataset and load into R</span>
@@ -340,41 +340,23 @@ install.packages("covidphdata")
 <a href="#development-plan" class="anchor"></a>Development plan</h2>
 <p>The <code>covidphdata</code> package is in active development. Following are the planned development milestones for <code>covidphdata</code> in order of priority:</p>
 <ul>
-<li><p>:white_check_mark: Develop data retrieval functions</p></li>
-<li><p><input type="checkbox" disabled>
-Develop basic data cleaning, processing and strucuturing functions</p></li>
-</ul>
-<p>It should be noted that the current functions available for the <code>covidphdata</code> data retrieval workflow gets the data from the <strong>DoH Data Drop</strong> as is; that is no other processing or maninpulation is done to the data. This component will be served by another set of functions for <em>cleaning</em>, <em>processing</em> and <em>structuring</em> of the retrieved datasets. These functions are currently under development.</p>
-<ul>
-<li>
-<input type="checkbox" disabled>
-Develop complex data checking and quality assessment functions</li>
-</ul>
-<p>Depending on feedback from users and fellow scientists and researchers using the package for their COVID-19-related <a href="https://cran.r-project.org">R</a> workflows, it would be good to include more advanced and complex data checking and quality assessments which may include <em>partly-supervised or semi-automated duplicate records detection</em>, <em>data consistency checks</em>, <em>re-generation of dropped variables</em>. Once we are able to learn what users need in their usual workflows, we’ll plan which ones to develop robust functions for.</p>
-<ul>
-<li><p><input type="checkbox" disabled>
-Any other functionalities suggested by users will be considered.</p></li>
-<li><p><input type="checkbox" disabled>
-Once package reaches at least a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg" alt="Maturing"></a> or a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt="Stable"></a> development lifecyle, prepare and submit <code>covidphdata</code> package for inclusion in the <a href="https://cran.r-project.org">Comprehensive R Archive Network (CRAN)</a>.</p></li>
+<li><p><input type="checkbox" disabled checked><strong>Develop data retrieval functions</strong> - done</p></li>
+<li><p><input type="checkbox" disabled><strong>Develop basic data cleaning, processing and structuring functions</strong> - It should be noted that the current functions available for the <code>covidphdata</code> data retrieval workflow gets the data from the <strong>DoH Data Drop</strong> as is; that is no other processing or manipulation is done to the data. This component will be served by another set of functions for <em>cleaning</em>, <em>processing</em> and <em>structuring</em> of the retrieved datasets. These functions are currently under development.</p></li>
+<li><p><input type="checkbox" disabled><strong>Develop complex data checking and quality assessment functions</strong> - Depending on feedback from users and fellow scientists and researchers using the package for their COVID-19-related <a href="https://cran.r-project.org">R</a> workflows, it would be good to include more advanced and complex data checking and quality assessments which may include <em>partly-supervised or semi-automated duplicate records detection</em>, <em>data consistency checks</em>, <em>re-generation of dropped variables</em>. Once we are able to learn what users need in their usual workflows, we’ll plan which ones to develop robust functions for.</p></li>
+<li><p><input type="checkbox" disabled><strong>Any other functionalities suggested by users</strong> - These will be considered on a case-by-case basis.</p></li>
+<li><p><input type="checkbox" disabled><strong>Submit to CRAN</strong> - Once package reaches at least a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg" alt="Maturing"></a> or a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt="Stable"></a> development lifecycle, prepare and submit <code>covidphdata</code> package for inclusion in the <a href="https://cran.r-project.org">Comprehensive R Archive Network (CRAN)</a>.</p></li>
 </ul>
 </div>
 <div id="current-limitations-and-challenges" class="section level2">
 <h2 class="hasAnchor">
 <a href="#current-limitations-and-challenges" class="anchor"></a>Current limitations and challenges</h2>
-<p>The main limitations and challenges in the development of the <code>covidphdata</code> package are the uncertainties and instabilities of the <strong>DoH Data Drop</strong>. As described above, since the launch of the <strong>DoH Data Drop</strong>, several interface changes have been implemented that changed the way the <strong>DoH Data Drop</strong> is distributed and can be accessed. These types of changes will almost always require a syntax breaking update to the current data retrieval functions. The latest <strong>README</strong> document also indicates that the archive data has been limited to the current month (November 2020) because of ongoing efforts to transfer the archive data to a new website. This may indicate that archive data will be distributed via this new website and that latest updates may still be released via <em>Google Drive</em>. Depending on what these changes end up being, updates to the syntax of current data retrieval functions is likely. We will ensure that we monitor and watch out for these changes and adapt the functions as soon as possible to ensure compatiblity to the new interfaces.</p>
+<p>The main limitations and challenges in the development of the <code>covidphdata</code> package are the uncertainties and instabilities of the <strong>DoH Data Drop</strong>. As described above, since the launch of the <strong>DoH Data Drop</strong>, several interface changes have been implemented that changed the way the <strong>DoH Data Drop</strong> is distributed and can be accessed. These types of changes will almost always require a syntax breaking update to the current data retrieval functions. The latest <strong>README</strong> document also indicates that the archive data has been limited to the current month (November 2020) because of ongoing efforts to transfer the archive data to a new website. This may indicate that archive data will be distributed via this new website and that latest updates may still be released via <em>Google Drive</em>. Depending on what these changes end up being, updates to the syntax of current data retrieval functions is likely. We will ensure that we monitor and watch out for these changes and adapt the functions as soon as possible to ensure compatibility to the new interfaces.</p>
 </div>
-<div id="disclaimer" class="section level2">
+<div id="community-guidelines" class="section level2">
 <h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
-<p>The <code>covidphdata</code> package development is an independent effort and its authors and developers are not affiliated or recognised by the Philippines Department of Health.</p>
-</div>
-<div id="contributing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h2>
-</div>
-<div id="license" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h2>
+<a href="#community-guidelines" class="anchor"></a>Community guidelines</h2>
+<p>Feedback, bug reports and feature requests are welcome; file issues or seek support <a href="https://github.com/como-ph/covidphdata/issues">here</a>. If you would like to contribute to the package, please see our <a href="https://github.com/como-ph/covidphdata/blob/master/CONTRIBUTING.md">contributing guidelines</a>.</p>
+<p>This project is released with a <a href="https://github.com/como-ph/covidphdata/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -396,6 +378,13 @@ Once package reaches at least a <a href="https://lifecycle.r-lib.org/articles/li
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+</ul>
+</div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 <div class="developers">

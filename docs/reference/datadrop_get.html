@@ -259,45 +259,23 @@ ignored.</p></td>
 
     <p>A tibble of retrieved <strong>DoH Data Drop</strong> file. If <code>keep</code> is TRUE, a
 file is also downloaded into specified <code>path</code>.</p>
-<p>A tibble of any of the following datasets:</p><ul>
-<li><p></p><ol>
+<p>A tibble of any of the following datasets:</p><ol>
 <li><p><em>Metadata - Sheets</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>Metadata - Fields</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>Case Information</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>DOH Data Collect - Daily Report</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>DOH Data Collect - Weekly Report</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>Testing Aggregates</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>Quarantine Facility Data - Daily Report</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>Quarantine Facility Data - Weekly Report</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>DOH Data Collect v3 - Baseline</em>;</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>DOH Data Collect v4 - Baseline</em>; and,</p></li>
-</ol></li>
-<li><p></p><ol>
 <li><p><em>DDC TTMF Tracker v1</em>.
 For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 <em>Most Common Changes</em>. If <code>keep</code> is TRUE, a copy of the specified
 <strong>DoH Data Drop</strong> <em>Google Drive</em> file is saved in the location specified by
 <code>path</code>.</p></li>
-</ol></li>
-</ul>
+</ol>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -308,13 +286,13 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f084030ae67</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a6e67d29f</span></div><div class='input'>
 <span class='co'>## Retrieve case information data</span>
 <span class='fu'>datadrop_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 04 Case Information.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f083c0a0d1d</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a6234fd59</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
 #&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C912262     57 55 to 59 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-01</span><span style='color: #949494;'>"</span><span>     2020-08-04 
@@ -338,7 +316,7 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f0837e309b6</span></div><div class='output co'>#&gt; <span class='warning'>Warning: File/s with the word/s Changelog.xlsx was not found in the Data Drop folder.</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a4e5106e</span></div><div class='output co'>#&gt; <span class='warning'>Warning: File/s with the word/s Changelog.xlsx was not found in the Data Drop folder.</span>
 #&gt; <span class='warning'>Please revise as needed and try again. Returning NULL.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No changelog information on 2020-11-14. Try a date earlier or later than date</span>
 #&gt; <span class='warning'>specified. Returning NULL.</span></div><div class='output co'>#&gt; NULL</div><div class='input'>
 <span class='co'>## Retrieve latest metadata - sheets information</span>
@@ -347,10 +325,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f081a92a864</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a5a99a844</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 02 Metadata - Sheets.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f08126d4add</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 5</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a1df636d4</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 5</span><span>
 #&gt;    Sheet     Description          Source       Contact.Informa… Data.Update.Sch…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Case Inf… </span><span style='color: #949494;'>"</span><span>List of confirmed … DOH - Epide… covidtracker@do… Daily at 4PM    
@@ -369,10 +347,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f08454dfc9e</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494af89a7aa</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 03 Metadata - Fields.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f083040c9e</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 199 x 7</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a165e91de</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 199 x 7</span><span>
 #&gt;    Sheet  Field  Description      Type  Question.Format Possible.Respon… Purpose
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Case … CaseC… Random code ass… Text  </span><span style='color: #949494;'>""</span><span>              </span><span style='color: #949494;'>""</span><span>               </span><span style='color: #949494;'>""</span><span>     
@@ -392,10 +370,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f087ed85a9d</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a1aba914b</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 04 Case Information.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f082e253a7a</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a4e98e0a2</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
 #&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C912262     57 55 to 59 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-01</span><span style='color: #949494;'>"</span><span>     2020-08-04 
@@ -419,19 +397,44 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f08e223741</span></div><div class='output co'>#&gt; <span class='warning'>Warning: File/s with the word/s ChangelCollect - Daily Report.csv was not found in the</span>
-#&gt; <span class='warning'>Data Drop folder. Please revise as needed and try again. Returning NULL.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No daily hospital beds and mechanical ventilator information on 2020-11-14. Try</span>
-#&gt; <span class='warning'>a date earlier or later than date specified. Returning NULL.</span></div><div class='output co'>#&gt; NULL</div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a16c3d3fe</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 05 DOH Data Collect - Daily Report.csv</span>
+#&gt; <span class='message'>Saved locally as:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a1292d45f</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 170,958 x 54</span><span>
+#&gt;    hfhudcode    id cfname updateddate addeddate reportdate icu_v icu_o isolbed_v
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…  </span><span style='text-decoration: underline;'>1</span><span>340 STA. … 2020-07-03… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>948 STA. … 2020-07-04… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>4</span><span>394 STA. … 2020-07-05… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>6</span><span>172 STA. … 2020-07-06… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>6</span><span>172 STA. … 2020-07-06… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>9</span><span>429 STA. … 2020-07-08… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>11</span><span>370 STA. … 2020-07-09… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>13</span><span>303 STA. … 2020-07-10… 2020-07-… 2020-07-1…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>14</span><span>885 STA. … 2020-07-11… 2020-07-… 2020-07-1…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>16</span><span>910 STA. … 2020-07-12… 2020-07-… 2020-07-1…     0     0         1
+#&gt; </span><span style='color: #949494;'># … with 170,948 more rows, and 45 more variables: isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   beds_ward_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, beds_ward_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   icu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, icu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   mechvent_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qnurse </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qdoctor </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   qother </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nurse_adm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, doctor_adm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, other_adm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   susp_asym </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, susp_mild </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, susp_severe </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, susp_crit </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   susp_died </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, prob_asym </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, prob_mild </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, prob_severe </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   prob_crit </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, prob_died </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, conf_asym </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, conf_mild </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   conf_severe </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, conf_crit </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, conf_died </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, tpatient_adm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   tpatient_er </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, tpatient_icu </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, trans_ttmf </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, discharged </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   region </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   city_mun </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, city_mun_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, north_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, east_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest weekly PPE and other related equipment information</span>
 <span class='fu'>datadrop_get_cweekly</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f08685993a6</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a65b4b27f</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 06 DOH Data Collect - Weekly Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f0850ecaccf</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 53,945 x 26</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a3a32e403</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 53,945 x 26</span><span>
 #&gt;    hfhudcode     id cfname updateddate addeddate reportdate  gown gloves
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…  </span><span style='text-decoration: underline;'>31</span><span>175 DUBON… 2020-04-24… 2020-04-… 2020-04-19    10     50
@@ -455,10 +458,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f086245738a</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a63179ece</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 07 Testing Aggregates.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f083da49b6d</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,969 x 18</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a23bb1935</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,969 x 18</span><span>
 #&gt;    facility_name report_date avg_turnaround_… daily_output_sa… daily_output_un…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> AL Molecular… 2020-08-30                24                0                0
@@ -485,10 +488,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f081d830b9</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a5073f8e6</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 08 Quarantine Facility Data - Daily Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f081866c2a1</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,724,486 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a6dd9ed4d</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,724,486 x 22</span><span>
 #&gt;    updateddate addeddate reportdate other_adm doctor_adm nurse_adm qother
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-06-01… 2020-06-… 2020-06-0…         0          0         0      0
@@ -512,10 +515,10 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f08273e48b</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a7e6a9292</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 09 Quarantine Facility Data - Weekly Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f086a162ef</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,387 x 25</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a6bcf015</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,387 x 25</span><span>
 #&gt;    facilityname updateddate addeddate reportdate coverall surgmask shoe_cover
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ACABAN ELEM… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>

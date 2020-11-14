@@ -161,13 +161,13 @@ available <strong>DoH Data Drop</strong> (<code>latest</code>) or to get <strong
     <tr>
       <th>tbl</th>
       <td><p>A tibble output produced by <code><a href='datadrop_ls.html'>datadrop_ls()</a></code> that lists the files
-within a particular DoH Data Drop Google Drive folder</p></td>
+within a particular <strong>DoH Data Drop</strong> <em>Google Drive</em> folder</p></td>
     </tr>
     <tr>
       <th>fn</th>
       <td><p>A character string composed of a word or words that can be used to
-match to the name of a file within a particular DoH Data Drop Google Drive
-folder listed in <code>tbl</code>.</p></td>
+match to the name of a file within a particular <strong>DoH Data Drop</strong>
+<em>Google Drive</em> folder listed in <code>tbl</code>.</p></td>
     </tr>
     </table>
 
@@ -175,8 +175,8 @@ folder listed in <code>tbl</code>.</p></td>
 
     <p>A 33-character string for the <em>Google Drive</em> ID of the latest
 <strong>DoH Data Drop</strong> or the archive <strong>DoH Data Drop</strong></p>
-<p>A 33-character string for the Google Drive ID of the specified DoH
-Data Drop file. If <code>fn</code> matches with more than one file, a vector of
+<p>A 33-character string for the <em>Google Drive</em> ID of the specified
+<strong>DoH Data Drop</strong> file. If <code>fn</code> matches with more than one file, a vector of
 33-character strings for the Google Drive IDs of the specified DoH Data
 Drop files.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -220,12 +220,12 @@ information and data from the <em>Google Drive</em> specified by this ID.</p>
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f084d663c4f</span></div><div class='output co'>#&gt; [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"</div><div class='input'><span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a5e35f627</span></div><div class='output co'>#&gt; [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"</div><div class='input'><span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f0873018e3b</span></div><div class='output co'>#&gt; [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"</div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a28b3aac3</span></div><div class='output co'>#&gt; [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"</div><div class='input'>
 <span class='co'>## Two ways to get the Google Drive ID of the archive DoH Data Drop for</span>
 <span class='co'>## 1 November 2020</span>
 <span class='fu'>datadrop_id_archive</span><span class='op'>(</span>.date <span class='op'>=</span> <span class='st'>"2020-11-01"</span><span class='op'>)</span>
@@ -237,7 +237,7 @@ information and data from the <em>Google Drive</em> specified by this ID.</p>
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f086b20fe79</span></div><div class='input'><span class='fu'>datadrop_id_file</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>tbl</span>, fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a2b8ffd15</span></div><div class='input'><span class='fu'>datadrop_id_file</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>tbl</span>, fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "1jyWUYS8z0HaCd2k_AVRgQqP2lcQ0913s"</div><div class='input'>
 <span class='co'>## Piped workflow using magrittr %&gt;%</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
@@ -250,7 +250,7 @@ information and data from the <em>Google Drive</em> specified by this ID.</p>
 #&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
 #&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f084322f0e1</span></div><div class='output co'>#&gt; [1] "1jyWUYS8z0HaCd2k_AVRgQqP2lcQ0913s"</div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpzbRMpq/file494a7a30840a</span></div><div class='output co'>#&gt; [1] "1jyWUYS8z0HaCd2k_AVRgQqP2lcQ0913s"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
