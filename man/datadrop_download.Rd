@@ -4,18 +4,35 @@
 \alias{datadrop_download}
 \title{Get link to a Google Drive file and download}
 \usage{
-datadrop_download(id, path)
+datadrop_download(id, path = NULL, overwrite = FALSE, verbose = TRUE)
 }
 \arguments{
-\item{id}{A 33-character string identifier for the Google Drive file}
+\item{id}{A 33-character string identifier for the \emph{Google Drive} file.}
 
-\item{path}{Path to download the file to.}
+\item{path}{A character value for path for output file. If NULL, the
+default file name used in \emph{Google Drive} is used and the default location is
+the working directory.}
+
+\item{overwrite}{Logical. If \code{path} already exists, should it be overwritten?
+Default to FALSE.}
+
+\item{verbose}{Logical. Should operation progress messages be shown? Default
+to TRUE.}
 }
 \value{
 A file downloaded into specified path
 }
 \description{
 Get link to a Google Drive file and download
+}
+\examples{
+## Get Google Drive ID for Case Information file in latest DoH Data Drop
+id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
+                       fn = "Case")
+
+## Download the Case Information file into tempfile()
+datadrop_download(id = id, path = tempfile())
+
 }
 \author{
 Ernest Guevarra
