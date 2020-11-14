@@ -7,18 +7,15 @@
     <loc>https://como-ph.github.io/covidphdata/reference/covidphdata.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_cases.html</loc>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_download.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_facilities.html</loc>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_get.html</loc>
   </url>
   <url>
-    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_fields.html</loc>
+    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_id.html</loc>
   </url>
   <url>
     <loc>https://como-ph.github.io/covidphdata/reference/datadrop_ls.html</loc>
-  </url>
-  <url>
-    <loc>https://como-ph.github.io/covidphdata/reference/datadrop_tests.html</loc>
   </url>
 </urlset>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • covidphdata</title>
+<title>Get link to a Google Drive file and download — datadrop_download • covidphdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get link to a Google Drive file and download — datadrop_download" />
+<meta property="og:description" content="Get link to a Google Drive file and download" />
 <meta property="og:image" content="https://como-ph.github.io/covidphdata/logo.png" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,118 +114,40 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get link to a Google Drive file and download</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/utilities.R'><code>R/utilities.R</code></a></small>
+    <div class="hidden name"><code>datadrop_download.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Get link to a Google Drive file and download</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>datadrop_download</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>path</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-description" class="hasAnchor"><a href="#section-description" class="anchor"></a>Description</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="covidphdata.html">covidphdata</a></code> </p>
-        </td>
-        <td><p>An Interface to the Philippines Department of Health COVID-19 Data Drop</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-get-identifiers" class="hasAnchor"><a href="#section-get-identifiers" class="anchor"></a>Get identifiers</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="datadrop_id.html">datadrop_latest_id()</a></code> <code><a href="datadrop_id.html">datadrop_archive_id()</a></code> <code><a href="datadrop_id.html">datadrop_id()</a></code> </p>
-        </td>
-        <td><p>Get Google Drive IDs for latest or archive DoH Data Drop folders</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-list-files-and-folders" class="hasAnchor"><a href="#section-list-files-and-folders" class="anchor"></a>List files and folders</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="datadrop_ls.html">datadrop_ls()</a></code> </p>
-        </td>
-        <td><p>List files and folders within a specified DoH Data Drop Google Drive folder</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-get-data" class="hasAnchor"><a href="#section-get-data" class="anchor"></a>Get data</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="datadrop_get.html">datadrop_changelog()</a></code> <code><a href="datadrop_get.html">datadrop_sheets()</a></code> <code><a href="datadrop_get.html">datadrop_fields()</a></code> <code><a href="datadrop_get.html">datadrop_cases()</a></code> <code><a href="datadrop_get.html">datadrop_tests()</a></code> <code><a href="datadrop_get.html">datadrop_collect_daily()</a></code> <code><a href="datadrop_get.html">datadrop_collect_weekly()</a></code> <code><a href="datadrop_get.html">datadrop_quarantine_daily()</a></code> <code><a href="datadrop_get.html">datadrop_quarantine_weekly()</a></code> </p>
-        </td>
-        <td><p>Retrieve datasets from specified DoH Data Drop folders</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="datadrop_download.html">datadrop_download()</a></code> </p>
-        </td>
-        <td><p>Get link to a Google Drive file and download</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>A 33-character string identifier for the Google Drive file</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Path to download the file to.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A file downloaded into specified path</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
