@@ -25,6 +25,8 @@ Imports:
     magrittr,
     dplyr,
     readxl
+Suggests: 
+    spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
@@ -32,3 +34,4 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 URL: https://como-ph.github.io/covidphdata/
 BugReports: https://github.com/como-ph/covidphdata/issues
+
