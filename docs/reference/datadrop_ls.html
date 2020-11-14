@@ -117,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List files and folders within a specified DoH Data Drop Google Drive folder</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/list_data.R'><code>R/list_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/utilities.R'><code>R/utilities.R</code></a></small>
     <div class="hidden name"><code>datadrop_ls.Rd</code></div>
     </div>
 
@@ -132,43 +132,47 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>A 33 character string for the Google Drive ID of the latest
-officially released DoH Data Drop. This can be obtained using the
-<code><a href='datadrop_latest_id.html'>datadrop_latest_id()</a></code> function or by manually expanding the shortened URL
-provided in <a href='bit.ly/DataDropPH'>bit.ly/DataDropPH</a> and extracting the
-Google Drive ID.</p></td>
+      <td><p>A 33 character string for the <em>Google Drive</em> ID of the latest
+officially released <strong>DoH Data Drop</strong>. This can be obtained using the
+<code><a href='datadrop_id_latest.html'>datadrop_id_latest()</a></code> function or by manually expanding the shortened URL
+provided in <a href='https://bit.ly/DataDropPH'>bit.ly/DataDropPH</a> and extracting the
+<em>Google Drive</em> ID.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble containing information on the various files and folders in
-the specified Google Drive for DoH Data Drop.</p>
+the specified <em>Google Drive</em> for <strong>DoH Data Drop</strong>.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_latest_id.html'>datadrop_latest_id</a></span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## Get Google Drive ID of latest DoH Data Drop</span>
+<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id_latest</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-13.</span></div><div class='input'>
+#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+#&gt; <span class='message'>Saved locally as:</span>
+#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//Rtmp7rldZi/file3f082af46636</span></div><div class='input'>
+<span class='co'>## List the contents of the latest DoH Data Drop in Google Drive</span>
 <span class='fu'>datadrop_ls</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 12 x 3</span><span>
 #&gt;    name                                      id                  drive_resource 
 #&gt;  </span><span style='color: #BCBCBC;'>*</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH COVID Data Drop_ 20201113 - 08 Quara… 1FogJUaMIvJnr9Bjmo… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH COVID Data Drop_ 20201113 - 04 Case … 1CiOgSsDmNGaWPQjCl… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH COVID Data Drop_ 20201113 - 05 DOH D… 1r_DQste7Mtz17v7iK… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH COVID Data Drop_ 20201113 - 03 Metad… 1wHXcDkC1c60BrXLSW… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH Data Drop 20201113 - Changelog.xlsx   1xiiIB7n_vpja6w5PS… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH COVID Data Drop_ 20201113 - 02 Metad… 1qmgUs5WyhBg6s8MI-… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH COVID Data Drop_ 20201113 - 09 Quara… 1a4Fi8WlJGE7BOIyAK… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH COVID Data Drop_ 20201113 - 10 DOH D… 1gan3d0Bn4YoaR9UE8… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH COVID Data Drop_ 20201113 - 06 DOH D… 1f0dVTkqTz7-zum2ET… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH COVID Data Drop_ 20201113 - 07 Testi… 1aIBTNadioFSj-OzFO… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> DOH COVID Data Drop_ 20201113 - 11 DOH D… 1W5NnsO0mmvNDSZEen… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> DOH COVID Data Drop_ 20201113 - 12 DDC T… 1w4QxKDjc_mHu-X46n… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> 01 READ ME FIRST (11_13).pdf              1W07xG21WHiuP_LbYM… </span><span style='color: #949494;'>&lt;named list [3</span><span>…</div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 01 READ ME FIRST (11_14).pdf              1nP4DD5vxpFpP5FaPn… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH COVID Data Drop_ 20201114 - 08 Quara… 1pPKA462_fcokxxLge… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH COVID Data Drop_ 20201114 - 04 Case … 1jyWUYS8z0HaCd2k_A… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH COVID Data Drop_ 20201114 - 02 Metad… 1UgeG6X9Vd2-g-B2Hm… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH COVID Data Drop_ 20201114 - 05 DOH D… 1wLHMcPf1NGLzYvkuc… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH COVID Data Drop_ 20201114 - 03 Metad… 1r9G-dmAQNePNVZ0sR… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH COVID Data Drop_ 20201114 - 07 Testi… 1L8rHMfOwEqHwnFnAt… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH COVID Data Drop_ 20201114 - 10 DOH D… 1PdSd4HTNEx4aK0HQy… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH COVID Data Drop_ 20201114 - 06 DOH D… 1oQx-d75RzaolcD-Xc… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH COVID Data Drop_ 20201114 - 12 DDC T… 19QDOOzsbQdvUgLsRa… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> DOH COVID Data Drop_ 20201114 - 11 DOH D… 19Ccr5ffeHKM73YkUV… </span><span style='color: #949494;'>&lt;named list [3</span><span>…
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> DOH COVID Data Drop_ 20201114 - 09 Quara… 170P-1mbRo3clT0cnw… </span><span style='color: #949494;'>&lt;named list [3</span><span>…</div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

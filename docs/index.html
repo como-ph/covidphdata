@@ -85,7 +85,33 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The Philippines Department of Health has made COVID-19 related data publicly available as part of its mandate to promoting transparency and accountability in governance. The Philippines COVID-19 Data Drop is distributed via Google Drive with latest updated data provided daily. Data from previous days are archived and also made available through Google Drive. This package provides a coherent and performant API to the latest and archived Philippines COVID-19 data.</p>
+<p>The <a href="https://www.doh.gov.ph">Philippines Department of Health</a> has made COVID-19 related data publicly available as part of its mandate to promoting transparency and accountability in governance. The Philippines COVID-19 Data Drop is distributed via <em>Google Drive</em> with latest updated data provided daily (generally). Data from previous days are archived and also made available through <em>Google Drive</em>. This package provides a coherent, robust and performant API to the latest and archived Philippines COVID-19 data.</p>
+<div id="motivation-and-development-history" class="section level2">
+<h2 class="hasAnchor">
+<a href="#motivation-and-development-history" class="anchor"></a>Motivation and development history</h2>
+<p>In early April 2020 as part of <a href="https://como-ph.github.io">CoMo Philippines</a>’s contribution to the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a>’s work in COVID-19 modelling for the Philippines context, we developed an <a href="https://cran.r-project.org">R</a> package called <a href="https://como-ph.github.io/comoparams"><code>comoparams</code></a> that provided <a href="https://cran.r-project.org">R</a> functions for access, handling and processing of relevant data required for COVID-19 modelling parameters for the Philippines. Within the <a href="https://como-ph.github.io/comoparams"><code>comoparams</code></a> package was a set of functions developed to interface with the then <a href="https://www.facebook.com/OfficialDOHgov/posts/announcement-covid-19-data-drop-now-accessible-onlinecovid-19-related-data-now-a/3227811310563432/">newly-announced Philippines Department of Health Data Drop for COVID-19</a>. From then until late June 2020, we continued maintenance of the <a href="https://como-ph.github.io/comoparams"><code>comoparams</code></a> package. Specifically, the set of functions for interfacing with the <strong>DoH Data Drop</strong> required several functions updates (see history of issues and changes to the package <a href="https://github.com/como-ph/comoparams/issues?q=is%3Aissue">here</a>) in relation to noted issues with the <strong>DoH Data Drop</strong> system and the data it provides. A good discussion of some of these issues by the <strong>UP COVID-19 Pandemic Response Team</strong> can be found <a href="https://www.up.edu.ph/prevailing-data-issues-in-the-time-of-covid-19-and-the-need-for-open-data/">here</a>. Other issues that required syntax-breaking changes to the <a href="https://como-ph.github.io/comoparams"><code>comoparams</code></a> package functions were related to how the DoH Data Drop was released and distributed. Earlier during its first release, the <strong>DoH Data Drop</strong> was distributed through <em>Google Sheets</em> via a single non-changing link. This was for both latest release and the archived data. A few weeks later, the <strong>DoH Data Drop</strong> was moved to <em>Google Drive</em> again via a single non-changing link for both the latest and the archive data. A month or so after, release of the latest <strong>DoH Data Drop</strong> was distributed through a single link that changed during every release (usually daily). The archive data, on the other hand, was distributed through a different but constant <a href="https://bit.ly/DataDropArchives">link</a>. The <strong>DoH Data Drop</strong> distribution system has since remained as such up to date though the archive data now only includes the current month archive compared to what it was in late June 2020 when all previous months of archive data were available.</p>
+<p>Currently, given the still persistent issues raised with regard to the DoH Data Drop system and the datasets it distributes, we felt it was important to create a separate focused <a href="https://cran.r-project.org">R</a> package just for accessing, handling and processing of the DoH Data Drop that can be universally used by other <a href="https://cran.r-project.org">R</a> users regardless of their ultimate end-use for the data (e.g., reporting, visualisation, modelling, etc.). We also wanted to contribute to the work of fellow scientists and researchers in the Philippines whom we are familiar with and whom we know use <a href="https://cran.r-project.org">R</a> for the epidemiologic analysis work they perform which they share with the general public in the Philippines. From our own experiences of dealing with the <strong>DoH Data Drop</strong>, we felt that it would be extremely helpful for fellow scientists and researchers who use <a href="https://cran.r-project.org">R</a> to have consistent and performant data access, handling and processing functions to interface with the <strong>DoH Data Drop</strong> that can potentially reduce the daily and/or weekly workload of producing COVID-19 analysis and reports and streamline their routine analytical workflows.</p>
+<p>To this end, we took inspiration from the functions we developed in the <a href="https://como-ph.github.io/comoparams"><code>comoparams</code></a> package and developed this <code>covidphdata</code> package based on the following <a href="https://cran.r-project.org">R</a> package design principles:</p>
+<ul>
+<li><p>use of a <strong>modular and refactorable approach</strong> to determining and developing the functions required;</p></li>
+<li><p>creation of an <a href="https://cran.r-project.org">R</a>-based <strong>robust and performant application programme interface or API</strong> to the <em>Google Drive</em>-based <strong>DoH Data Drop</strong>;</p></li>
+<li><p>application of <strong>modern data handling and processing techniques</strong> available in <a href="https://cran.r-project.org">R</a>; and,</p></li>
+<li><p>output of <strong>coherent and compliant data structures</strong> ready for various applications.</p></li>
+</ul>
+<p>Finally, we want to contribute to the both the <em>public discourse</em> and to the <em>practice</em> of <strong>open data</strong> and <strong>open science</strong> in the Philippines and encourage others to do the same. Our group’s codebase for our work on COVID-19 modelling (primarily in <a href="https://cran.r-project.org">R</a> language for statistical computing) is available publicly via <a href="https://github.com/como-ph">GitHub</a> including the one for the <code>covidphdata</code> package (see <a href="https://github.com/como-ph/covidphdata" class="uri">https://github.com/como-ph/covidphdata</a>). Our hope is that by creating this package and making its use available to all <a href="https://cran.r-project.org">R</a> users and its codebase open source, we can standardise accessing, handling and processing of the <strong>DoH Data Drop</strong> thereby providing transparency to the approaches applied to the data before it is analysed or visualised.</p>
+</div>
+<div id="what-does-covidphdatado" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-does-covidphdatado" class="anchor"></a>What does <code>covidphdata</code>do?</h2>
+<p>The <code>covidphdata</code> primarily provides functions that serve as low-level wrappers to specific <a href="http://googledrive.tidyverse.org"><code>googledrive</code></a> package functions that support the access to files and folders contained in a <em>Google Drive</em> given that the <strong>DoH Data Drop</strong> is distributed through this platform.</p>
+<p>Currently, the <code>covidphdata</code> package:</p>
+<ul>
+<li><p>Provides functions (<code>datadrop_id*</code>) to dynamically retrieve unique <strong>DoH Data Drop</strong> file and folder identifiers used by <em>Google Drive</em>;</p></li>
+<li><p>Provides a function (<code>datadrop_ls</code>) to list the files and folders within a specified <strong>DoH Data Drop</strong> folder in <em>Google Drive</em>;</p></li>
+<li><p>Provides a function (<code>datadrop_download</code>) to download a specified file within <strong>DoH Data Drop</strong> in <em>Google Drive</em>; and,</p></li>
+<li><p>Provides functions (<code>datadrop_get</code>) to retrieve a specified file within <strong>DoH Data Drop</strong> in <em>Google Drive</em> into <a href="https://cran.r-project.org">R</a>.</p></li>
+</ul>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -97,7 +123,7 @@ install.packages("covidphdata")
 ```
 --->
 <p><code>covidphdata</code> is not yet available on <a href="https://cran.r-project.org">CRAN</a>.</p>
-<p>The development version of <code>covidphdata</code> can be installed via GitHub:</p>
+<p>The development version of <code>covidphdata</code> can be installed via GitHub using the <code>remotes</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"como-ph/covidphdata"</span><span class="op">)</span></code></pre></div>
@@ -105,6 +131,250 @@ install.packages("covidphdata")
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<div id="the-covidphdata-data-retrieval-workflow" class="section level3">
+<h3 class="hasAnchor">
+<a href="#the-covidphdata-data-retrieval-workflow" class="anchor"></a>The <code>covidphdata</code> data retrieval workflow</h3>
+<p>The different functions currently available through <code>covidphdata</code> are linked through the following general workflow:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Load covidphdata</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/covidphdata/">covidphdata</a></span><span class="op">)</span>
+
+<span class="co">## Step 1: Get Google Drive ID for latest DoH Data Drop</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="co">## Step 2: List the files and folders available in the latest DoH Data Drop</span>
+<span class="va">data_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+
+<span class="co">## Step 3: Get the Google Drive ID of the specific file required. In this example, retrieve Case </span>
+<span class="co">## Information</span>
+<span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">data_list</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
+
+<span class="co">## Step 4: Retrieve the specified/required dataset and load into R</span>
+<span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>This workflow produces the following output:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 406,337 x 22</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 </span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 </span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 </span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 </span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 </span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 </span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 </span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 </span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; # … with 406,327 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt; #   Pregnanttab &lt;chr&gt;, ValidationStatus &lt;chr&gt;</span></span></code></pre></div>
+<p>The functions in the <code>covidphdata</code> workflow were designed to be usable with piped operations provided by the <a href="https://magrittr.tidyverse.org"><code>magrittr</code></a> package. The pipe operator <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> can be used with the <code>covidphdata</code> workflow as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Load magrittr package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+
+<span class="co">## Retrieve latest Case Information dataset from DoH Data Drop</span>
+<span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                                 <span class="co">## Step 1</span>
+  <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                               <span class="co">## Step 2</span>
+  <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">## Step 3</span>
+  <span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>                 <span class="co">## Step 4</span></code></pre></div>
+<p>This outputs this result:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 406,337 x 22</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 </span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 </span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 </span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 </span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 </span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 </span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 </span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 406,327 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; #   Pregnanttab &lt;chr&gt;, ValidationStatus &lt;chr&gt;</span></span></code></pre></div>
+<p>The resulting dataset retrieved by the piped operation is exactly the same as the first example. However, the piped operation workflow is more streamlined. Either of these approaches can be used when retrieving datasets from the <strong>DoH Data Drop</strong>.</p>
+<div id="step-1-get-google-drive-id-for-doh-data-drop" class="section level4">
+<h4 class="hasAnchor">
+<a href="#step-1-get-google-drive-id-for-doh-data-drop" class="anchor"></a>Step 1: Get Google Drive ID for DoH Data Drop</h4>
+<p>The Philippines <a href="https://www.doh.gov.ph">Department of Health (DoH)</a> currently distributes the latest <strong>Data Drop</strong> via a fixed shortened URL (<a href="https://bit.ly/DataDropPH">bit.ly/DataDropPH</a>) which links/points to a new <em>Google Drive</em> endpoint daily or whenever the daily updated <strong>DoH Data Drop</strong> is available. This <em>Google Drive</em> endpoint is a <strong>README</strong> document in portable document format (PDF) which contains a <em>privacy and confidentiality statement</em>, <em>technical notes with regard to the latest data</em>, <em>technical notes with regard to previous (archive data)</em> and <em>two shortened URLs</em> - one linking to the <em>Google Drive</em> folder that contains all the latest officially released datasets, and the other linking to the datasets released previously (archives). Of these, the first shortened URL linking to the <em>Google Drive</em> folder containing the latest officially released datasets is different for every release and can only be obtained through the <strong>README</strong> document released for a specific day.</p>
+<p>The function <code><a href="reference/datadrop_id_latest.html">datadrop_id_latest()</a></code> reads that PDF file, extracts the shortened URL for the latest official released datasets written in that file, expands that shortened URL and then extracts the unique <em>Google Drive</em> ID for the latest officially released datasets. With this <em>Google Drive</em> ID, other functions can then be used to retrieve information and data from the <em>Google Drive</em> specified by this ID.</p>
+<p>The <strong>DoH Data Drop</strong> archives, on the other hand, is distributed via a fixed shortened URL (<a href="bit.ly/DataDropArchives">bit.ly/DataDropArchives</a>) which links/points to a <em>Google Drive</em> folder containing the previous <strong>DoH Data Drop</strong> releases.</p>
+<p>The function <code>datadrop_id_archive</code> expands that shortened URL and then extracts the unique <em>Google Drive</em> ID for the <strong>DoH Data Drop</strong> archives folder. With this <em>Google Drive</em> ID, other functions can then be used to retrieve information and data from the <em>Google Drive</em> specified by this ID.</p>
+<p>The function <code>datadrop_id</code> wraps these two <code>datadrop_id_*</code> functions and outputs the appropriate <em>Google Drive</em> ID based on specified parameters. The default output of <code>datadrop_id</code> is the <em>Google Drive</em> ID of the latest officially released datasets as shown below:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"</span></code></pre></div>
+<p>To get the <em>Google Drive</em> ID of a <strong>DoH Data Drop</strong> archive, the following parameters need to be set:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"archive"</span>, .date <span class="op">=</span> <span class="st">"2020-11-01"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "1O2Gt_MUPKtWWPK6ainagRiehK0pCH7Nv"</span></code></pre></div>
+</div>
+<div id="step-2-list-the-files-and-folders-available-in-the-latest-doh-data-drop" class="section level4">
+<h4 class="hasAnchor">
+<a href="#step-2-list-the-files-and-folders-available-in-the-latest-doh-data-drop" class="anchor"></a>Step 2: List the files and folders available in the latest DoH Data Drop</h4>
+<p>Once an appropriate <em>Google Drive</em> ID is obtained, this can be used with the <code>datadrop_ls</code> function to retrieve a listing of all the files and folders within the specified <em>Google Drive</em>:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## List the files and folders inside the latest Google Drive DoH Data Drop</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 12 x 3</span>
+<span class="co">#&gt;    name                                      id                  drive_resource </span>
+<span class="co">#&gt;  * &lt;chr&gt;                                     &lt;chr&gt;               &lt;list&gt;         </span>
+<span class="co">#&gt;  1 01 READ ME FIRST (11_14).pdf              1nP4DD5vxpFpP5FaPn… &lt;named list [3…</span>
+<span class="co">#&gt;  2 DOH COVID Data Drop_ 20201114 - 08 Quara… 1pPKA462_fcokxxLge… &lt;named list [3…</span>
+<span class="co">#&gt;  3 DOH COVID Data Drop_ 20201114 - 04 Case … 1jyWUYS8z0HaCd2k_A… &lt;named list [3…</span>
+<span class="co">#&gt;  4 DOH COVID Data Drop_ 20201114 - 02 Metad… 1UgeG6X9Vd2-g-B2Hm… &lt;named list [3…</span>
+<span class="co">#&gt;  5 DOH COVID Data Drop_ 20201114 - 05 DOH D… 1wLHMcPf1NGLzYvkuc… &lt;named list [3…</span>
+<span class="co">#&gt;  6 DOH COVID Data Drop_ 20201114 - 03 Metad… 1r9G-dmAQNePNVZ0sR… &lt;named list [3…</span>
+<span class="co">#&gt;  7 DOH COVID Data Drop_ 20201114 - 07 Testi… 1L8rHMfOwEqHwnFnAt… &lt;named list [3…</span>
+<span class="co">#&gt;  8 DOH COVID Data Drop_ 20201114 - 10 DOH D… 1PdSd4HTNEx4aK0HQy… &lt;named list [3…</span>
+<span class="co">#&gt;  9 DOH COVID Data Drop_ 20201114 - 06 DOH D… 1oQx-d75RzaolcD-Xc… &lt;named list [3…</span>
+<span class="co">#&gt; 10 DOH COVID Data Drop_ 20201114 - 12 DDC T… 19QDOOzsbQdvUgLsRa… &lt;named list [3…</span>
+<span class="co">#&gt; 11 DOH COVID Data Drop_ 20201114 - 11 DOH D… 19Ccr5ffeHKM73YkUV… &lt;named list [3…</span>
+<span class="co">#&gt; 12 DOH COVID Data Drop_ 20201114 - 09 Quara… 170P-1mbRo3clT0cnw… &lt;named list [3…</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## List the files and folders inside the Google Drive DoH Data Drop on </span>
+<span class="co">## 1 November 2020</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"archive"</span>, .date <span class="op">=</span> <span class="st">"2020-11-01"</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 13 x 3</span>
+<span class="co">#&gt;    name                                      id                  drive_resource </span>
+<span class="co">#&gt;  * &lt;chr&gt;                                     &lt;chr&gt;               &lt;list&gt;         </span>
+<span class="co">#&gt;  1 DOH COVID Data Drop_ 20201101 - 08 Quara… 19qpm1UseQrSmELji8… &lt;named list [3…</span>
+<span class="co">#&gt;  2 DOH COVID Data Drop_ 20201101 - 04 Case … 1G3RITnBxmO0qIYAOG… &lt;named list [3…</span>
+<span class="co">#&gt;  3 DOH COVID Data Drop_ 20201101 - 06 DOH D… 1XAo_lunz5HXZpGnF1… &lt;named list [3…</span>
+<span class="co">#&gt;  4 DOH COVID Data Drop_ 20201101 - 05 DOH D… 1D6sO0tNudLENeiMzK… &lt;named list [3…</span>
+<span class="co">#&gt;  5 DOH Data Drop 20201101 - Changelog.xlsx   1KHWj0Mo__y0UqkXfm… &lt;named list [3…</span>
+<span class="co">#&gt;  6 DOH COVID Data Drop_ 20201101 - 07 Testi… 1eW8C062WTfMJC9mn2… &lt;named list [3…</span>
+<span class="co">#&gt;  7 DOH COVID Data Drop_ 20201101 - 12 DDC T… 1DRYzj6m7HALBM2sVy… &lt;named list [3…</span>
+<span class="co">#&gt;  8 DOH COVID Data Drop_ 20201101 - 10 DOH D… 16KEnIvD4ol4oQrtu8… &lt;named list [3…</span>
+<span class="co">#&gt;  9 DOH COVID Data Drop_ 20201101 - 02 Metad… 1m8zDRFJ5qKHky60zb… &lt;named list [3…</span>
+<span class="co">#&gt; 10 DOH COVID Data Drop_ 20201101 - 09 Quara… 1YarEezOL_wtdtBhFZ… &lt;named list [3…</span>
+<span class="co">#&gt; 11 DOH COVID Data Drop_ 20201101 - 11 DOH D… 1_Y8dx3ogvJN0RMHYv… &lt;named list [3…</span>
+<span class="co">#&gt; 12 DOH COVID Data Drop_ 20201101 - 03 Metad… 1a4yFn9jxGgDQ3_StU… &lt;named list [3…</span>
+<span class="co">#&gt; 13 01 READ ME FIRST (11_01).pdf              1sipJeeWgMqmS5cYv5… &lt;named list [3…</span></code></pre></div>
+</div>
+<div id="step-3-get-the-google-drive-id-of-the-specific-file-required" class="section level4">
+<h4 class="hasAnchor">
+<a href="#step-3-get-the-google-drive-id-of-the-specific-file-required" class="anchor"></a>Step 3: Get the Google Drive ID of the specific file required</h4>
+<p>Using the list of files or folders in the specified <em>Google Drive</em>, the <code>datadrop_id_file</code> function can be used to extract the <em>Google Drive</em> ID of the file to be retrieved.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Get the Google Drive ID of the Case Information file in the DoH Data Drop</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">tab</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "1jyWUYS8z0HaCd2k_AVRgQqP2lcQ0913s"</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Get the Google Drive ID of the Case Information file in the DoH Data Drop</span>
+<span class="co">## on 1 November 2020</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"archive"</span>, .date <span class="op">=</span> <span class="st">"2020-11-01"</span><span class="op">)</span>
+<span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">tab</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "1G3RITnBxmO0qIYAOGRBEVAbko-ZuU-1b"</span></code></pre></div>
+</div>
+<div id="step-4-retrieve-the-specifiedrequired-dataset-and-load-into-r" class="section level4">
+<h4 class="hasAnchor">
+<a href="#step-4-retrieve-the-specifiedrequired-dataset-and-load-into-r" class="anchor"></a>Step 4: Retrieve the specified/required dataset and load into R</h4>
+<p>Finally, using the specific <em>Google Drive</em> ID for the file of interest, the <code>datadrop_id_file</code> function is used to retrieve the file and output it into <a href="https://cran.r-project.org">R</a>:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Retrieve the latest Case Information file in the DoH Data Drop</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">tab</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 406,337 x 22</span>
+<span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 </span>
+<span class="co">#&gt;  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 </span>
+<span class="co">#&gt;  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 </span>
+<span class="co">#&gt;  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 </span>
+<span class="co">#&gt;  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 </span>
+<span class="co">#&gt;  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 </span>
+<span class="co">#&gt;  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 </span>
+<span class="co">#&gt;  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 </span>
+<span class="co">#&gt;  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 </span>
+<span class="co">#&gt; 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 </span>
+<span class="co">#&gt; # … with 406,327 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span>
+<span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span>
+<span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span>
+<span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Pregnanttab &lt;chr&gt;, ValidationStatus &lt;chr&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Retrieve the archive Case Information file in the DoH Data Drop</span>
+<span class="co">## on 1 November 2020</span>
+<span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"archive"</span>, .date <span class="op">=</span> <span class="st">"2020-11-01"</span><span class="op">)</span>
+<span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
+<span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id_file</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">tab</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span><span class="op">)</span>
+<span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 383,113 x 22</span>
+<span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 C545959     23 20 to 24 FEMA… "2020-08-15" "2020-08-16"     2020-08-19 </span>
+<span class="co">#&gt;  2 C542194     40 40 to 44 MALE  "2020-07-28" "2020-07-30"     2020-08-03 </span>
+<span class="co">#&gt;  3 C805584     31 30 to 34 MALE  ""           ""               2020-07-31 </span>
+<span class="co">#&gt;  4 C656786     51 50 to 54 FEMA… "2020-07-13" "2020-07-14"     2020-07-17 </span>
+<span class="co">#&gt;  5 C345520     23 20 to 24 MALE  ""           ""               2020-05-20 </span>
+<span class="co">#&gt;  6 C700565     50 50 to 54 MALE  "2020-07-29" "2020-07-31"     2020-08-05 </span>
+<span class="co">#&gt;  7 C290814     68 65 to 69 MALE  "2020-05-23" ""               2020-05-30 </span>
+<span class="co">#&gt;  8 C197757     34 30 to 34 MALE  "2020-07-16" "2020-07-20"     2020-07-23 </span>
+<span class="co">#&gt;  9 C679290     49 45 to 49 MALE  "2020-06-03" "2020-06-04"     2020-06-07 </span>
+<span class="co">#&gt; 10 C667799     28 25 to 29 FEMA… "2020-07-10" "2020-07-15"     2020-08-08 </span>
+<span class="co">#&gt; # … with 383,103 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span>
+<span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span>
+<span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span>
+<span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Pregnanttab &lt;chr&gt;, ValidationStatus &lt;chr&gt;</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="development-plan" class="section level2">
+<h2 class="hasAnchor">
+<a href="#development-plan" class="anchor"></a>Development plan</h2>
+<p>The <code>covidphdata</code> package is in active development. Following are the planned development milestones for <code>covidphdata</code> in order of priority:</p>
+<ul>
+<li><p>:white_check_mark: Develop data retrieval functions</p></li>
+<li><p><input type="checkbox" disabled>
+Develop basic data cleaning, processing and strucuturing functions</p></li>
+</ul>
+<p>It should be noted that the current functions available for the <code>covidphdata</code> data retrieval workflow gets the data from the <strong>DoH Data Drop</strong> as is; that is no other processing or maninpulation is done to the data. This component will be served by another set of functions for <em>cleaning</em>, <em>processing</em> and <em>structuring</em> of the retrieved datasets. These functions are currently under development.</p>
+<ul>
+<li>
+<input type="checkbox" disabled>
+Develop complex data checking and quality assessment functions</li>
+</ul>
+<p>Depending on feedback from users and fellow scientists and researchers using the package for their COVID-19-related <a href="https://cran.r-project.org">R</a> workflows, it would be good to include more advanced and complex data checking and quality assessments which may include <em>partly-supervised or semi-automated duplicate records detection</em>, <em>data consistency checks</em>, <em>re-generation of dropped variables</em>. Once we are able to learn what users need in their usual workflows, we’ll plan which ones to develop robust functions for.</p>
+<ul>
+<li><p><input type="checkbox" disabled>
+Any other functionalities suggested by users will be considered.</p></li>
+<li><p><input type="checkbox" disabled>
+Once package reaches at least a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg" alt="Maturing"></a> or a <a href="https://lifecycle.r-lib.org/articles/lifecycle.html"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt="Stable"></a> development lifecyle, prepare and submit <code>covidphdata</code> package for inclusion in the <a href="https://cran.r-project.org">Comprehensive R Archive Network (CRAN)</a>.</p></li>
+</ul>
+</div>
+<div id="current-limitations-and-challenges" class="section level2">
+<h2 class="hasAnchor">
+<a href="#current-limitations-and-challenges" class="anchor"></a>Current limitations and challenges</h2>
+<p>The main limitations and challenges in the development of the <code>covidphdata</code> package are the uncertainties and instabilities of the <strong>DoH Data Drop</strong>. As described above, since the launch of the <strong>DoH Data Drop</strong>, several interface changes have been implemented that changed the way the <strong>DoH Data Drop</strong> is distributed and can be accessed. These types of changes will almost always require a syntax breaking update to the current data retrieval functions. The latest <strong>README</strong> document also indicates that the archive data has been limited to the current month (November 2020) because of ongoing efforts to transfer the archive data to a new website. This may indicate that archive data will be distributed via this new website and that latest updates may still be released via <em>Google Drive</em>. Depending on what these changes end up being, updates to the syntax of current data retrieval functions is likely. We will ensure that we monitor and watch out for these changes and adapt the functions as soon as possible to ensure compatiblity to the new interfaces.</p>
+</div>
+<div id="disclaimer" class="section level2">
+<h2 class="hasAnchor">
+<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
+<p>The <code>covidphdata</code> package development is an independent effort and its authors and developers are not affiliated or recognised by the Philippines Department of Health.</p>
+</div>
+<div id="contributing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#contributing" class="anchor"></a>Contributing</h2>
+</div>
+<div id="license" class="section level2">
+<h2 class="hasAnchor">
+<a href="#license" class="anchor"></a>License</h2>
 </div>
 </div>
   </div>
