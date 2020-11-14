@@ -19,13 +19,16 @@
 #'   str_replace str_remove_all
 #' @importFrom pdftools pdf_text
 #' @importFrom RCurl getURL
-#' @importFrom lubridate ymd interval %within% parse_date_time month
+#' @importFrom lubridate ymd interval %within% parse_date_time month year
 #' @importFrom utils read.csv
 #' @importFrom tibble tibble
 #' @importFrom magrittr %>%
-#'
-#'
+#' @importFrom dplyr filter select
+#' @importFrom readxl excel_sheets read_xlsx
 #'
 #
 ################################################################################
 "_PACKAGE"
+
+## quiets concerns of R CMD check re: global variables
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("id", "name"))
