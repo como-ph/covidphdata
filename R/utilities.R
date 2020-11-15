@@ -41,7 +41,7 @@ datadrop_ls <- function(id) {
 ################################################################################
 #
 #'
-#' Get link to a Google Drive file and download
+#' Download DoH Data Drop file via its Google Drive ID
 #'
 #' @param id A 33-character string identifier for the *Google Drive* file.
 #' @param path A character value for path for output file. If NULL, the
@@ -73,14 +73,49 @@ datadrop_download <- function(id,
                               path = NULL,
                               overwrite = FALSE,
                               verbose = TRUE) {
-  ## Get fields data CSV link
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", id)
-
   ## Download Fields.csv to temp directory
-  googledrive::drive_download(file = googledrive::as_id(link),
+  googledrive::drive_download(file = googledrive::as_id(id),
                               path = path,
                               overwrite = overwrite,
                               verbose = verbose)
 }
 
 
+##
+## Get the bitly link from DoH Data Drop Read Me First PDF
+##
+get_bitly <- function(.pdf) {
+  ## Extract information from PDF on link to folder of current data
+  readme <- pdftools::pdf_text(pdf = .pdf) %>%
+    stringr::str_split(pattern = "\n|\r\n") %>%
+    unlist()
+
+  ## Get id for current data drop google drive folder
+  x <- stringr::word(readme[stringr::str_detect(string = readme,
+                                                pattern = "bit.ly/*")][1], -1)
+
+  if(!stringr::str_detect(string = x, pattern = "http")) {
+    x <- paste("http://", x, sep = "")
+  }
+
+  ## remove .pdf
+  file.remove(.pdf)
+
+  ## Return x
+  return(x)
+}
+
+
+##
+## x <- datadrop_id() %>% datadrop_ls()
+##
+get_drop_date <- function(tbl, .year = format(Sys.Date(), "%Y")) {
+  dropDate <- tbl %>%
+    dplyr::filter(stringr::str_detect(string = name, pattern = "READ ME")) %>%
+    dplyr::select(name) %>%
+    stringr::str_extract(pattern = "[0-9]{2}[/\\_\\-]{1}[0-9]{2}") %>%
+    paste(.year, sep = "/") %>%
+    lubridate::mdy()
+
+  return(dropDate)
+}

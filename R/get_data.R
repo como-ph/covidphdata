@@ -6,7 +6,11 @@
 #' A wrapper to `googledrive` functions to retrieve datasets from the **DoH Data
 #' Drop** folders.
 #'
-#' @param id A 33-character string identifier for the *Google Drive* file
+#' @param tbl A tibble output produced by [datadrop_ls()] that lists the files
+#'   within a particular **DoH Data Drop** *Google Drive* folder
+#' @param fn A character string composed of a word or words that can be used to
+#'   match to the name of a file within a particular **DoH Data Drop**
+#'   *Google Drive* folder listed in `tbl`.
 #' @param path A character value for path for output file. If NULL, the
 #'   default file name used in *Google Drive* is used and the default location
 #'   is the working directory.
@@ -18,15 +22,6 @@
 #'   Default to FALSE.
 #' @param verbose Logical. Should operation progress messages be shown? Default
 #'   to TRUE.
-#' @return A tibble of retrieved **DoH Data Drop** file. If `keep` is TRUE, a
-#'   file is also downloaded into specified `path`.
-#' @param version A character value specifying whether to get the latest
-#'   available dataset (`latest`) or to get archive data (`archive`). Default
-#'   to `latest`.
-#' @param .date A character value for date in *YYYY-MM-DD* format. This is the
-#'   date for the archive **DoH Data Drop** for which an ID is to be returned.
-#'   Should be specified when using `version` is set to `archive` otherwise
-#'   ignored.
 #'
 #' @return A tibble of any of the following datasets:
 #'   1. *Metadata - Sheets*;
@@ -46,43 +41,43 @@
 #'  `path`.
 #'
 #' @examples
-#' ## Get Google Drive ID for latest metadata sheets data
-#' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-#'                        fn = "Metadata - Sheets.csv")
+#' ## Get tbl for files in latest Data Drop
+#' library(magrittr)
+#' x <- datadrop_id() %>% datadrop_ls()
 #'
 #' ## Retrieve case information data
-#' datadrop_get(id = id, path = tempfile())
+#' datadrop_get(tbl = x, fn = "Case Information", path = tempfile())
 #'
 #' ## Retrieve latest changelog information
-#' datadrop_get_changelog(path = tempfile())
+#' datadrop_get_changelog(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest metadata - sheets information
-#' datadrop_get_sheets(path = tempfile())
+#' datadrop_get_sheets(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest metadata - fields information
-#' datadrop_get_fields(path = tempfile())
+#' datadrop_get_fields(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest cases information (same results as first example)
-#' datadrop_get_cases(path = tempfile())
+#' datadrop_get_cases(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest daily hospital beds and mechanical ventilators information
-#' datadrop_get_cdaily(path = tempfile())
+#' datadrop_get_cdaily(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest weekly PPE and other related equipment information
-#' datadrop_get_cweekly(path = tempfile())
+#' datadrop_get_cweekly(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest testing aggregates information
-#' datadrop_get_tests(path = tempfile())
+#' datadrop_get_tests(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest daily quarantine facility beds and mechanical ventilators
-#' datadrop_get_qdaily(path = tempfile())
+#' datadrop_get_qdaily(tbl = x, path = tempfile())
 #'
 #' ## Retrieve latest weekly quarantine facility PPE and other related equipment
-#' datadrop_get_qweekly(path = tempfile())
+#' datadrop_get_qweekly(tbl = x, path = tempfile())
 #'
-#' #datadrop_get_collectV3(path = tempfile())
-#' #datadrop_get_collectV4(path = tempfile())
-#' #datadrop_get_tracker(path = tempfile())
+#' #datadrop_get_collectV3(tbl = x, path = tempfile())
+#' #datadrop_get_collectV4(tbl = x, path = tempfile())
+#' #datadrop_get_tracker(tbl = x, path = tempfile())
 #'
 #' @rdname datadrop_get
 #' @export
@@ -90,11 +85,19 @@
 #
 ################################################################################
 
-datadrop_get <- function(id, path = NULL, keep = FALSE,
+datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
                          overwrite = FALSE, verbose = TRUE) {
-  ##
-  datadrop_download(id = id, path = path,
-                    overwrite = overwrite, verbose = verbose)
+  ## Deauthorise to access public Google Drive
+  googledrive::drive_deauth()
+
+  ## Get Google Drive file ID for specified tbl and fn
+  id <- datadrop_id_file(tbl = tbl, fn = fn)
+
+  ## Download Google Drive file
+  datadrop_download(id = id,
+                    path = path,
+                    overwrite = overwrite,
+                    verbose = verbose)
 
   ## Try retrieving data as a CSV
   x <- try(
@@ -133,20 +136,18 @@ datadrop_get <- function(id, path = NULL, keep = FALSE,
 #
 ################################################################################
 
-datadrop_get_changelog <- function(version = c("latest", "archive"),
-                               .date = NULL, path = NULL, keep = FALSE,
-                               overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Changelog.xlsx")
+datadrop_get_changelog <- function(tbl, path = NULL, keep = FALSE,
+                                   overwrite = FALSE, verbose = TRUE) {
+  ## Get Google Drive ID for Changelog.xlsx
+  y <- datadrop_id_file(tbl = tbl, fn = "Changelog.xlsx")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No changelog information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No changelog information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.",
                     sep = ""),
           width = 80
@@ -158,7 +159,8 @@ datadrop_get_changelog <- function(version = c("latest", "archive"),
     changelog <- NULL
   } else {
     ## Retrieve data
-    changelog <- datadrop_get(id = y, path = path, keep = keep,
+    changelog <- datadrop_get(tbl = tbl, fn = "Changelog.xlsx",
+                              path = path, keep = keep,
                               overwrite = overwrite, verbose = verbose)
   }
 
@@ -176,20 +178,18 @@ datadrop_get_changelog <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_sheets <- function(version = c("latest", "archive"),
-                                .date = NULL, path = NULL, keep = FALSE,
+datadrop_get_sheets <- function(tbl, path = NULL, keep = FALSE,
                                 overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Metadata - Sheets.csv")
+  ## Get Google Drive ID for Sheets file
+  y <- datadrop_id_file(tbl = tbl, fn = "Metadata - Sheets.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No metadata sheets information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No metadata sheets information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.",
                     sep = ""),
           width = 80
@@ -201,7 +201,8 @@ datadrop_get_sheets <- function(version = c("latest", "archive"),
     sheets <- NULL
   } else {
     ## Retrieve data
-    sheets <- datadrop_get(id = y, path = path, keep = keep,
+    sheets <- datadrop_get(tbl = tbl, fn = "Metadata - Sheets.csv",
+                           path = path, keep = keep,
                            overwrite = overwrite, verbose = verbose)
   }
 
@@ -219,20 +220,18 @@ datadrop_get_sheets <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_fields <- function(version = c("latest", "archive"),
-                            .date = NULL, path = NULL, keep = FALSE,
+datadrop_get_fields <- function(tbl, path = NULL, keep = FALSE,
                             overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Metadata - Fields.csv")
+  ## Get Google Drive ID for Fields file
+  y <- datadrop_id_file(tbl = tbl, fn = "Metadata - Fields.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No metadata fields information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No metadata fields information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.",
                     sep = ""),
           width = 80
@@ -244,7 +243,8 @@ datadrop_get_fields <- function(version = c("latest", "archive"),
     fields <- NULL
   } else {
     ## Retrieve data
-    fields <- datadrop_get(id = y, path = path, keep = keep,
+    fields <- datadrop_get(tbl = tbl, fn = "Metadata - Fields.csv",
+                           path = path, keep = keep,
                            overwrite = overwrite, verbose = verbose)
   }
 
@@ -262,20 +262,18 @@ datadrop_get_fields <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_cases <- function(version = c("latest", "archive"),
-                           .date = NULL, path = NULL, keep = FALSE,
-                           overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Case Information.csv")
+datadrop_get_cases <- function(tbl, path = NULL, keep = FALSE,
+                               overwrite = FALSE, verbose = TRUE) {
+  ## Get Google Drive ID for Case Information file
+  y <- datadrop_id_file(tbl = tbl, fn = "Case Information.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No cases information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No cases information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.",
                     sep = ""),
           width = 80
@@ -287,7 +285,8 @@ datadrop_get_cases <- function(version = c("latest", "archive"),
     cases <- NULL
   } else {
     ## Retrieve data
-    cases <- datadrop_get(id = y, path = path, keep = keep,
+    cases <- datadrop_get(tbl = tbl, fn = "Case Information.csv",
+                          path = path, keep = keep,
                           overwrite = overwrite, verbose = verbose)
   }
 
@@ -305,20 +304,18 @@ datadrop_get_cases <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_tests <- function(version = c("latest", "archive"),
-                           .date = NULL, path = NULL, keep = FALSE,
-                           overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Testing Aggregates.csv")
+datadrop_get_tests <- function(tbl, path = NULL, keep = FALSE,
+                               overwrite = FALSE, verbose = TRUE) {
+  ## Get Google Drive ID for Testing file
+  y <- datadrop_id_file(tbl = tbl, fn = "Testing Aggregates.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No testing aggregates information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No testing aggregates information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.",
                     sep = ""),
           width = 80
@@ -330,7 +327,8 @@ datadrop_get_tests <- function(version = c("latest", "archive"),
     tests <- NULL
   } else {
     ## Retrieve data
-    tests <- datadrop_get(id = y, path = path, keep = keep,
+    tests <- datadrop_get(tbl = tbl, fn = "Testing Aggregates.csv",
+                          path = path, keep = keep,
                           overwrite = overwrite, verbose = verbose)
   }
 
@@ -348,20 +346,19 @@ datadrop_get_tests <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_cdaily <- function(version = c("latest", "archive"),
-                                .date = NULL, path = NULL, keep = FALSE,
+datadrop_get_cdaily <- function(tbl, path = NULL, keep = FALSE,
                                 overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Collect - Daily Report.csv")
+  ## Get Google Drive ID for Daily report file
+  y <- datadrop_id_file(tbl = tbl, fn = "Collect - Daily Report.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
           x = paste("No daily hospital beds and mechanical ventilator information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+                    .date,
                     ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
           width = 80
         ),
@@ -372,91 +369,8 @@ datadrop_get_cdaily <- function(version = c("latest", "archive"),
     facilities <- NULL
   } else {
     ## Retrieve data
-    facilities <- datadrop_get(id = y, path = path, keep = keep,
-                          overwrite = overwrite, verbose = verbose)
-  }
-
-  ## Return dataset
-  return(facilities)
-}
-
-
-################################################################################
-#
-#'
-#' @rdname datadrop_get
-#' @export
-#'
-#
-################################################################################
-
-datadrop_get_cweekly <- function(version = c("latest", "archive"),
-                                .date = NULL, path = NULL, keep = FALSE,
-                                overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Collect - Weekly Report.csv")
-
-  if(is.null(y)) {
-    warning(
-      paste(
-        strwrap(
-          x = paste("No weekly PPE and medical personnel information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
-                    ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
-          width = 80
-        ),
-        collapse = "\n"
-      )
-    )
-    ## Set equipment to NULL
-    equipment <- NULL
-  } else {
-    ## Retrieve data
-    equipment <- datadrop_get(id = y, path = path, keep = keep,
-                              overwrite = overwrite, verbose = verbose)
-  }
-
-  ## Return dataset
-  return(equipment)
-}
-
-
-################################################################################
-#
-#'
-#' @rdname datadrop_get
-#' @export
-#'
-#
-################################################################################
-
-datadrop_get_qdaily <- function(version = c("latest", "archive"),
-                                .date = NULL, path = NULL, keep = FALSE,
-                                overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Quarantine Facility Data - Daily Report.csv")
-
-  if(is.null(y)) {
-    warning(
-      paste(
-        strwrap(
-          x = paste("No daily quarantine beds and mechanical ventilator information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
-                    ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
-          width = 80
-        ),
-        collapse = "\n"
-      )
-    )
-    ## Set facilities to NULL
-    facilities <- NULL
-  } else {
-    ## Retrieve data
-    facilities <- datadrop_get(id = y, path = path, keep = keep,
+    facilities <- datadrop_get(tbl = tbl, fn = "Collect - Daily Report.csv",
+                               path = path, keep = keep,
                                overwrite = overwrite, verbose = verbose)
   }
 
@@ -474,20 +388,18 @@ datadrop_get_qdaily <- function(version = c("latest", "archive"),
 #
 ################################################################################
 
-datadrop_get_qweekly <- function(version = c("latest", "archive"),
-                                 .date = NULL, path = NULL, keep = FALSE,
+datadrop_get_cweekly <- function(tbl, path = NULL, keep = FALSE,
                                  overwrite = FALSE, verbose = TRUE) {
-  ## Get list of contents of specified Google drive directory
-  y <- datadrop_id(version = version, .date = .date) %>%
-    datadrop_ls() %>%
-    datadrop_id_file(fn = "Quarantine Facility Data - Weekly Report.csv")
+  ## Get Google Drive ID for Weekly report file
+  y <- datadrop_id_file(tbl = tbl, fn = "Collect - Weekly Report.csv")
+
+  .date <- get_drop_date(tbl = tbl)
 
   if(is.null(y)) {
     warning(
       paste(
         strwrap(
-          x = paste("No weekly quarantine PPE and medical personnel information on ",
-                    ifelse(is.null(.date), as.character(Sys.Date()), .date),
+          x = paste("No weekly PPE and medical personnel information on ", .date,
                     ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
           width = 80
         ),
@@ -498,7 +410,92 @@ datadrop_get_qweekly <- function(version = c("latest", "archive"),
     equipment <- NULL
   } else {
     ## Retrieve data
-    equipment <- datadrop_get(id = y, path = path, keep = keep,
+    equipment <- datadrop_get(tbl = tbl, fn = "Collect - Weekly Report.csv",
+                              path = path, keep = keep,
+                              overwrite = overwrite, verbose = verbose)
+  }
+
+  ## Return dataset
+  return(equipment)
+}
+
+
+################################################################################
+#
+#'
+#' @rdname datadrop_get
+#' @export
+#'
+#
+################################################################################
+
+datadrop_get_qdaily <- function(tbl, path = NULL, keep = FALSE,
+                                overwrite = FALSE, verbose = TRUE) {
+  ## Get Google Drive ID for Daily report file
+  y <- datadrop_id_file(tbl = tbl, fn = "Quarantine Facility Data - Daily Report.csv")
+
+  .date <- get_drop_date(tbl = tbl)
+
+  if(is.null(y)) {
+    warning(
+      paste(
+        strwrap(
+          x = paste("No daily quarantine beds and mechanical ventilator information on ",
+                    .date,
+                    ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
+          width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+    ## Set facilities to NULL
+    facilities <- NULL
+  } else {
+    ## Retrieve data
+    facilities <- datadrop_get(tbl = tbl, fn = "Quarantine Facility Data - Daily Report.csv",
+                               path = path, keep = keep,
+                               overwrite = overwrite, verbose = verbose)
+  }
+
+  ## Return dataset
+  return(facilities)
+}
+
+
+################################################################################
+#
+#'
+#' @rdname datadrop_get
+#' @export
+#'
+#
+################################################################################
+
+datadrop_get_qweekly <- function(tbl, path = NULL, keep = FALSE,
+                                 overwrite = FALSE, verbose = TRUE) {
+  ## Get list of contents of specified Google drive directory
+  y <- datadrop_id_file(tbl = tbl, fn = "Quarantine Facility Data - Weekly Report.csv")
+
+  .date <- get_drop_date(tbl = tbl)
+
+  if(is.null(y)) {
+    warning(
+      paste(
+        strwrap(
+          x = paste("No weekly quarantine PPE and medical personnel information on ",
+                    .date,
+                    ". Try a date earlier or later than date specified. Returning NULL.", sep = ""),
+          width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+    ## Set equipment to NULL
+    equipment <- NULL
+  } else {
+    ## Retrieve data
+    equipment <- datadrop_get(tbl = tbl, fn = "Quarantine Facility Data - Weekly Report.csv",
+                              path = path, keep = keep,
                               overwrite = overwrite, verbose = verbose)
   }
 
