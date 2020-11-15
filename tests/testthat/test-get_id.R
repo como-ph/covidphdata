@@ -35,16 +35,7 @@ test_that("x is appropriate format/class", {
 
 ## Test 5 ----------------------------------------------------------------------
 
-x <- datadrop_id(version = "archive", .date = "2020-11-01")
-
-test_that("x is appropriate format/class", {
-  expect_is(x, "character")
-  expect_true(stringr::str_detect(x, "[A-Za-z0-9@%#&()+*$,._\\-]{33}"))
-})
-
-## Test 6 ----------------------------------------------------------------------
-
-x <- datadrop_id() %>%
+x <- x %>%
   datadrop_ls() %>%
   datadrop_id_file(fn = "Case Information")
 
@@ -53,10 +44,20 @@ test_that("x is appropriate format/class", {
   expect_true(stringr::str_detect(x, "[A-Za-z0-9@%#&()+*$,._\\-]{33}"))
 })
 
-## Test 7 ----------------------------------------------------------------------
+## Test 6 ----------------------------------------------------------------------
 
 test_that("expect warning", {
-  expect_warning(datadrop_id() %>%
+  expect_warning(x %>%
                    datadrop_ls() %>%
                    datadrop_id_file(fn = "Cases"))
 })
+
+## Test 7 ----------------------------------------------------------------------
+
+x <- datadrop_id(version = "archive", .date = "2020-11-01")
+
+test_that("x is appropriate format/class", {
+  expect_is(x, "character")
+  expect_true(stringr::str_detect(x, "[A-Za-z0-9@%#&()+*$,._\\-]{33}"))
+})
+
