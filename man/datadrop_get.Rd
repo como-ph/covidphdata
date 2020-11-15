@@ -13,11 +13,17 @@
 \alias{datadrop_get_qweekly}
 \title{Retrieve datasets from specified DoH Data Drop folders}
 \usage{
-datadrop_get(id, path = NULL, keep = FALSE, overwrite = FALSE, verbose = TRUE)
+datadrop_get(
+  tbl,
+  fn,
+  path = NULL,
+  keep = FALSE,
+  overwrite = FALSE,
+  verbose = TRUE
+)
 
 datadrop_get_changelog(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -25,8 +31,7 @@ datadrop_get_changelog(
 )
 
 datadrop_get_sheets(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -34,8 +39,7 @@ datadrop_get_sheets(
 )
 
 datadrop_get_fields(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -43,8 +47,7 @@ datadrop_get_fields(
 )
 
 datadrop_get_cases(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -52,8 +55,7 @@ datadrop_get_cases(
 )
 
 datadrop_get_tests(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -61,8 +63,7 @@ datadrop_get_tests(
 )
 
 datadrop_get_cdaily(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -70,8 +71,7 @@ datadrop_get_cdaily(
 )
 
 datadrop_get_cweekly(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -79,8 +79,7 @@ datadrop_get_cweekly(
 )
 
 datadrop_get_qdaily(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -88,8 +87,7 @@ datadrop_get_qdaily(
 )
 
 datadrop_get_qweekly(
-  version = c("latest", "archive"),
-  .date = NULL,
+  tbl,
   path = NULL,
   keep = FALSE,
   overwrite = FALSE,
@@ -97,7 +95,12 @@ datadrop_get_qweekly(
 )
 }
 \arguments{
-\item{id}{A 33-character string identifier for the \emph{Google Drive} file}
+\item{tbl}{A tibble output produced by \code{\link[=datadrop_ls]{datadrop_ls()}} that lists the files
+within a particular \strong{DoH Data Drop} \emph{Google Drive} folder}
+
+\item{fn}{A character string composed of a word or words that can be used to
+match to the name of a file within a particular \strong{DoH Data Drop}
+\emph{Google Drive} folder listed in \code{tbl}.}
 
 \item{path}{A character value for path for output file. If NULL, the
 default file name used in \emph{Google Drive} is used and the default location
@@ -113,20 +116,8 @@ Default to FALSE.}
 
 \item{verbose}{Logical. Should operation progress messages be shown? Default
 to TRUE.}
-
-\item{version}{A character value specifying whether to get the latest
-available dataset (\code{latest}) or to get archive data (\code{archive}). Default
-to \code{latest}.}
-
-\item{.date}{A character value for date in \emph{YYYY-MM-DD} format. This is the
-date for the archive \strong{DoH Data Drop} for which an ID is to be returned.
-Should be specified when using \code{version} is set to \code{archive} otherwise
-ignored.}
 }
 \value{
-A tibble of retrieved \strong{DoH Data Drop} file. If \code{keep} is TRUE, a
-file is also downloaded into specified \code{path}.
-
 A tibble of any of the following datasets:
 \enumerate{
 \item \emph{Metadata - Sheets};
@@ -151,42 +142,42 @@ A wrapper to \code{googledrive} functions to retrieve datasets from the \strong{
 Drop} folders.
 }
 \examples{
-## Get Google Drive ID for latest metadata sheets data
-id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-                       fn = "Metadata - Sheets.csv")
+## Get tbl for files in latest Data Drop
+library(magrittr)
+x <- datadrop_id() \%>\% datadrop_ls()
 
 ## Retrieve case information data
-datadrop_get(id = id, path = tempfile())
+datadrop_get(tbl = x, fn = "Case Information", path = tempfile())
 
 ## Retrieve latest changelog information
-datadrop_get_changelog(path = tempfile())
+datadrop_get_changelog(tbl = x, path = tempfile())
 
 ## Retrieve latest metadata - sheets information
-datadrop_get_sheets(path = tempfile())
+datadrop_get_sheets(tbl = x, path = tempfile())
 
 ## Retrieve latest metadata - fields information
-datadrop_get_fields(path = tempfile())
+datadrop_get_fields(tbl = x, path = tempfile())
 
 ## Retrieve latest cases information (same results as first example)
-datadrop_get_cases(path = tempfile())
+datadrop_get_cases(tbl = x, path = tempfile())
 
 ## Retrieve latest daily hospital beds and mechanical ventilators information
-datadrop_get_cdaily(path = tempfile())
+datadrop_get_cdaily(tbl = x, path = tempfile())
 
 ## Retrieve latest weekly PPE and other related equipment information
-datadrop_get_cweekly(path = tempfile())
+datadrop_get_cweekly(tbl = x, path = tempfile())
 
 ## Retrieve latest testing aggregates information
-datadrop_get_tests(path = tempfile())
+datadrop_get_tests(tbl = x, path = tempfile())
 
 ## Retrieve latest daily quarantine facility beds and mechanical ventilators
-datadrop_get_qdaily(path = tempfile())
+datadrop_get_qdaily(tbl = x, path = tempfile())
 
 ## Retrieve latest weekly quarantine facility PPE and other related equipment
-datadrop_get_qweekly(path = tempfile())
+datadrop_get_qweekly(tbl = x, path = tempfile())
 
-#datadrop_get_collectV3(path = tempfile())
-#datadrop_get_collectV4(path = tempfile())
-#datadrop_get_tracker(path = tempfile())
+#datadrop_get_collectV3(tbl = x, path = tempfile())
+#datadrop_get_collectV4(tbl = x, path = tempfile())
+#datadrop_get_tracker(tbl = x, path = tempfile())
 
 }
