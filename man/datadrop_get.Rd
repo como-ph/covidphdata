@@ -151,7 +151,7 @@ A wrapper to \code{googledrive} functions to retrieve datasets from the \strong{
 Drop} folders.
 }
 \examples{
-## Get Google Drive ID for latest case information data
+## Get Google Drive ID for latest metadata sheets data
 id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
                        fn = "Metadata - Sheets.csv")
 

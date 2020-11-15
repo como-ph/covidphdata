@@ -107,14 +107,16 @@ datadrop_id_latest <- function(verbose = TRUE) {
   link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", dropCurrent$id)
 
   googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = verbose)
+                              path = destFile,
+                              overwrite = TRUE,
+                              verbose = verbose)
 
   ## Extract information from PDF on link to folder of current data
   readme <- pdftools::pdf_text(pdf = destFile) %>%
     stringr::str_split(pattern = "\n|\r\n") %>%
     unlist()
 
-  ## Ged id for current data google drive folder
+  ## Get id for current data drop google drive folder
   x <- stringr::word(readme[stringr::str_detect(string = readme,
                                                 pattern = "bit.ly/*")][1], -1)
 
