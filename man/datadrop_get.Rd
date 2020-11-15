@@ -153,7 +153,7 @@ Drop} folders.
 \examples{
 ## Get Google Drive ID for latest case information data
 id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-                       fn = "Case")
+                       fn = "Metadata - Sheets.csv")
 
 ## Retrieve case information data
 datadrop_get(id = id, path = tempfile())
