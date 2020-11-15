@@ -81,32 +81,34 @@ remotes::install_github("como-ph/covidphdata")
 
 ## Usage
 
+### 
+
 ### The `covidphdata` data retrieval workflow
 
 The different functions currently available through `covidphdata` are linked through the following general workflow:
 
 ```{r usage1, echo = TRUE, eval = FALSE}
-## Load covidphdata
+## Load covidphdata and googledrive package
 library(covidphdata)
+library(googledrive)
 
-## Step 1: Get Google Drive ID for latest DoH Data Drop
+## Step 1: Authenticate as a Google Drive user
+googledrive::drive_auth()
+
+## Step 2: Get Google Drive ID for latest DoH Data Drop
 gid <- datadrop_id()
 
-## Step 2: List the files and folders available in the latest DoH Data Drop
+## Step 3: List the files and folders available in the latest DoH Data Drop
 data_list <- datadrop_ls(id = gid)
 
-## Step 3: Get the Google Drive ID of the specific file required. In this 
-## example, retrieve Case Information
-file_id <- datadrop_id_file(tbl = data_list, fn = "Case Information")
-
 ## Step 4: Retrieve the specified/required dataset and load into R
-datadrop_get(id = file_id, path = tempfile())
+datadrop_get(tbl = data_list, fn = "Case Information", path = tempfile())
 ```
 
 This workflow produces the following output:
 
 ```{r usage1a, echo = FALSE, eval = TRUE}
-## Load covidphdata
+## Load covidphdata and googledrive package
 library(covidphdata)
 
 ## Step 1: Get Google Drive ID for latest DoH Data Drop
@@ -115,12 +117,8 @@ gid <- datadrop_id()
 ## Step 2: List the files and folders available in the latest DoH Data Drop
 data_list <- datadrop_ls(id = gid)
 
-## Step 3: Get the Google Drive ID of the specific file required. In this 
-## example, retrieve Case Information
-file_id <- datadrop_id_file(tbl = data_list, fn = "Case Information")
-
-## Step 4: Retrieve the specified/required dataset and load into R
-datadrop_get(id = file_id, path = tempfile())
+## Step 3: Retrieve the specified/required dataset and load into R
+datadrop_get(tbl = data_list, fn = "Case Information", path = tempfile())
 ```
 
 The functions in the `covidphdata` workflow were designed to be usable with piped operations provided by the [`magrittr`](https://magrittr.tidyverse.org) package. The pipe operator `%>%` can be used with the `covidphdata` workflow as follows:
@@ -132,8 +130,8 @@ library(magrittr)
 ## Retrieve latest Case Information dataset from DoH Data Drop
 datadrop_id() %>%                                 ## Step 1
   datadrop_ls() %>%                               ## Step 2
-  datadrop_id_file(fn = "Case Information") %>%   ## Step 3
-  datadrop_get(path = tempfile())                 ## Step 4
+  datadrop_get(fn = "Case Information",           ## Step 3
+               path = tempfile())                 
 ```
 
 This outputs this result:
@@ -145,8 +143,8 @@ library(magrittr)
 ## Retrieve latest Case Information dataset from DoH Data Drop
 datadrop_id() %>%                                 ## Step 1
   datadrop_ls() %>%                               ## Step 2
-  datadrop_id_file(fn = "Case Information") %>%   ## Step 3
-  datadrop_get(path = tempfile())                 ## Step 4
+  datadrop_get(fn = "Case Information",           ## Step 3
+               path = tempfile())                 
 ```
 
 The resulting dataset retrieved by the piped operation is exactly the same as the first example. However, the piped operation workflow is more streamlined. Either of these approaches can be used when retrieving datasets from the **DoH Data Drop**.
@@ -189,33 +187,14 @@ gid <- datadrop_id(version = "archive", .date = "2020-11-01")
 datadrop_ls(id = gid)
 ```
 
-#### Step 3: Get the Google Drive ID of the specific file required
-Using the list of files or folders in the specified *Google Drive*, the `datadrop_id_file` function can be used to extract the *Google Drive* ID of the file to be retrieved.
-
-```{r usage7, echo = TRUE, eval = TRUE}
-## Get the Google Drive ID of the Case Information file in the DoH Data Drop
-gid <- datadrop_id()
-tab <- datadrop_ls(id = gid)
-datadrop_id_file(tbl = tab, fn = "Case Information")
-```
-
-```{r usage8, echo = TRUE, eval = TRUE}
-## Get the Google Drive ID of the Case Information file in the DoH Data Drop
-## on 1 November 2020
-gid <- datadrop_id(version = "archive", .date = "2020-11-01")
-tab <- datadrop_ls(id = gid)
-datadrop_id_file(tbl = tab, fn = "Case Information")
-```
-
-#### Step 4: Retrieve the specified/required dataset and load into R
+#### Step 3: Retrieve the specified/required dataset and load into R
 Finally, using the specific *Google Drive* ID for the file of interest, the `datadrop_id_file` function is used to retrieve the file and output it into [R](https://cran.r-project.org):
 
 ```{r usage9, echo = TRUE, eval = TRUE}
 ## Retrieve the latest Case Information file in the DoH Data Drop
 gid <- datadrop_id()
 tab <- datadrop_ls(id = gid)
-file_id <- datadrop_id_file(tbl = tab, fn = "Case Information")
-datadrop_get(id = file_id, path = tempfile())
+datadrop_get(tbl = tab, fn = "Case Information", path = tempfile())
 ```
 
 ```{r usage10, echo = TRUE, eval = TRUE}
@@ -223,8 +202,7 @@ datadrop_get(id = file_id, path = tempfile())
 ## on 1 November 2020
 gid <- datadrop_id(version = "archive", .date = "2020-11-01")
 tab <- datadrop_ls(id = gid)
-file_id <- datadrop_id_file(tbl = tab, fn = "Case Information")
-datadrop_get(id = file_id, path = tempfile())
+datadrop_get(tbl = tab, fn = "Case Information", path = tempfile())
 ```
 
 ## Development plan
