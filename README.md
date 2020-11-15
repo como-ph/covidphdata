@@ -461,9 +461,9 @@ planned development milestones for `covidphdata` in order of priority:
     considered on a case-by-case basis.
 
   - [ ] **Submit to CRAN** - Once package reaches at least a
-    [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html)
+    [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://www.tidyverse.org/lifecycle/#maturing)
     or a
-    [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html)
+    [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://www.tidyverse.org/lifecycle/#stable)
     development lifecycle, prepare and submit `covidphdata` package for
     inclusion in the [Comprehensive R Archive Network
     (CRAN)](https://cran.r-project.org).

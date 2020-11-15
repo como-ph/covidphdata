@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 ![R-CMD-check](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)
+[![Codecov test coverage](https://codecov.io/gh/como-ph/covidphdata/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/covidphdata?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/covidphdata/badge)](https://www.codefactor.io/repository/github/como-ph/covidphdata)
 <!-- badges: end -->
 
@@ -237,7 +238,7 @@ The `covidphdata` package is in active development. Following are the planned de
 
 * [ ] **Any other functionalities suggested by users** - These will be considered on a case-by-case basis.
 
-* [ ] **Submit to CRAN** - Once package reaches at least a [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) or a [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html) development lifecycle, prepare and submit `covidphdata` package for inclusion in the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org).
+* [ ] **Submit to CRAN** - Once package reaches at least a [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://www.tidyverse.org/lifecycle/#maturing) or a [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://www.tidyverse.org/lifecycle/#stable) development lifecycle, prepare and submit `covidphdata` package for inclusion in the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org).
 
 ## Current limitations and challenges
 
