@@ -59,7 +59,7 @@ datadrop_ls <- function(id) {
 #' @examples
 #' ## Get Google Drive ID for Case Information file in latest DoH Data Drop
 #' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-#'                        fn = "Case")
+#'                        fn = "Metadata - Sheets.csv")
 #'
 #' ## Download the Case Information file into tempfile()
 #' datadrop_download(id = id, path = tempfile())
