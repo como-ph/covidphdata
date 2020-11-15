@@ -8,6 +8,9 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 ![R-CMD-check](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)
+![test-coverage](https://github.com/como-ph/covidphdata/workflows/test-coverage/badge.svg)
+[![Codecov test
+coverage](https://codecov.io/gh/como-ph/covidphdata/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/covidphdata?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/covidphdata/badge)](https://www.codefactor.io/repository/github/como-ph/covidphdata)
 <!-- badges: end -->
 
