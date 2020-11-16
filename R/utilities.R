@@ -84,7 +84,7 @@ datadrop_download <- function(id,
 ##
 ## Get the bitly link from DoH Data Drop Read Me First PDF
 ##
-get_bitly <- function(.pdf) {
+get_id <- function(.pdf) {
   ## Extract information from PDF on link to folder of current data
   readme <- pdftools::pdf_text(pdf = .pdf) %>%
     stringr::str_split(pattern = "\n|\r\n") %>%
@@ -98,12 +98,23 @@ get_bitly <- function(.pdf) {
     x <- paste("http://", x, sep = "")
   }
 
+  x <- x %>%
+    stringr::str_replace(pattern = "https", replacement = "http") %>%
+    RCurl::getURL() %>%
+    stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
+    unlist()
+
   ## remove .pdf
   file.remove(.pdf)
 
   ## Return x
   return(x)
 }
+
+##
+## Get URL from bitly
+##
+
 
 
 ##
@@ -119,3 +130,5 @@ get_drop_date <- function(tbl, .year = format(Sys.Date(), "%Y")) {
 
   return(dropDate)
 }
+
+
