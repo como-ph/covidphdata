@@ -105,11 +105,8 @@ datadrop_id_latest <- function(verbose = TRUE) {
                     overwrite = TRUE,
                     verbose = verbose)
 
-  x <- get_bitly(.pdf = destFile) %>%
-    stringr::str_replace(pattern = "https", replacement = "http") %>%
-    RCurl::getURL() %>%
-    stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
-    unlist()
+  ## Get Google Drive ID for latest DoH Data Drop from readme file
+  x <- get_id(.pdf = destFile)
 
   ## return x
   return(x)
