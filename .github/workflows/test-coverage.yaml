@@ -15,6 +15,7 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GOOGLEDRIVE_TOKEN: ${{ secrets.GOOGLEDRIVE_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 

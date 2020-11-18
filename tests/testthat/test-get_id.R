@@ -1,3 +1,7 @@
+## Authentication
+googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+googledrive::drive_deauth()
+
 ## Test 1 ----------------------------------------------------------------------
 x <- datadrop_id_latest()
 

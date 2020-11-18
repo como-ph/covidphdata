@@ -71,7 +71,7 @@
 
 datadrop_id_latest <- function(verbose = TRUE) {
   ## Deauthorise
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Get current data link folder information and contents
   dropCurrent <- googledrive::drive_ls(
@@ -125,7 +125,7 @@ datadrop_id_latest <- function(verbose = TRUE) {
 datadrop_id_archive <- function(verbose = TRUE,
                                 .date = NULL) {
   ## Deauthorise
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Check if .date is not NULL
   if(is.null(.date)) {

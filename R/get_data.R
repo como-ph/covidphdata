@@ -88,38 +88,45 @@
 datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
                          overwrite = FALSE, verbose = TRUE) {
   ## Deauthorise to access public Google Drive
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Get Google Drive file ID for specified tbl and fn
   id <- datadrop_id_file(tbl = tbl, fn = fn)
 
-  ## Download Google Drive file
-  datadrop_download(id = id,
-                    path = path,
-                    overwrite = overwrite,
-                    verbose = verbose)
+  if(!is.null(id)) {
+    ## Download Google Drive file
+    datadrop_download(id = id,
+                      path = path,
+                      overwrite = overwrite,
+                      verbose = verbose)
 
-  ## Try retrieving data as a CSV
-  x <- try(
-    suppressWarnings(
-      read.csv(file = path)
-    ),
-    silent = TRUE
-  )
+    ## Try retrieving data as a CSV
+    x <- try(
+      suppressWarnings(
+        read.csv(file = path)
+      ),
+      silent = TRUE
+    )
 
-  ## Check x
-  if(class(x) == "try-error") {
-    x <- lapply(X = readxl::excel_sheets(path = path),
-                FUN = readxl::read_xlsx,
-                path = path)
+    ## Check x
+    if(class(x) == "try-error") {
+      x <- lapply(X = readxl::excel_sheets(path = path),
+                  FUN = readxl::read_xlsx,
+                  path = path)
+
+      ## Rename output
+      names(x) <- c("List of Changes", "Most Common Changes")
+      } else {
+      ## Convert x to tibble
+      x <- tibble::tibble(x)
+    }
+
+    ## Check if keep
+    if(!keep) {
+      file.remove(path)
+    }
   } else {
-    ## Convert x to tibble
-    x <- tibble::tibble(x)
-  }
-
-  ## Check if keep
-  if(!keep) {
-    file.remove(path)
+    x <- NULL
   }
 
   ## Return x
