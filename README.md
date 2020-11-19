@@ -66,23 +66,23 @@ what it was in late June 2020 when all previous months of archive data
 were available.
 
 Currently, given the still persistent issues raised with regard to the
-DoH Data Drop system and the datasets it distributes, we felt it was
+**DoH Data Drop** system and the datasets it distributes, we felt it was
 important to create a separate focused [R](https://cran.r-project.org)
-package just for accessing, handling and processing of the DoH Data Drop
-that can be universally used by other [R](https://cran.r-project.org)
-users regardless of their ultimate end-use for the data (e.g.,
-reporting, visualisation, modelling, etc.). We also wanted to contribute
-to the work of fellow scientists and researchers in the Philippines whom
-we are familiar with and whom we know use
-[R](https://cran.r-project.org) for the epidemiologic analysis work they
-perform which they share with the general public in the Philippines.
-From our own experiences of dealing with the **DoH Data Drop**, we felt
-that it would be extremely helpful for fellow scientists and researchers
-who use [R](https://cran.r-project.org) to have consistent and
-performant data access, handling and processing functions to interface
-with the **DoH Data Drop** that can potentially reduce the daily and/or
-weekly workload of producing COVID-19 analysis and reports and
-streamline their routine analytical workflows.
+package just for accessing, handling and processing of the **DoH Data
+Drop** that can be universally used by other
+[R](https://cran.r-project.org) users regardless of their ultimate
+end-use for the data (e.g., reporting, visualisation, modelling, etc.).
+We also wanted to contribute to the work of fellow scientists and
+researchers in the Philippines whom we are familiar with and whom we
+know use [R](https://cran.r-project.org) for the epidemiologic analysis
+work they perform which they share with the general public in the
+Philippines. From our own experiences of dealing with the **DoH Data
+Drop**, we felt that it would be extremely helpful for fellow scientists
+and researchers who use [R](https://cran.r-project.org) to have
+consistent and performant data access, handling and processing functions
+to interface with the **DoH Data Drop** that can potentially reduce the
+daily and/or weekly workload of producing COVID-19 analysis and reports
+and streamline their routine analytical workflows.
 
 To this end, we took inspiration from the functions we developed in the
 [`comoparams`](https://como-ph.github.io/comoparams) package and
