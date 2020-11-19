@@ -127,11 +127,17 @@ Drop folders." />
 Drop</strong> folders.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>datadrop_get</span><span class='op'>(</span><span class='va'>id</span>, path <span class='op'>=</span> <span class='cn'>NULL</span>, keep <span class='op'>=</span> <span class='cn'>FALSE</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>datadrop_get</span><span class='op'>(</span>
+  <span class='va'>tbl</span>,
+  <span class='va'>fn</span>,
+  path <span class='op'>=</span> <span class='cn'>NULL</span>,
+  keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
 <span class='fu'>datadrop_get_changelog</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -139,8 +145,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_sheets</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -148,8 +153,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_fields</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -157,8 +161,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_cases</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -166,8 +169,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_tests</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -175,8 +177,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_cdaily</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -184,8 +185,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_cweekly</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -193,8 +193,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_qdaily</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -202,8 +201,7 @@ Drop</strong> folders.</p>
 <span class='op'>)</span>
 
 <span class='fu'>datadrop_get_qweekly</span><span class='op'>(</span>
-  version <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"latest"</span>, <span class='st'>"archive"</span><span class='op'>)</span>,
-  .date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>tbl</span>,
   path <span class='op'>=</span> <span class='cn'>NULL</span>,
   keep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -214,8 +212,15 @@ Drop</strong> folders.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
-      <td><p>A 33-character string identifier for the <em>Google Drive</em> file</p></td>
+      <th>tbl</th>
+      <td><p>A tibble output produced by <code><a href='datadrop_ls.html'>datadrop_ls()</a></code> that lists the files
+within a particular <strong>DoH Data Drop</strong> <em>Google Drive</em> folder</p></td>
+    </tr>
+    <tr>
+      <th>fn</th>
+      <td><p>A character string composed of a word or words that can be used to
+match to the name of a file within a particular <strong>DoH Data Drop</strong>
+<em>Google Drive</em> folder listed in <code>tbl</code>.</p></td>
     </tr>
     <tr>
       <th>path</th>
@@ -240,26 +245,11 @@ Default to FALSE.</p></td>
       <td><p>Logical. Should operation progress messages be shown? Default
 to TRUE.</p></td>
     </tr>
-    <tr>
-      <th>version</th>
-      <td><p>A character value specifying whether to get the latest
-available dataset (<code>latest</code>) or to get archive data (<code>archive</code>). Default
-to <code>latest</code>.</p></td>
-    </tr>
-    <tr>
-      <th>.date</th>
-      <td><p>A character value for date in <em>YYYY-MM-DD</em> format. This is the
-date for the archive <strong>DoH Data Drop</strong> for which an ID is to be returned.
-Should be specified when using <code>version</code> is set to <code>archive</code> otherwise
-ignored.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of retrieved <strong>DoH Data Drop</strong> file. If <code>keep</code> is TRUE, a
-file is also downloaded into specified <code>path</code>.</p>
-<p>A tibble of any of the following datasets:</p><ol>
+    <p>A tibble of any of the following datasets:</p><ol>
 <li><p><em>Metadata - Sheets</em>;</p></li>
 <li><p><em>Metadata - Fields</em>;</p></li>
 <li><p><em>Case Information</em>;</p></li>
@@ -279,56 +269,80 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Get Google Drive ID for latest case information data</span>
-<span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id_file</a></span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
-                       fn <span class='op'>=</span> <span class='st'>"Case"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'>## Get tbl for files in latest Data Drop</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+#&gt; <span class='message'>2020-11-18.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * 01 READ ME FIRST (11_18).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e1365354a</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e52328de32</span></div><div class='input'>
 <span class='co'>## Retrieve case information data</span>
-<span class='fu'>datadrop_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>datadrop_get</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, fn <span class='op'>=</span> <span class='st'>"Case Information"</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 04 Case Information.csv</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 04 Case Information.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e598d9738</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e55013b6a6</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 412,097 x 22</span><span>
 #&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C912262     57 55 to 59 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-01</span><span style='color: #949494;'>"</span><span>     2020-08-04 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C735296     67 65 to 69 FEMA… </span><span style='color: #949494;'>"</span><span>2020-09-09</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-09-11</span><span style='color: #949494;'>"</span><span>     2020-09-13 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C375626     36 35 to 39 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-20</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span>     2020-08-01 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C750303     15 15 to 19 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-27</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-02</span><span style='color: #949494;'>"</span><span>     2020-08-05 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C855142     30 30 to 34 FEMA… </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>               2020-06-04 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C781806     27 25 to 29 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-24</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-29</span><span style='color: #949494;'>"</span><span>     2020-08-02 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C819239     28 25 to 29 MALE  </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>"</span><span>2020-04-24</span><span style='color: #949494;'>"</span><span>     2020-04-27 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C786885     65 65 to 69 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-19</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-21</span><span style='color: #949494;'>"</span><span>     2020-07-25 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C800563      9 5 to 9   FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-13</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-16</span><span style='color: #949494;'>"</span><span>     2020-07-19 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C587000     25 25 to 29 MALE  </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>               2020-07-21 
-#&gt; </span><span style='color: #949494;'># … with 406,327 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C516975     51 50 to 54 MALE  2020-09-03   2020-09-03       2020-09-05 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C643966     25 25 to 29 MALE  2020-08-28   2020-09-09       2020-09-10 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C835097     23 20 to 24 FEMA… 2020-08-15   2020-08-17       2020-08-20 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C176417     73 70 to 74 MALE  2020-08-13   2020-08-17       2020-08-19 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C940421     22 20 to 24 MALE  2020-06-24   2020-06-29       2020-07-04 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C650556     26 25 to 29 MALE  2020-10-25   2020-10-28       2020-10-31 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C549944     32 30 to 34 MALE  2020-06-19   2020-06-23       2020-06-26 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C887500     25 25 to 29 FEMA… 2020-06-24   2020-06-29       2020-07-04 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C352799     41 40 to 44 FEMA… 2020-09-27   2020-09-29       2020-10-01 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C776384     49 45 to 49 FEMA… 2020-09-14   2020-09-15       2020-09-17 
+#&gt; </span><span style='color: #949494;'># … with 412,087 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   DateRecover </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RemovalType </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Admitted </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RegionRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   ProvRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMunRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMuniPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, BarangayRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   BarangayPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, HealthStatus </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Quarantined </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, DateOnset </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   Pregnanttab </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, ValidationStatus </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest changelog information</span>
-<span class='fu'>datadrop_get_changelog</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_changelog</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH Data Drop 20201118 - Changelog.xlsx</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e5ec30b76</span></div><div class='output co'>#&gt; <span class='warning'>Warning: File/s with the word/s Changelog.xlsx was not found in the Data Drop folder.</span>
-#&gt; <span class='warning'>Please revise as needed and try again. Returning NULL.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: No changelog information on 2020-11-15. Try a date earlier or later than date</span>
-#&gt; <span class='warning'>specified. Returning NULL.</span></div><div class='output co'>#&gt; NULL</div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e53e3c755c</span></div><div class='output co'>#&gt; $`List of Changes`
+#&gt; </span><span style='color: #949494;'># A tibble: 5,308 x 4</span><span>
+#&gt;    CaseCode Column            `Old Value`   `New Value` 
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C100027  DateRecover       </span><span style='color: #BB0000;'>NA</span><span>            44124.0     
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C100048  DateResultRelease 44142.0       </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C100048  DateSpecimen      44140.0       </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C100286  DateRecover       </span><span style='color: #BB0000;'>NA</span><span>            44129.0     
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C100656  BarangayRes       SAN VICENTE I BANABA CERCA
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C100656  BarangayPSGC      PH042118043   PH042110003 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C100656  CityMuniPSGC      PH042118000   PH042110000 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C100656  CityMunRes        SILANG        INDANG      
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C101082  DateDied          </span><span style='color: #BB0000;'>NA</span><span>            44149.0     
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C101082  HealthStatus      MILD          DIED        
+#&gt; </span><span style='color: #949494;'># … with 5,298 more rows</span><span>
+#&gt; 
+#&gt; $`Most Common Changes`
+#&gt; </span><span style='color: #949494;'># A tibble: 1,367 x 4</span><span>
+#&gt;    Column       `Old Value` `New Value`           `Records Changed`
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> RegionRes    </span><span style='color: #BB0000;'>NA</span><span>          Region IV-B: MIMAROPA               336
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Quarantined  NO          YES                                 287
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> HealthStatus MILD        ASYMPTOMATIC                        160
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> RemovalType  </span><span style='color: #BB0000;'>NA</span><span>          RECOVERED                           127
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DateOnset    </span><span style='color: #BB0000;'>NA</span><span>          44133.0                             100
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DateOnset    </span><span style='color: #BB0000;'>NA</span><span>          44134.0                              91
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DateRecover  </span><span style='color: #BB0000;'>NA</span><span>          44127.0                              81
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Admitted     NO          YES                                  77
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> RemovalType  </span><span style='color: #BB0000;'>NA</span><span>          DIED                                 77
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> HealthStatus MILD        DIED                                 68
+#&gt; </span><span style='color: #949494;'># … with 1,357 more rows</span><span>
+#&gt; </div><div class='input'>
 <span class='co'>## Retrieve latest metadata - sheets information</span>
-<span class='fu'>datadrop_get_sheets</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_sheets</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 02 Metadata - Sheets.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e5725a094</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 02 Metadata - Sheets.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e6751813e</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 5</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e5733d0aef</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10 x 5</span><span>
 #&gt;    Sheet     Description          Source       Contact.Informa… Data.Update.Sch…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Case Inf… </span><span style='color: #949494;'>"</span><span>List of confirmed … DOH - Epide… covidtracker@do… Daily at 4PM    
@@ -342,15 +356,11 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Testing … </span><span style='color: #949494;'>""</span><span>                   DOH          covidtracker@do… Daily at 4PM    
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> Privacy … </span><span style='color: #949494;'>""</span><span>                   -            -                -               </div><div class='input'>
 <span class='co'>## Retrieve latest metadata - fields information</span>
-<span class='fu'>datadrop_get_fields</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_fields</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 03 Metadata - Fields.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e17fc4270</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 03 Metadata - Fields.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e326dd35d</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 199 x 7</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e52c990c04</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 199 x 7</span><span>
 #&gt;    Sheet  Field  Description      Type  Question.Format Possible.Respon… Purpose
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Case … CaseC… Random code ass… Text  </span><span style='color: #949494;'>""</span><span>              </span><span style='color: #949494;'>""</span><span>               </span><span style='color: #949494;'>""</span><span>     
@@ -365,55 +375,47 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> Case … Remov… Type of removal… Text  </span><span style='color: #949494;'>""</span><span>              </span><span style='color: #949494;'>""</span><span>               </span><span style='color: #949494;'>""</span><span>     
 #&gt; </span><span style='color: #949494;'># … with 189 more rows</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest cases information (same results as first example)</span>
-<span class='fu'>datadrop_get_cases</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_cases</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 04 Case Information.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e484f9888</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 04 Case Information.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e61a72dce</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 406,337 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e573e3f17b</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 412,097 x 22</span><span>
 #&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C912262     57 55 to 59 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-01</span><span style='color: #949494;'>"</span><span>     2020-08-04 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C735296     67 65 to 69 FEMA… </span><span style='color: #949494;'>"</span><span>2020-09-09</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-09-11</span><span style='color: #949494;'>"</span><span>     2020-09-13 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C375626     36 35 to 39 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-20</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-25</span><span style='color: #949494;'>"</span><span>     2020-08-01 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C750303     15 15 to 19 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-27</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-08-02</span><span style='color: #949494;'>"</span><span>     2020-08-05 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C855142     30 30 to 34 FEMA… </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>               2020-06-04 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C781806     27 25 to 29 FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-24</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-29</span><span style='color: #949494;'>"</span><span>     2020-08-02 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C819239     28 25 to 29 MALE  </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>"</span><span>2020-04-24</span><span style='color: #949494;'>"</span><span>     2020-04-27 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C786885     65 65 to 69 MALE  </span><span style='color: #949494;'>"</span><span>2020-07-19</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-21</span><span style='color: #949494;'>"</span><span>     2020-07-25 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C800563      9 5 to 9   FEMA… </span><span style='color: #949494;'>"</span><span>2020-07-13</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>"</span><span>2020-07-16</span><span style='color: #949494;'>"</span><span>     2020-07-19 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C587000     25 25 to 29 MALE  </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>               2020-07-21 
-#&gt; </span><span style='color: #949494;'># … with 406,327 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> C516975     51 50 to 54 MALE  2020-09-03   2020-09-03       2020-09-05 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> C643966     25 25 to 29 MALE  2020-08-28   2020-09-09       2020-09-10 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> C835097     23 20 to 24 FEMA… 2020-08-15   2020-08-17       2020-08-20 
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> C176417     73 70 to 74 MALE  2020-08-13   2020-08-17       2020-08-19 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> C940421     22 20 to 24 MALE  2020-06-24   2020-06-29       2020-07-04 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> C650556     26 25 to 29 MALE  2020-10-25   2020-10-28       2020-10-31 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> C549944     32 30 to 34 MALE  2020-06-19   2020-06-23       2020-06-26 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> C887500     25 25 to 29 FEMA… 2020-06-24   2020-06-29       2020-07-04 
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> C352799     41 40 to 44 FEMA… 2020-09-27   2020-09-29       2020-10-01 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> C776384     49 45 to 49 FEMA… 2020-09-14   2020-09-15       2020-09-17 
+#&gt; </span><span style='color: #949494;'># … with 412,087 more rows, and 15 more variables: DateDied </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   DateRecover </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RemovalType </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Admitted </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, RegionRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   ProvRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMunRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, CityMuniPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, BarangayRes </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   BarangayPSGC </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, HealthStatus </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, Quarantined </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, DateOnset </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   Pregnanttab </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, ValidationStatus </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest daily hospital beds and mechanical ventilators information</span>
-<span class='fu'>datadrop_get_cdaily</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_cdaily</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 05 DOH Data Collect - Daily Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e26b06178</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 05 DOH Data Collect - Daily Report.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e5cf2120</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 170,958 x 54</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e57a02fdad</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 176,082 x 54</span><span>
 #&gt;    hfhudcode    id cfname updateddate addeddate reportdate icu_v icu_o isolbed_v
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…  </span><span style='text-decoration: underline;'>1</span><span>340 STA. … 2020-07-03… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>948 STA. … 2020-07-04… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>4</span><span>394 STA. … 2020-07-05… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>6</span><span>172 STA. … 2020-07-06… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>6</span><span>172 STA. … 2020-07-06… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>9</span><span>429 STA. … 2020-07-08… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>11</span><span>370 STA. … 2020-07-09… 2020-07-… 2020-07-0…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>13</span><span>303 STA. … 2020-07-10… 2020-07-… 2020-07-1…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>14</span><span>885 STA. … 2020-07-11… 2020-07-… 2020-07-1…     0     0         1
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>16</span><span>910 STA. … 2020-07-12… 2020-07-… 2020-07-1…     0     0         1
-#&gt; </span><span style='color: #949494;'># … with 170,948 more rows, and 45 more variables: isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…   677 MABAM… 2020-07-02… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>2</span><span>296 MABAM… 2020-07-03… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>3</span><span>946 MABAM… 2020-07-04… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>3</span><span>946 MABAM… 2020-07-04… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>7</span><span>211 MABAM… 2020-07-06… 2020-07-… 2020-07-0…     0     0         0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>8</span><span>975 MABAM… 2020-07-07… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>10</span><span>766 MABAM… 2020-07-08… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>12</span><span>724 MABAM… 2020-07-09… 2020-07-… 2020-07-0…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>14</span><span>421 MABAM… 2020-07-10… 2020-07-… 2020-07-1…     0     0         1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>16</span><span>064 MABAM… 2020-07-11… 2020-07-… 2020-07-1…     0     0         1
+#&gt; </span><span style='color: #949494;'># … with 176,072 more rows, and 45 more variables: isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   beds_ward_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, beds_ward_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   icu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, icu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nonicu_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   mechvent_v_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mechvent_o_nc </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qnurse </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, qdoctor </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
@@ -426,42 +428,34 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; </span><span style='color: #949494;'>#   region </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   city_mun </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, city_mun_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, north_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, east_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest weekly PPE and other related equipment information</span>
-<span class='fu'>datadrop_get_cweekly</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_cweekly</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 06 DOH Data Collect - Weekly Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e6187beda</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 06 DOH Data Collect - Weekly Report.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e17030c3c</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 53,945 x 26</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e55a5ca76f</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 55,844 x 26</span><span>
 #&gt;    hfhudcode     id cfname updateddate addeddate reportdate  gown gloves
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…  </span><span style='text-decoration: underline;'>31</span><span>175 DUBON… 2020-04-24… 2020-04-… 2020-04-19    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>33</span><span>300 DUBON… 2020-05-01… 2020-05-… 2020-04-26    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>34</span><span>411 DUBON… 2020-05-08… 2020-05-… 2020-05-03    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>36</span><span>024 DUBON… 2020-05-15… 2020-05-… 2020-05-10    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>36</span><span>916 DUBON… 2020-05-22… 2020-05-… 2020-05-17    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>39</span><span>189 DUBON… 2020-05-29… 2020-05-… 2020-05-24    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>311</span><span>478 DUBON… 2020-06-05… 2020-06-… 2020-05-31    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>311</span><span>892 DUBON… 2020-06-12… 2020-06-… 2020-06-07    10     50
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>314</span><span>358 DUBON… 2020-06-19… 2020-06-… 2020-06-14    10     50
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>315</span><span>386 DUBON… 2020-06-26… 2020-06-… 2020-06-21    10     50
-#&gt; </span><span style='color: #949494;'># … with 53,935 more rows, and 18 more variables: head_cover </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> DOH00000…   </span><span style='text-decoration: underline;'>3</span><span>746 RICO'… 2020-04-24… 2020-04-… 2020-04-19     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DOH00000…  </span><span style='text-decoration: underline;'>32</span><span>046 RICO'… 2020-05-01… 2020-05-… 2020-04-26     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DOH00000…  </span><span style='text-decoration: underline;'>33</span><span>518 RICO'… 2020-05-08… 2020-05-… 2020-05-03     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DOH00000…  </span><span style='text-decoration: underline;'>35</span><span>409 RICO'… 2020-05-15… 2020-05-… 2020-05-10     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DOH00000…  </span><span style='text-decoration: underline;'>36</span><span>780 RICO'… 2020-05-22… 2020-05-… 2020-05-17     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DOH00000…  </span><span style='text-decoration: underline;'>38</span><span>385 RICO'… 2020-05-29… 2020-05-… 2020-05-24     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DOH00000… </span><span style='text-decoration: underline;'>310</span><span>018 RICO'… 2020-06-05… 2020-06-… 2020-05-31     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DOH00000… </span><span style='text-decoration: underline;'>311</span><span>669 RICO'… 2020-06-12… 2020-06-… 2020-06-07     9    300
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> DOH00000… </span><span style='text-decoration: underline;'>313</span><span>263 RICO'… 2020-06-19… 2020-06-… 2020-06-14     9    300
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> DOH00000… </span><span style='text-decoration: underline;'>315</span><span>173 RICO'… 2020-06-26… 2020-06-… 2020-06-21     9    300
+#&gt; </span><span style='color: #949494;'># … with 55,834 more rows, and 18 more variables: head_cover </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   goggles </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, coverall </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, shoe_cover </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, face_shield </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   surgmask </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, n95mask </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, ops </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nps </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, vtm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   region </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   city_mun </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, city_mun_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, north_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, east_coord </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest testing aggregates information</span>
-<span class='fu'>datadrop_get_tests</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_tests</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 07 Testing Aggregates.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e491842f1</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 07 Testing Aggregates.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e57d301b4</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,969 x 18</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e578f496c1</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 19,572 x 18</span><span>
 #&gt;    facility_name report_date avg_turnaround_… daily_output_sa… daily_output_un…
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> AL Molecular… 2020-08-30                24                0                0
@@ -474,7 +468,7 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> AL Molecular… 2020-09-06                </span><span style='color: #BB0000;'>NA</span><span>               </span><span style='color: #BB0000;'>NA</span><span>               </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> AL Molecular… 2020-09-07                 8                1                1
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> AL Molecular… 2020-09-08                 8                1                1
-#&gt; </span><span style='color: #949494;'># … with 18,959 more rows, and 13 more variables:</span><span>
+#&gt; </span><span style='color: #949494;'># … with 19,562 more rows, and 13 more variables:</span><span>
 #&gt; </span><span style='color: #949494;'>#   daily_output_positive_individuals </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   daily_output_negative_individuals </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, daily_output_equivocal </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   daily_output_invalid </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, remaining_available_tests </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
@@ -483,62 +477,54 @@ For Changelog, a named list of two tibbles - <em>List of Changes</em> and
 #&gt; </span><span style='color: #949494;'>#   cumulative_negative_individuals </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, pct_positive_cumulative </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   pct_negative_cumulative </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, validation_status </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest daily quarantine facility beds and mechanical ventilators</span>
-<span class='fu'>datadrop_get_qdaily</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_qdaily</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 08 Quarantine Facility Data - Daily Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e5e14fd77</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 08 Quarantine Facility Data - Daily Report.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e340cbfe2</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,724,486 x 22</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e51d596f1</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,781,154 x 22</span><span>
 #&gt;    updateddate addeddate reportdate other_adm doctor_adm nurse_adm qother
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-06-01… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-06-02… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-06-03… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-06-04… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-06-05… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-06-06… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-06-07… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-06-08… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-06-09… 2020-06-… 2020-06-0…         0          0         0      0
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-06-10… 2020-06-… 2020-06-1…         0          0         0      0
-#&gt; </span><span style='color: #949494;'># … with 1,724,476 more rows, and 15 more variables: qdoctor </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2020-06-24… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2020-06-25… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2020-06-26… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2020-06-27… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2020-06-28… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2020-06-29… 2020-06-… 2020-06-2…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2020-06-30… 2020-06-… 2020-06-3…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2020-07-01… 2020-07-… 2020-07-0…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2020-07-02… 2020-07-… 2020-07-0…         0          0         0      0
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2020-07-03… 2020-07-… 2020-07-0…         0          0         0      0
+#&gt; </span><span style='color: #949494;'># … with 1,781,144 more rows, and 15 more variables: qdoctor </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   qnurse </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, isolbed_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, isolbed_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, beds_ward_o </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   beds_ward_v </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, facilityname </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   city_mun </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, bgy </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, province_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   city_mun_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, bgy_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Retrieve latest weekly quarantine facility PPE and other related equipment</span>
-<span class='fu'>datadrop_get_qweekly</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+<span class='fu'>datadrop_get_qweekly</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>x</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 09 Quarantine Facility Data - Weekly Report.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e3109a920</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 09 Quarantine Facility Data - Weekly Report.csv</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e713e8d06</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,387 x 25</span><span>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e56da8a927</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,384 x 25</span><span>
 #&gt;    facilityname updateddate addeddate reportdate coverall surgmask shoe_cover
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ACABAN ELEM… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> CASSILY LAK… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-05-2…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> CASSILY LAK… </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…       10       10         10
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> CASSILY LAK… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> BALER MUNIC… </span><span style='color: #949494;'>"</span><span>2020-05-2… </span><span style='color: #949494;'>"</span><span>2020-05… 2020-05-2…       15      100         15
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> BALER MUNIC… </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…       15      100         15
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> BALER MUNIC… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> CAWAYAN BAR… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> LOURDES NAT… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> MACROHON CIU </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…       36    </span><span style='text-decoration: underline;'>16</span><span>250         34
-#&gt; </span><span style='color: #949494;'># … with 1,377 more rows, and 18 more variables: face_shield </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> BAYACABAC B… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> DEPARTMENT … </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…      185     </span><span style='text-decoration: underline;'>3</span><span>850         34
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> DEPARTMENT … </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> DINGALAN CO… </span><span style='color: #949494;'>"</span><span>2020-05-2… </span><span style='color: #949494;'>"</span><span>2020-05… 2020-05-2…        0        0          0
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> DINGALAN CO… </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…        0        0          0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> DINGALAN CO… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> MALAGANA - … </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…        1       50          1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> MALAGANA - … </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> TAMBOBOAN -… </span><span style='color: #949494;'>"</span><span>2020-06-0… </span><span style='color: #949494;'>"</span><span>2020-06… 2020-05-3…        1       50          1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> TAMBOBOAN -… </span><span style='color: #949494;'>""</span><span>          </span><span style='color: #949494;'>""</span><span>        2020-06-0…       </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 1,374 more rows, and 18 more variables: face_shield </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   head_cover </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, n95mask </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, goggles </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, gloves </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, gown </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   vtm </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, nps </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, ops </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, weekly_reportdate </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   province </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, city_mun </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, bgy </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, region_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   province_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, city_mun_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, bgy_psgc </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-<span class='co'>#datadrop_get_collectV3(path = tempfile())</span>
-<span class='co'>#datadrop_get_collectV4(path = tempfile())</span>
-<span class='co'>#datadrop_get_tracker(path = tempfile())</span>
+<span class='co'>#datadrop_get_collectV3(tbl = x, path = tempfile())</span>
+<span class='co'>#datadrop_get_collectV4(tbl = x, path = tempfile())</span>
+<span class='co'>#datadrop_get_tracker(tbl = x, path = tempfile())</span>
 
 </div></span></pre>
   </div>

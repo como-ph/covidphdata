@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get link to a Google Drive file and download — datadrop_download • covidphdata</title>
+<title>Download DoH Data Drop file via its Google Drive ID — datadrop_download • covidphdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Get link to a Google Drive file and download — datadrop_download" />
-<meta property="og:description" content="Get link to a Google Drive file and download" />
+<meta property="og:title" content="Download DoH Data Drop file via its Google Drive ID — datadrop_download" />
+<meta property="og:description" content="Download DoH Data Drop file via its Google Drive ID" />
 <meta property="og:image" content="https://como-ph.github.io/covidphdata/logo.png" />
 
 
@@ -116,13 +116,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get link to a Google Drive file and download</h1>
+    <h1>Download DoH Data Drop file via its Google Drive ID</h1>
     <small class="dont-index">Source: <a href='https://github.com/como-ph/covidphdata/blob/master/R/utilities.R'><code>R/utilities.R</code></a></small>
     <div class="hidden name"><code>datadrop_download.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get link to a Google Drive file and download</p>
+    <p>Download DoH Data Drop file via its Google Drive ID</p>
     </div>
 
     <pre class="usage"><span class='fu'>datadrop_download</span><span class='op'>(</span><span class='va'>id</span>, path <span class='op'>=</span> <span class='cn'>NULL</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
@@ -162,18 +162,18 @@ to TRUE.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get Google Drive ID for Case Information file in latest DoH Data Drop</span>
 <span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id_file</a></span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
-                       fn <span class='op'>=</span> <span class='st'>"Case"</span><span class='op'>)</span>
+                       fn <span class='op'>=</span> <span class='st'>"Metadata - Sheets.csv"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-14.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_14).pdf</span>
+#&gt; <span class='message'>2020-11-18.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * 01 READ ME FIRST (11_18).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e2fe7f985</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e5f08304c</span></div><div class='input'>
 <span class='co'>## Download the Case Information file into tempfile()</span>
 <span class='fu'>datadrop_download</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201114 - 04 Case Information.csv</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201118 - 02 Metadata - Sheets.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpxqUm1u/file4b1e26aea355</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmphUkfhg/filec0e5629ad549</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
