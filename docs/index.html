@@ -101,7 +101,7 @@
 <li><p>application of <strong>modern data handling and processing techniques</strong> available in <a href="https://cran.r-project.org">R</a>; and,</p></li>
 <li><p>output of <strong>coherent and compliant data structures</strong> ready for various applications.</p></li>
 </ul>
-<p>Finally, we want to contribute to the both the <em>public discourse</em> and to the <em>practice</em> of <strong>open data</strong> and <strong>open science</strong> in the Philippines and encourage others to do the same. Our group’s codebase for our work on COVID-19 modelling (primarily in <a href="https://cran.r-project.org">R</a> language for statistical computing) is available publicly via <a href="https://github.com/como-ph">GitHub</a> including the one for the <code>covidphdata</code> package (see <a href="https://github.com/como-ph/covidphdata" class="uri">https://github.com/como-ph/covidphdata</a>). Our hope is that by creating this package and making its use available to all <a href="https://cran.r-project.org">R</a> users and its codebase open source, we can standardise accessing, handling and processing of the <strong>DoH Data Drop</strong> thereby providing transparency to the approaches applied to the data before it is analysed or visualised.</p>
+<p>Finally, we want to contribute to both the <em>public discourse</em> and to the <em>practice</em> of <strong>open data</strong> and <strong>open science</strong> in the Philippines and encourage others to do the same. Our group’s codebase for our work on COVID-19 modelling (primarily in <a href="https://cran.r-project.org">R</a> language for statistical computing) is available publicly via <a href="https://github.com/como-ph">GitHub</a> including the one for the <code>covidphdata</code> package (see <a href="https://github.com/como-ph/covidphdata" class="uri">https://github.com/como-ph/covidphdata</a>). Our hope is that by creating this package and making its use available to all <a href="https://cran.r-project.org">R</a> users and its codebase open source, we can standardise accessing, handling and processing of the <strong>DoH Data Drop</strong> thereby providing transparency to the approaches applied to the data before it is analysed or visualised.</p>
 </div>
 <div id="what-does-covidphdatado" class="section level2">
 <h2 class="hasAnchor">
@@ -158,16 +158,13 @@ install.packages("covidphdata")
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/covidphdata/">covidphdata</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://googledrive.tidyverse.org">googledrive</a></span><span class="op">)</span>
 
-<span class="co">## Step 1: Authenticate as a Google Drive user</span>
-<span class="fu">googledrive</span><span class="fu">::</span><span class="fu"><a href="https://googledrive.tidyverse.org/reference/drive_auth.html">drive_auth</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co">## Step 2: Get Google Drive ID for latest DoH Data Drop</span>
+<span class="co">## Step 1: Get Google Drive ID for latest DoH Data Drop</span>
 <span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="co">## Step 3: List the files and folders available in the latest DoH Data Drop</span>
+<span class="co">## Step 2: List the files and folders available in the latest DoH Data Drop</span>
 <span class="va">data_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
 
-<span class="co">## Step 4: Retrieve the specified/required dataset and load into R</span>
+<span class="co">## Step 3: Retrieve the specified/required dataset and load into R</span>
 <span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">data_list</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This workflow produces the following output:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt; # A tibble: 412,097 x 22</span></span>
@@ -397,8 +394,11 @@ install.packages("covidphdata")
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/como-ph/covidphdata/actions"><img src="https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/como-ph/covidphdata/actions"><img src="https://github.com/como-ph/covidphdata/workflows/test-coverage/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/como-ph/covidphdata?branch=master"><img src="https://codecov.io/gh/como-ph/covidphdata/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/como-ph/covidphdata"><img src="https://www.codefactor.io/repository/github/como-ph/covidphdata/badge" alt="CodeFactor"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/282435192"><img src="https://zenodo.org/badge/282435192.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>
