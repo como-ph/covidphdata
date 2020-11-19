@@ -5,7 +5,7 @@ url: https://como-ph.github.io/covidphdata
 template:
   params:
     bootswatch: flatly
-    ganalytics:
+    ganalytics: G-T5FED59B7G
 
 #navbar:
 #  type: inverse
