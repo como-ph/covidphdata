@@ -14,6 +14,9 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(googledrive)
+googledrive::drive_deauth()
 ```
 
 # covidphdata: An Interface to the Philippines Department of Health COVID-19 Data Drop <img src="man/figures/logo.png" width="200px" align="right" />
@@ -81,7 +84,25 @@ remotes::install_github("como-ph/covidphdata")
 
 ## Usage
 
-### 
+### Google authentication
+
+The **DoH Data Drop** is distributed via *Google Drive* as shared folders and files that can be accessed by anyone with a link. From a user who accesses the **DoH Data Drop** interactively (i.e., clicking the **DoH Data Drop** daily link and then accessing the folders and files on *Google Drive* on the browser), this would mean that one doesn't have to be an authorised user to access the files. On the other hand, for an [R](https://cran.r-project.org) user, it would be convenient to be able to access and retrieve the **DoH Data Drop** folders and files within [R](https://cran.r-project.org) without having to do a seprate steps of dealing with going to a browser and downloading the data from the **DoH Data Drop** before being able to access them in [R](https://cran.r-project.org). This is the main use case for the `covidphdata` package.
+
+The `covidphdata` is built on the key functionalities of the `googledrive` package and follows the basic workflow of data retrieval from *Google Drive*. The `googledrive` package requires authenticating with *Google Drive* and has functions that facilitate this specifically its `drive_auth` function. So, the easiest way to authenticate as a *Google Drive* user is to make a call to the `drive_auth` function as follows:
+
+```{r auth, echo = TRUE, eval = FALSE}
+## Load googledrive package
+library(googledrive)
+
+## Authenticate with Google
+drive_auth()
+```
+
+This function when called will open the browser to allow the user to login their username and password to their *Google* account. This is the easiest approach to authenticate as most users will be able to implement this easily. Also, this step will only have to be done per session which will be enough to use `covidphdata` to retrieve the data one needs into [R](https://cran.r-project.org). After that, all operations one needs to do will be with dealing with the data that is within [R](https://cran.r-project.org) which doesn't require accessing *Google Drive* again. However, it is possible that if at some point later within the same session you need to access different dataset from the archive that you will need to authenticate again. If this is the case, you will be asked on your [R](https://cran.r-projectd.org) console to confirm the email account that you previously logged in with and your [R](https://cran.r-project.org) session will continue to use those authentication details.
+
+This is the most straightforward and easiest way to authenticate with *Google Drive* for most users. However, if you prefer a non-interactive way of authenticating, read this [good article](https://googledrive.tidyverse.org/articles/articles/bring-your-own-app.html) from the `googledrive` package creators on the alternative ways to authenticate that doesn't require interactive input.
+
+Once authenticated, one can now proceed with the `covidphdata` data retrieval workflow outlined below.
 
 ### The `covidphdata` data retrieval workflow
 
