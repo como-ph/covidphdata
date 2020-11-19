@@ -92,6 +92,7 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
 
   ## Get Google Drive file ID for specified tbl and fn
   id <- datadrop_id_file(tbl = tbl, fn = fn)
+  ext <- get_ext(tbl = tbl, fn = fn)
 
   if(!is.null(id)) {
     ## Download Google Drive file
@@ -100,30 +101,17 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
                       overwrite = overwrite,
                       verbose = verbose)
 
-    ## Try retrieving data as a CSV
-    x <- try(
-      suppressWarnings(
-        read.csv(file = path)
-      ),
-      silent = TRUE
-    )
-
-    ## Check x
-    if(class(x) == "try-error") {
+    ## Check file extension
+    if(ext == ".csv") {
+      x <- read.csv(file = path)
+      x <- tibble::tibble(x)
+    } else {
       x <- lapply(X = readxl::excel_sheets(path = path),
                   FUN = readxl::read_xlsx,
                   path = path)
 
       ## Rename output
       names(x) <- c("List of Changes", "Most Common Changes")
-      } else {
-      ## Convert x to tibble
-      x <- tibble::tibble(x)
-    }
-
-    ## Check if keep
-    if(!keep) {
-      file.remove(path)
     }
   } else {
     x <- NULL

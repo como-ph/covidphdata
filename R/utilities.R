@@ -112,8 +112,36 @@ get_id <- function(.pdf) {
 }
 
 ##
-## Get URL from bitly
+## Get file extension
 ##
+get_ext <- function(tbl, fn) {
+  ## Check if fn is found in tbl$name
+  if(any(stringr::str_detect(string = tbl[["name"]], pattern = fn))) {
+    ##
+    ext <- tbl %>%
+      filter(stringr::str_detect(string = name, pattern = fn)) %>%
+      select(name) %>%
+      as.character() %>%
+      str_extract(pattern = ".csv|.xlsx")
+  } else {
+    ## Set id to NULL
+    ext <- NULL
+    warning(
+      paste(
+        strwrap(
+          x = paste("File/s with the word/s ", fn, " was not found in the Data
+                    Drop folder. Please revise as needed and try again. Returning
+                    NULL.", sep = ""),
+          width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ##
+  return(ext)
+}
 
 
 

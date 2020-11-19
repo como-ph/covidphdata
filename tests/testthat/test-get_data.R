@@ -20,7 +20,7 @@ test_that("file is kept", {
 
 destFile <- tempfile()
 
-y <- x %>% datadrop_get(fn = "Changelog", path = destFile, keep = TRUE)
+y <- x %>% datadrop_get(fn = "Changelog", path = destFile)
 
 test_that("datadrop_get retrieves correct file", {
   expect_true(all(names(y) %in% c("List of Changes", "Most Common Changes")))
