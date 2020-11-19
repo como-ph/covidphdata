@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{datadrop_download}
 \alias{datadrop_download}
-\title{Get link to a Google Drive file and download}
+\title{Download DoH Data Drop file via its Google Drive ID}
 \usage{
 datadrop_download(id, path = NULL, overwrite = FALSE, verbose = TRUE)
 }
@@ -23,12 +23,12 @@ to TRUE.}
 A file downloaded into specified path
 }
 \description{
-Get link to a Google Drive file and download
+Download DoH Data Drop file via its Google Drive ID
 }
 \examples{
 ## Get Google Drive ID for Case Information file in latest DoH Data Drop
 id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-                       fn = "Case")
+                       fn = "Metadata - Sheets.csv")
 
 ## Download the Case Information file into tempfile()
 datadrop_download(id = id, path = tempfile())

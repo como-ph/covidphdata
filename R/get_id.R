@@ -71,7 +71,7 @@
 
 datadrop_id_latest <- function(verbose = TRUE) {
   ## Deauthorise
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Get current data link folder information and contents
   dropCurrent <- googledrive::drive_ls(
@@ -79,10 +79,7 @@ datadrop_id_latest <- function(verbose = TRUE) {
   )
 
   ## Get dropDate
-  dropDate <- stringr::str_extract(string = dropCurrent$name,
-                                   pattern = "[0-9]{2}[/\\_\\-]{1}[0-9]{2}") %>%
-    paste(format(Sys.Date(), "%Y"), sep = "/") %>%
-    lubridate::mdy()
+  dropDate <- get_drop_date(tbl = dropCurrent)
 
   if(verbose) {
     ## Provide message to user
@@ -103,30 +100,13 @@ datadrop_id_latest <- function(verbose = TRUE) {
   ## Create temporary file
   destFile <- tempfile()
 
-  ## Create link for download of README
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", dropCurrent$id)
+  datadrop_download(id = dropCurrent$id,
+                    path = destFile,
+                    overwrite = TRUE,
+                    verbose = verbose)
 
-  googledrive::drive_download(file = googledrive::as_id(link),
-                              path = destFile, verbose = verbose)
-
-  ## Extract information from PDF on link to folder of current data
-  readme <- pdftools::pdf_text(pdf = destFile) %>%
-    stringr::str_split(pattern = "\n|\r\n") %>%
-    unlist()
-
-  ## Ged id for current data google drive folder
-  x <- stringr::word(readme[stringr::str_detect(string = readme,
-                                                pattern = "bit.ly/*")][1], -1)
-
-  if(!stringr::str_detect(string = x, pattern = "http")) {
-    x <- paste("http://", x, sep = "")
-  }
-
-  x <- x %>%
-    stringr::str_replace(pattern = "https", replacement = "http") %>%
-    RCurl::getURL() %>%
-    stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
-    unlist()
+  ## Get Google Drive ID for latest DoH Data Drop from readme file
+  x <- get_id(.pdf = destFile)
 
   ## return x
   return(x)
@@ -145,7 +125,7 @@ datadrop_id_latest <- function(verbose = TRUE) {
 datadrop_id_archive <- function(verbose = TRUE,
                                 .date = NULL) {
   ## Deauthorise
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Check if .date is not NULL
   if(is.null(.date)) {

@@ -8,6 +8,9 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 ![R-CMD-check](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)
+![test-coverage](https://github.com/como-ph/covidphdata/workflows/test-coverage/badge.svg)
+[![Codecov test
+coverage](https://codecov.io/gh/como-ph/covidphdata/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/covidphdata?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/covidphdata/badge)](https://www.codefactor.io/repository/github/como-ph/covidphdata)
 <!-- badges: end -->
 
@@ -159,45 +162,47 @@ remotes::install_github("como-ph/covidphdata")
 
 ## Usage
 
+### 
+
 ### The `covidphdata` data retrieval workflow
 
 The different functions currently available through `covidphdata` are
 linked through the following general workflow:
 
 ``` r
-## Load covidphdata
+## Load covidphdata and googledrive package
 library(covidphdata)
+library(googledrive)
 
-## Step 1: Get Google Drive ID for latest DoH Data Drop
+## Step 1: Authenticate as a Google Drive user
+googledrive::drive_auth()
+
+## Step 2: Get Google Drive ID for latest DoH Data Drop
 gid <- datadrop_id()
 
-## Step 2: List the files and folders available in the latest DoH Data Drop
+## Step 3: List the files and folders available in the latest DoH Data Drop
 data_list <- datadrop_ls(id = gid)
 
-## Step 3: Get the Google Drive ID of the specific file required. In this 
-## example, retrieve Case Information
-file_id <- datadrop_id_file(tbl = data_list, fn = "Case Information")
-
 ## Step 4: Retrieve the specified/required dataset and load into R
-datadrop_get(id = file_id, path = tempfile())
+datadrop_get(tbl = data_list, fn = "Case Information", path = tempfile())
 ```
 
 This workflow produces the following output:
 
-    #> # A tibble: 406,337 x 22
+    #> # A tibble: 407,838 x 22
     #>    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
     #>    <chr>    <dbl> <chr>    <chr> <chr>        <chr>            <chr>      
-    #>  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 
-    #>  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 
-    #>  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 
-    #>  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 
-    #>  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 
-    #>  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 
-    #>  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 
-    #>  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 
-    #>  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 
-    #> 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 
-    #> # … with 406,327 more rows, and 15 more variables: DateDied <chr>,
+    #>  1 C456422     32 30 to 34 MALE  ""           ""               2020-05-20 
+    #>  2 C868990     20 20 to 24 FEMA… "2020-07-29" "2020-07-31"     2020-08-04 
+    #>  3 C750896     52 50 to 54 FEMA… "2020-04-14" ""               2020-04-26 
+    #>  4 C370776     40 40 to 44 MALE  "2020-07-25" "2020-07-27"     2020-08-02 
+    #>  5 C287549     29 25 to 29 FEMA… "2020-07-13" "2020-07-14"     2020-07-17 
+    #>  6 C523300     28 25 to 29 MALE  "2020-07-16" "2020-07-18"     2020-07-21 
+    #>  7 C668826     26 25 to 29 MALE  "2020-09-16" "2020-08-24"     2020-10-24 
+    #>  8 C873689     71 70 to 74 MALE  "2020-08-09" "2020-08-11"     2020-08-15 
+    #>  9 C276574     40 40 to 44 MALE  "2020-07-26" "2020-07-27"     2020-07-31 
+    #> 10 C576759     62 60 to 64 FEMA… "2020-05-27" "2020-05-28"     2020-06-03 
+    #> # … with 407,828 more rows, and 15 more variables: DateDied <chr>,
     #> #   DateRecover <chr>, RemovalType <chr>, Admitted <chr>, RegionRes <chr>,
     #> #   ProvRes <chr>, CityMunRes <chr>, CityMuniPSGC <chr>, BarangayRes <chr>,
     #> #   BarangayPSGC <chr>, HealthStatus <chr>, Quarantined <chr>, DateOnset <chr>,
@@ -215,26 +220,26 @@ library(magrittr)
 ## Retrieve latest Case Information dataset from DoH Data Drop
 datadrop_id() %>%                                 ## Step 1
   datadrop_ls() %>%                               ## Step 2
-  datadrop_id_file(fn = "Case Information") %>%   ## Step 3
-  datadrop_get(path = tempfile())                 ## Step 4
+  datadrop_get(fn = "Case Information",           ## Step 3
+               path = tempfile())                 
 ```
 
 This outputs this result:
 
-    #> # A tibble: 406,337 x 22
+    #> # A tibble: 407,838 x 22
     #>    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
     #>    <chr>    <dbl> <chr>    <chr> <chr>        <chr>            <chr>      
-    #>  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 
-    #>  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 
-    #>  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 
-    #>  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 
-    #>  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 
-    #>  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 
-    #>  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 
-    #>  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 
-    #>  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 
-    #> 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 
-    #> # … with 406,327 more rows, and 15 more variables: DateDied <chr>,
+    #>  1 C456422     32 30 to 34 MALE  ""           ""               2020-05-20 
+    #>  2 C868990     20 20 to 24 FEMA… "2020-07-29" "2020-07-31"     2020-08-04 
+    #>  3 C750896     52 50 to 54 FEMA… "2020-04-14" ""               2020-04-26 
+    #>  4 C370776     40 40 to 44 MALE  "2020-07-25" "2020-07-27"     2020-08-02 
+    #>  5 C287549     29 25 to 29 FEMA… "2020-07-13" "2020-07-14"     2020-07-17 
+    #>  6 C523300     28 25 to 29 MALE  "2020-07-16" "2020-07-18"     2020-07-21 
+    #>  7 C668826     26 25 to 29 MALE  "2020-09-16" "2020-08-24"     2020-10-24 
+    #>  8 C873689     71 70 to 74 MALE  "2020-08-09" "2020-08-11"     2020-08-15 
+    #>  9 C276574     40 40 to 44 MALE  "2020-07-26" "2020-07-27"     2020-07-31 
+    #> 10 C576759     62 60 to 64 FEMA… "2020-05-27" "2020-05-28"     2020-06-03 
+    #> # … with 407,828 more rows, and 15 more variables: DateDied <chr>,
     #> #   DateRecover <chr>, RemovalType <chr>, Admitted <chr>, RegionRes <chr>,
     #> #   ProvRes <chr>, CityMunRes <chr>, CityMuniPSGC <chr>, BarangayRes <chr>,
     #> #   BarangayPSGC <chr>, HealthStatus <chr>, Quarantined <chr>, DateOnset <chr>,
@@ -287,7 +292,7 @@ latest officially released datasets as shown below:
 
 ``` r
 datadrop_id()
-#> [1] "12owR6MLIHhPzcvz0S2jTfbxlmi4fiAAm"
+#> [1] "1o_B1kvCvv-usk-WUR8M5qxgnRPKt023z"
 ```
 
 To get the *Google Drive* ID of a **DoH Data Drop** archive, the
@@ -308,21 +313,22 @@ folders within the specified *Google Drive*:
 ## List the files and folders inside the latest Google Drive DoH Data Drop
 gid <- datadrop_id()
 datadrop_ls(id = gid)
-#> # A tibble: 12 x 3
+#> # A tibble: 13 x 3
 #>    name                                      id                  drive_resource 
 #>  * <chr>                                     <chr>               <list>         
-#>  1 01 READ ME FIRST (11_14).pdf              1nP4DD5vxpFpP5FaPn… <named list [3…
-#>  2 DOH COVID Data Drop_ 20201114 - 08 Quara… 1pPKA462_fcokxxLge… <named list [3…
-#>  3 DOH COVID Data Drop_ 20201114 - 04 Case … 1jyWUYS8z0HaCd2k_A… <named list [3…
-#>  4 DOH COVID Data Drop_ 20201114 - 02 Metad… 1UgeG6X9Vd2-g-B2Hm… <named list [3…
-#>  5 DOH COVID Data Drop_ 20201114 - 05 DOH D… 1wLHMcPf1NGLzYvkuc… <named list [3…
-#>  6 DOH COVID Data Drop_ 20201114 - 03 Metad… 1r9G-dmAQNePNVZ0sR… <named list [3…
-#>  7 DOH COVID Data Drop_ 20201114 - 07 Testi… 1L8rHMfOwEqHwnFnAt… <named list [3…
-#>  8 DOH COVID Data Drop_ 20201114 - 10 DOH D… 1PdSd4HTNEx4aK0HQy… <named list [3…
-#>  9 DOH COVID Data Drop_ 20201114 - 06 DOH D… 1oQx-d75RzaolcD-Xc… <named list [3…
-#> 10 DOH COVID Data Drop_ 20201114 - 12 DDC T… 19QDOOzsbQdvUgLsRa… <named list [3…
-#> 11 DOH COVID Data Drop_ 20201114 - 11 DOH D… 19Ccr5ffeHKM73YkUV… <named list [3…
-#> 12 DOH COVID Data Drop_ 20201114 - 09 Quara… 170P-1mbRo3clT0cnw… <named list [3…
+#>  1 DOH Data Drop 20201115 - Changelog.xlsx   1_W8DSi_JYbhy-uish… <named list [3…
+#>  2 DOH COVID Data Drop_ 20201115 - 08 Quara… 1fUHZRSEr3m1payPiW… <named list [3…
+#>  3 DOH COVID Data Drop_ 20201115 - 04 Case … 1r6GmFaExRZ-GeB9G0… <named list [3…
+#>  4 DOH COVID Data Drop_ 20201115 - 05 DOH D… 1gcFfBP-ZZRLfyK1E5… <named list [3…
+#>  5 DOH COVID Data Drop_ 20201115 - 03 Metad… 1ATUxgWyTcOqedGXS4… <named list [3…
+#>  6 DOH COVID Data Drop_ 20201115 - 12 DDC T… 1ZCrmo45wmzChVdBnC… <named list [3…
+#>  7 DOH COVID Data Drop_ 20201115 - 11 DOH D… 1MOcLRJeHQdADULJvH… <named list [3…
+#>  8 DOH COVID Data Drop_ 20201115 - 09 Quara… 1VeQGiBFYzcXGNhEC0… <named list [3…
+#>  9 DOH COVID Data Drop_ 20201115 - 10 DOH D… 1-p7XXT46au_Tpyn48… <named list [3…
+#> 10 DOH COVID Data Drop_ 20201115 - 02 Metad… 1kHWINOXR8TD9ZNtQT… <named list [3…
+#> 11 DOH COVID Data Drop_ 20201115 - 06 DOH D… 17izfKebU9p4Y3otMh… <named list [3…
+#> 12 DOH COVID Data Drop_ 20201115 - 07 Testi… 1l_aKZxQ5tCUDx8bg7… <named list [3…
+#> 13 01 READ ME FIRST (11_15).pdf              1SUla2IUAlLl4GbYl1… <named list [3…
 ```
 
 ``` r
@@ -348,30 +354,7 @@ datadrop_ls(id = gid)
 #> 13 01 READ ME FIRST (11_01).pdf              1sipJeeWgMqmS5cYv5… <named list [3…
 ```
 
-#### Step 3: Get the Google Drive ID of the specific file required
-
-Using the list of files or folders in the specified *Google Drive*, the
-`datadrop_id_file` function can be used to extract the *Google Drive* ID
-of the file to be retrieved.
-
-``` r
-## Get the Google Drive ID of the Case Information file in the DoH Data Drop
-gid <- datadrop_id()
-tab <- datadrop_ls(id = gid)
-datadrop_id_file(tbl = tab, fn = "Case Information")
-#> [1] "1jyWUYS8z0HaCd2k_AVRgQqP2lcQ0913s"
-```
-
-``` r
-## Get the Google Drive ID of the Case Information file in the DoH Data Drop
-## on 1 November 2020
-gid <- datadrop_id(version = "archive", .date = "2020-11-01")
-tab <- datadrop_ls(id = gid)
-datadrop_id_file(tbl = tab, fn = "Case Information")
-#> [1] "1G3RITnBxmO0qIYAOGRBEVAbko-ZuU-1b"
-```
-
-#### Step 4: Retrieve the specified/required dataset and load into R
+#### Step 3: Retrieve the specified/required dataset and load into R
 
 Finally, using the specific *Google Drive* ID for the file of interest,
 the `datadrop_id_file` function is used to retrieve the file and output
@@ -381,22 +364,21 @@ it into [R](https://cran.r-project.org):
 ## Retrieve the latest Case Information file in the DoH Data Drop
 gid <- datadrop_id()
 tab <- datadrop_ls(id = gid)
-file_id <- datadrop_id_file(tbl = tab, fn = "Case Information")
-datadrop_get(id = file_id, path = tempfile())
-#> # A tibble: 406,337 x 22
+datadrop_get(tbl = tab, fn = "Case Information", path = tempfile())
+#> # A tibble: 407,838 x 22
 #>    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #>    <chr>    <dbl> <chr>    <chr> <chr>        <chr>            <chr>      
-#>  1 C912262     57 55 to 59 MALE  "2020-07-25" "2020-08-01"     2020-08-04 
-#>  2 C735296     67 65 to 69 FEMA… "2020-09-09" "2020-09-11"     2020-09-13 
-#>  3 C375626     36 35 to 39 MALE  "2020-07-20" "2020-07-25"     2020-08-01 
-#>  4 C750303     15 15 to 19 FEMA… "2020-07-27" "2020-08-02"     2020-08-05 
-#>  5 C855142     30 30 to 34 FEMA… ""           ""               2020-06-04 
-#>  6 C781806     27 25 to 29 FEMA… "2020-07-24" "2020-07-29"     2020-08-02 
-#>  7 C819239     28 25 to 29 MALE  ""           "2020-04-24"     2020-04-27 
-#>  8 C786885     65 65 to 69 MALE  "2020-07-19" "2020-07-21"     2020-07-25 
-#>  9 C800563      9 5 to 9   FEMA… "2020-07-13" "2020-07-16"     2020-07-19 
-#> 10 C587000     25 25 to 29 MALE  ""           ""               2020-07-21 
-#> # … with 406,327 more rows, and 15 more variables: DateDied <chr>,
+#>  1 C456422     32 30 to 34 MALE  ""           ""               2020-05-20 
+#>  2 C868990     20 20 to 24 FEMA… "2020-07-29" "2020-07-31"     2020-08-04 
+#>  3 C750896     52 50 to 54 FEMA… "2020-04-14" ""               2020-04-26 
+#>  4 C370776     40 40 to 44 MALE  "2020-07-25" "2020-07-27"     2020-08-02 
+#>  5 C287549     29 25 to 29 FEMA… "2020-07-13" "2020-07-14"     2020-07-17 
+#>  6 C523300     28 25 to 29 MALE  "2020-07-16" "2020-07-18"     2020-07-21 
+#>  7 C668826     26 25 to 29 MALE  "2020-09-16" "2020-08-24"     2020-10-24 
+#>  8 C873689     71 70 to 74 MALE  "2020-08-09" "2020-08-11"     2020-08-15 
+#>  9 C276574     40 40 to 44 MALE  "2020-07-26" "2020-07-27"     2020-07-31 
+#> 10 C576759     62 60 to 64 FEMA… "2020-05-27" "2020-05-28"     2020-06-03 
+#> # … with 407,828 more rows, and 15 more variables: DateDied <chr>,
 #> #   DateRecover <chr>, RemovalType <chr>, Admitted <chr>, RegionRes <chr>,
 #> #   ProvRes <chr>, CityMunRes <chr>, CityMuniPSGC <chr>, BarangayRes <chr>,
 #> #   BarangayPSGC <chr>, HealthStatus <chr>, Quarantined <chr>, DateOnset <chr>,
@@ -408,8 +390,7 @@ datadrop_get(id = file_id, path = tempfile())
 ## on 1 November 2020
 gid <- datadrop_id(version = "archive", .date = "2020-11-01")
 tab <- datadrop_ls(id = gid)
-file_id <- datadrop_id_file(tbl = tab, fn = "Case Information")
-datadrop_get(id = file_id, path = tempfile())
+datadrop_get(tbl = tab, fn = "Case Information", path = tempfile())
 #> # A tibble: 383,113 x 22
 #>    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf
 #>    <chr>    <dbl> <chr>    <chr> <chr>        <chr>            <chr>      
@@ -461,9 +442,9 @@ planned development milestones for `covidphdata` in order of priority:
     considered on a case-by-case basis.
 
   - [ ] **Submit to CRAN** - Once package reaches at least a
-    [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html)
+    [![Maturing](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://www.tidyverse.org/lifecycle/#maturing)
     or a
-    [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/lifecycle.html)
+    [![Stable](https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg)](https://www.tidyverse.org/lifecycle/#stable)
     development lifecycle, prepare and submit `covidphdata` package for
     inclusion in the [Comprehensive R Archive Network
     (CRAN)](https://cran.r-project.org).

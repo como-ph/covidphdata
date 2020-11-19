@@ -41,7 +41,7 @@ datadrop_ls <- function(id) {
 ################################################################################
 #
 #'
-#' Get link to a Google Drive file and download
+#' Download DoH Data Drop file via its Google Drive ID
 #'
 #' @param id A 33-character string identifier for the *Google Drive* file.
 #' @param path A character value for path for output file. If NULL, the
@@ -59,7 +59,7 @@ datadrop_ls <- function(id) {
 #' @examples
 #' ## Get Google Drive ID for Case Information file in latest DoH Data Drop
 #' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-#'                        fn = "Case")
+#'                        fn = "Metadata - Sheets.csv")
 #'
 #' ## Download the Case Information file into tempfile()
 #' datadrop_download(id = id, path = tempfile())
@@ -73,14 +73,90 @@ datadrop_download <- function(id,
                               path = NULL,
                               overwrite = FALSE,
                               verbose = TRUE) {
-  ## Get fields data CSV link
-  link <- sprintf(fmt = "https://docs.google.com/uc?id=%s", id)
-
   ## Download Fields.csv to temp directory
-  googledrive::drive_download(file = googledrive::as_id(link),
+  googledrive::drive_download(file = googledrive::as_id(id),
                               path = path,
                               overwrite = overwrite,
                               verbose = verbose)
+}
+
+
+##
+## Get the bitly link from DoH Data Drop Read Me First PDF
+##
+get_id <- function(.pdf) {
+  ## Extract information from PDF on link to folder of current data
+  readme <- pdftools::pdf_text(pdf = .pdf) %>%
+    stringr::str_split(pattern = "\n|\r\n") %>%
+    unlist()
+
+  ## Get id for current data drop google drive folder
+  x <- stringr::word(readme[stringr::str_detect(string = readme,
+                                                pattern = "bit.ly/*")][1], -1)
+
+  if(!stringr::str_detect(string = x, pattern = "http")) {
+    x <- paste("http://", x, sep = "")
+  }
+
+  x <- x %>%
+    stringr::str_replace(pattern = "https", replacement = "http") %>%
+    RCurl::getURL() %>%
+    stringr::str_extract_all(pattern = "[A-Za-z0-9@%#&()+*$,._\\-]{33}") %>%
+    unlist()
+
+  ## remove .pdf
+  file.remove(.pdf)
+
+  ## Return x
+  return(x)
+}
+
+##
+## Get file extension
+##
+get_ext <- function(tbl, fn) {
+  ## Check if fn is found in tbl$name
+  if(any(stringr::str_detect(string = tbl[["name"]], pattern = fn))) {
+    ##
+    ext <- tbl %>%
+      filter(stringr::str_detect(string = name, pattern = fn)) %>%
+      select(name) %>%
+      as.character() %>%
+      str_extract(pattern = ".csv|.xlsx")
+  } else {
+    ## Set id to NULL
+    ext <- NULL
+    warning(
+      paste(
+        strwrap(
+          x = paste("File/s with the word/s ", fn, " was not found in the Data
+                    Drop folder. Please revise as needed and try again. Returning
+                    NULL.", sep = ""),
+          width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ##
+  return(ext)
+}
+
+
+
+##
+## x <- datadrop_id() %>% datadrop_ls()
+##
+get_drop_date <- function(tbl, .year = format(Sys.Date(), "%Y")) {
+  dropDate <- tbl %>%
+    dplyr::filter(stringr::str_detect(string = name, pattern = "READ ME")) %>%
+    dplyr::select(name) %>%
+    stringr::str_extract(pattern = "[0-9]{2}[/\\_\\-]{1}[0-9]{2}") %>%
+    paste(.year, sep = "/") %>%
+    lubridate::mdy()
+
+  return(dropDate)
 }
 
 
