@@ -7,11 +7,14 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-![R-CMD-check](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)
-![test-coverage](https://github.com/como-ph/covidphdata/workflows/test-coverage/badge.svg)
+[![R build
+status](https://github.com/como-ph/covidphdata/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/covidphdata/actions)
+[![R build
+status](https://github.com/como-ph/covidphdata/workflows/test-coverage/badge.svg)](https://github.com/como-ph/covidphdata/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/covidphdata/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/covidphdata?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/covidphdata/badge)](https://www.codefactor.io/repository/github/como-ph/covidphdata)
+[![DOI](https://zenodo.org/badge/282435192.svg)](https://zenodo.org/badge/latestdoi/282435192)
 <!-- badges: end -->
 
 The [Philippines Department of Health](https://www.doh.gov.ph) has made
@@ -102,10 +105,10 @@ developed this `covidphdata` package based on the following
   - output of **coherent and compliant data structures** ready for
     various applications.
 
-Finally, we want to contribute to the both the *public discourse* and to
-the *practice* of **open data** and **open science** in the Philippines
-and encourage others to do the same. Our group’s codebase for our work
-on COVID-19 modelling (primarily in [R](https://cran.r-project.org)
+Finally, we want to contribute to both the *public discourse* and to the
+*practice* of **open data** and **open science** in the Philippines and
+encourage others to do the same. Our group’s codebase for our work on
+COVID-19 modelling (primarily in [R](https://cran.r-project.org)
 language for statistical computing) is available publicly via
 [GitHub](https://github.com/como-ph) including the one for the
 `covidphdata` package (see <https://github.com/como-ph/covidphdata>).
@@ -230,16 +233,13 @@ linked through the following general workflow:
 library(covidphdata)
 library(googledrive)
 
-## Step 1: Authenticate as a Google Drive user
-googledrive::drive_auth()
-
-## Step 2: Get Google Drive ID for latest DoH Data Drop
+## Step 1: Get Google Drive ID for latest DoH Data Drop
 gid <- datadrop_id()
 
-## Step 3: List the files and folders available in the latest DoH Data Drop
+## Step 2: List the files and folders available in the latest DoH Data Drop
 data_list <- datadrop_ls(id = gid)
 
-## Step 4: Retrieve the specified/required dataset and load into R
+## Step 3: Retrieve the specified/required dataset and load into R
 datadrop_get(tbl = data_list, fn = "Case Information", path = tempfile())
 ```
 
