@@ -244,6 +244,6 @@ The main limitations and challenges in the development of the `covidphdata` pack
 
 ## Community guidelines
 
-Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/covidphdata/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://github.com/como-ph/covidphdata/blob/master/CONTRIBUTING.md).
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/covidphdata/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://github.com/como-ph/covidphdata/blob/master/.github/CONTRIBUTING.md).
 
-This project is released with a [Contributor Code of Conduct](https://github.com/como-ph/covidphdata/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](https://github.com/como-ph/covidphdata/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.

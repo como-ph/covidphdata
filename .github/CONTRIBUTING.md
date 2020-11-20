@@ -18,10 +18,10 @@ git clone https://github.com/<yourgithubusername>/covidphdata.git
 at `como-ph/covidphdata`, by doing 
 
 ```
-git remote add upstream https://github.com/ropensci/rnoaa.git
+git remote add upstream https://github.com/como-ph/covidphdata.git
 ```
 
-Before making changes make sure to pull changes in from `upstream` by doing 
+* Before making changes make sure to pull changes in from `upstream` by doing 
 either `git fetch upstream` then merge later or `git pull upstream` to fetch 
 and merge in one step
 
