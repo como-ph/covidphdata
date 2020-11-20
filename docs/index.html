@@ -143,7 +143,7 @@ install.packages("covidphdata")
 <div id="google-authentication" class="section level3">
 <h3 class="hasAnchor">
 <a href="#google-authentication" class="anchor"></a>Google authentication</h3>
-<p>The <strong>DoH Data Drop</strong> is distributed via <em>Google Drive</em> as shared folders and files that can be accessed by anyone with a link. From a user who accesses the <strong>DoH Data Drop</strong> interactively (i.e., clicking the <strong>DoH Data Drop</strong> daily link and then accessing the folders and files on <em>Google Drive</em> on the browser), this would mean that one doesn’t have to be an authorised user to access the files. On the other hand, for an <a href="https://cran.r-project.org">R</a> user, it would be convenient to be able to access and retrieve the <strong>DoH Data Drop</strong> folders and files within <a href="https://cran.r-project.org">R</a> without having to do a seprate steps of dealing with going to a browser and downloading the data from the <strong>DoH Data Drop</strong> before being able to access them in <a href="https://cran.r-project.org">R</a>. This is the main use case for the <code>covidphdata</code> package.</p>
+<p>The <strong>DoH Data Drop</strong> is distributed via <em>Google Drive</em> as shared folders and files that can be accessed by anyone with a link. From a user who accesses the <strong>DoH Data Drop</strong> interactively (i.e., clicking the <strong>DoH Data Drop</strong> daily link and then accessing the folders and files on <em>Google Drive</em> on the browser), this would mean that one doesn’t have to be an authorised user to access the files. On the other hand, for an <a href="https://cran.r-project.org">R</a> user, it would be convenient to be able to access and retrieve the <strong>DoH Data Drop</strong> folders and files within <a href="https://cran.r-project.org">R</a> without having to do separate steps of dealing with going to a browser and downloading the data from the <strong>DoH Data Drop</strong> before being able to access them in <a href="https://cran.r-project.org">R</a>. This is the main use case for the <code>covidphdata</code> package.</p>
 <p>The <code>covidphdata</code> is built on the key functionalities of the <code>googledrive</code> package and follows the basic workflow of data retrieval from <em>Google Drive</em>. The <code>googledrive</code> package requires authenticating with <em>Google Drive</em> and has functions that facilitate this specifically its <code>drive_auth</code> function. So, the easiest way to authenticate as a <em>Google Drive</em> user is to make a call to the <code>drive_auth</code> function as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load googledrive package</span>
@@ -173,20 +173,20 @@ install.packages("covidphdata")
 <span class="co">## Step 3: Retrieve the specified/required dataset and load into R</span>
 <span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">data_list</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This workflow produces the following output:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt; # A tibble: 413,430 x 22</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt; # A tibble: 415,067 x 22</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;  1 C961991     38 35 to 39 FEMA… 2020-07-20   "2020-07-24"     2020-07-28 </span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  2 C374422     51 50 to 54 FEMA… 2020-05-25   ""               2020-05-31 </span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  3 C927869     68 65 to 69 MALE  2020-07-27   "2020-07-29"     2020-08-01 </span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  4 C111115     55 55 to 59 MALE  2020-07-14   "2020-07-16"     2020-07-19 </span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  5 C711756     28 25 to 29 FEMA… 2020-06-17   ""               2020-06-23 </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  6 C270636     28 25 to 29 MALE  2020-05-10   "2020-08-24"     2020-08-28 </span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  7 C294694     50 50 to 54 FEMA… 2020-07-22   "2020-07-25"     2020-08-02 </span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  8 C341042     52 50 to 54 MALE  2020-07-24   "2020-07-28"     2020-08-02 </span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  9 C902321     54 50 to 54 FEMA… 2020-07-01   "2020-07-04"     2020-07-06 </span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; 10 C267766     52 50 to 54 FEMA… 2020-07-02   "2020-07-03"     2020-07-05 </span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; # … with 413,420 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;  1 C107690     23 20 to 24 MALE  "2020-07-17" 2020-07-24       2020-07-28 </span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  2 C198106     40 40 to 44 MALE  "2020-07-08" 2020-07-11       2020-07-23 </span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  3 C223825     25 25 to 29 MALE  "2020-07-22" 2020-07-27       2020-08-01 </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  4 C145699     49 45 to 49 MALE  ""           2020-08-04       2020-08-08 </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  5 C991185     62 60 to 64 FEMA… "2020-07-21" 2020-07-26       2020-07-31 </span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  6 C502968     42 40 to 44 MALE  "2020-08-07" 2020-08-07       2020-08-10 </span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  7 C970007     47 45 to 49 MALE  "2020-05-06" 2020-05-08       2020-05-29 </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  8 C220019     32 30 to 34 MALE  "2020-03-10" 2020-07-12       2020-07-18 </span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  9 C690794     35 35 to 39 MALE  "2020-07-14" 2020-07-16       2020-07-19 </span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; 10 C475319     27 25 to 29 MALE  "2020-07-16" 2020-07-25       2020-08-01 </span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; # … with 415,057 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
 <span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span></span>
@@ -202,20 +202,20 @@ install.packages("covidphdata")
   <span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>fn <span class="op">=</span> <span class="st">"Case Information"</span>,           <span class="co">## Step 3</span>
                path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>                 </code></pre></div>
 <p>This outputs this result:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 413,430 x 22</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 415,067 x 22</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1 C961991     38 35 to 39 FEMA… 2020-07-20   "2020-07-24"     2020-07-28 </span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2 C374422     51 50 to 54 FEMA… 2020-05-25   ""               2020-05-31 </span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3 C927869     68 65 to 69 MALE  2020-07-27   "2020-07-29"     2020-08-01 </span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4 C111115     55 55 to 59 MALE  2020-07-14   "2020-07-16"     2020-07-19 </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5 C711756     28 25 to 29 FEMA… 2020-06-17   ""               2020-06-23 </span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6 C270636     28 25 to 29 MALE  2020-05-10   "2020-08-24"     2020-08-28 </span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7 C294694     50 50 to 54 FEMA… 2020-07-22   "2020-07-25"     2020-08-02 </span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8 C341042     52 50 to 54 MALE  2020-07-24   "2020-07-28"     2020-08-02 </span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9 C902321     54 50 to 54 FEMA… 2020-07-01   "2020-07-04"     2020-07-06 </span></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10 C267766     52 50 to 54 FEMA… 2020-07-02   "2020-07-03"     2020-07-05 </span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 413,420 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1 C107690     23 20 to 24 MALE  "2020-07-17" 2020-07-24       2020-07-28 </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2 C198106     40 40 to 44 MALE  "2020-07-08" 2020-07-11       2020-07-23 </span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3 C223825     25 25 to 29 MALE  "2020-07-22" 2020-07-27       2020-08-01 </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4 C145699     49 45 to 49 MALE  ""           2020-08-04       2020-08-08 </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5 C991185     62 60 to 64 FEMA… "2020-07-21" 2020-07-26       2020-07-31 </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6 C502968     42 40 to 44 MALE  "2020-08-07" 2020-08-07       2020-08-10 </span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7 C970007     47 45 to 49 MALE  "2020-05-06" 2020-05-08       2020-05-29 </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8 C220019     32 30 to 34 MALE  "2020-03-10" 2020-07-12       2020-07-18 </span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9 C690794     35 35 to 39 MALE  "2020-07-14" 2020-07-16       2020-07-19 </span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10 C475319     27 25 to 29 MALE  "2020-07-16" 2020-07-25       2020-08-01 </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 415,057 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span></span>
 <span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span></span>
 <span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span></span>
@@ -231,7 +231,7 @@ install.packages("covidphdata")
 <p>The function <code>datadrop_id</code> wraps these two <code>datadrop_id_*</code> functions and outputs the appropriate <em>Google Drive</em> ID based on specified parameters. The default output of <code>datadrop_id</code> is the <em>Google Drive</em> ID of the latest officially released datasets as shown below:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "1w3pmNDk7_B1I99Ee9nWxLmDbGS24wO4a"</span></code></pre></div>
+<span class="co">#&gt; [1] "1MRLll1P9ltqg1nNmUFVr_xGjKkA6BFEX"</span></code></pre></div>
 <p>To get the <em>Google Drive</em> ID of a <strong>DoH Data Drop</strong> archive, the following parameters need to be set:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"archive"</span>, .date <span class="op">=</span> <span class="st">"2020-11-01"</span><span class="op">)</span>
@@ -248,19 +248,19 @@ install.packages("covidphdata")
 <span class="co">#&gt; # A tibble: 13 x 3</span>
 <span class="co">#&gt;    name                                      id                  drive_resource </span>
 <span class="co">#&gt;  * &lt;chr&gt;                                     &lt;chr&gt;               &lt;list&gt;         </span>
-<span class="co">#&gt;  1 DOH COVID Data Drop_ 20201119 - 08 Quara… 1A-otZVaW-3UC-Rgff… &lt;named list [3…</span>
-<span class="co">#&gt;  2 DOH COVID Data Drop_ 20201119 - 04 Case … 1xsDB3G20X4eNWJJ4_… &lt;named list [3…</span>
-<span class="co">#&gt;  3 DOH COVID Data Drop_ 20201119 - 07 Testi… 1W-j048SBY3twsWG6O… &lt;named list [3…</span>
-<span class="co">#&gt;  4 DOH COVID Data Drop_ 20201119 - 12 DDC T… 1ISHfvArglpF5I4kXX… &lt;named list [3…</span>
-<span class="co">#&gt;  5 DOH COVID Data Drop_ 20201119 - 06 DOH D… 1mmmLjfCKDKF3g_FFN… &lt;named list [3…</span>
-<span class="co">#&gt;  6 DOH COVID Data Drop_ 20201119 - 05 DOH D… 1tH0b1GIyFPCrm2NC8… &lt;named list [3…</span>
-<span class="co">#&gt;  7 DOH Data Drop 20201119 - Changelog.xlsx   13vhPEEQtqodwFgYec… &lt;named list [3…</span>
-<span class="co">#&gt;  8 DOH COVID Data Drop_ 20201119 - 02 Metad… 1tL4iKDgqjfth6swG8… &lt;named list [3…</span>
-<span class="co">#&gt;  9 DOH COVID Data Drop_ 20201119 - 10 DOH D… 12piPQ1d-N_fHDo1H_… &lt;named list [3…</span>
-<span class="co">#&gt; 10 DOH COVID Data Drop_ 20201119 - 09 Quara… 1isJIuifaD7fhZQMH7… &lt;named list [3…</span>
-<span class="co">#&gt; 11 DOH COVID Data Drop_ 20201119 - 03 Metad… 105CnWhTtt5G9OJM8J… &lt;named list [3…</span>
-<span class="co">#&gt; 12 DOH COVID Data Drop_ 20201119 - 11 DOH D… 1K8EH29VfCeZCQTzw5… &lt;named list [3…</span>
-<span class="co">#&gt; 13 01 READ ME FIRST (11_19).pdf              1lpvlc_gaswAHW9pwi… &lt;named list [3…</span></code></pre></div>
+<span class="co">#&gt;  1 DOH COVID Data Drop_ 20201120 - 08 Quara… 1RPmpHgDQsONZpw8wB… &lt;named list [3…</span>
+<span class="co">#&gt;  2 DOH COVID Data Drop_ 20201120 - 04 Case … 17WTf4KrQA-usbnTC_… &lt;named list [3…</span>
+<span class="co">#&gt;  3 DOH COVID Data Drop_ 20201120 - 11 DOH D… 1UcyFGg3j5bB5jNghg… &lt;named list [3…</span>
+<span class="co">#&gt;  4 DOH COVID Data Drop_ 20201120 - 10 DOH D… 1gmzTOd_xWuIgERyrP… &lt;named list [3…</span>
+<span class="co">#&gt;  5 DOH COVID Data Drop_ 20201120 - 07 Testi… 1sU46220vCV9EnItk0… &lt;named list [3…</span>
+<span class="co">#&gt;  6 DOH Data Drop 20201120 - Changelog.xlsx   1jPy8rQiAbxqteVTGU… &lt;named list [3…</span>
+<span class="co">#&gt;  7 DOH COVID Data Drop_ 20201120 - 05 DOH D… 1nctTh7Gi_oIMsG1PY… &lt;named list [3…</span>
+<span class="co">#&gt;  8 DOH COVID Data Drop_ 20201120 - 06 DOH D… 1fizrq93F8Tf-pLKku… &lt;named list [3…</span>
+<span class="co">#&gt;  9 DOH COVID Data Drop_ 20201120 - 03 Metad… 1Oznqf9cDIFiESBM_v… &lt;named list [3…</span>
+<span class="co">#&gt; 10 DOH COVID Data Drop_ 20201120 - 02 Metad… 13TjpVsV5GrWDKvlev… &lt;named list [3…</span>
+<span class="co">#&gt; 11 DOH COVID Data Drop_ 20201120 - 09 Quara… 1OPDai43-Hekmrcqgx… &lt;named list [3…</span>
+<span class="co">#&gt; 12 DOH COVID Data Drop_ 20201120 - 12 DDC T… 1xd8iDp_b-6d4eR-3j… &lt;named list [3…</span>
+<span class="co">#&gt; 13 01 READ ME FIRST (11_20).pdf              1GdccCefnVKKAhRkRt… &lt;named list [3…</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## List the files and folders inside the Google Drive DoH Data Drop on </span>
 <span class="co">## 1 November 2020</span>
@@ -292,20 +292,20 @@ install.packages("covidphdata")
 <span class="va">gid</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_id_latest.html">datadrop_id</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datadrop_ls.html">datadrop_ls</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">gid</span><span class="op">)</span>
 <span class="fu"><a href="reference/datadrop_get.html">datadrop_get</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">tab</span>, fn <span class="op">=</span> <span class="st">"Case Information"</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 413,430 x 22</span>
+<span class="co">#&gt; # A tibble: 415,067 x 22</span>
 <span class="co">#&gt;    CaseCode   Age AgeGroup Sex   DateSpecimen DateResultRelea… DateRepConf</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      </span>
-<span class="co">#&gt;  1 C961991     38 35 to 39 FEMA… 2020-07-20   "2020-07-24"     2020-07-28 </span>
-<span class="co">#&gt;  2 C374422     51 50 to 54 FEMA… 2020-05-25   ""               2020-05-31 </span>
-<span class="co">#&gt;  3 C927869     68 65 to 69 MALE  2020-07-27   "2020-07-29"     2020-08-01 </span>
-<span class="co">#&gt;  4 C111115     55 55 to 59 MALE  2020-07-14   "2020-07-16"     2020-07-19 </span>
-<span class="co">#&gt;  5 C711756     28 25 to 29 FEMA… 2020-06-17   ""               2020-06-23 </span>
-<span class="co">#&gt;  6 C270636     28 25 to 29 MALE  2020-05-10   "2020-08-24"     2020-08-28 </span>
-<span class="co">#&gt;  7 C294694     50 50 to 54 FEMA… 2020-07-22   "2020-07-25"     2020-08-02 </span>
-<span class="co">#&gt;  8 C341042     52 50 to 54 MALE  2020-07-24   "2020-07-28"     2020-08-02 </span>
-<span class="co">#&gt;  9 C902321     54 50 to 54 FEMA… 2020-07-01   "2020-07-04"     2020-07-06 </span>
-<span class="co">#&gt; 10 C267766     52 50 to 54 FEMA… 2020-07-02   "2020-07-03"     2020-07-05 </span>
-<span class="co">#&gt; # … with 413,420 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span>
+<span class="co">#&gt;  1 C107690     23 20 to 24 MALE  "2020-07-17" 2020-07-24       2020-07-28 </span>
+<span class="co">#&gt;  2 C198106     40 40 to 44 MALE  "2020-07-08" 2020-07-11       2020-07-23 </span>
+<span class="co">#&gt;  3 C223825     25 25 to 29 MALE  "2020-07-22" 2020-07-27       2020-08-01 </span>
+<span class="co">#&gt;  4 C145699     49 45 to 49 MALE  ""           2020-08-04       2020-08-08 </span>
+<span class="co">#&gt;  5 C991185     62 60 to 64 FEMA… "2020-07-21" 2020-07-26       2020-07-31 </span>
+<span class="co">#&gt;  6 C502968     42 40 to 44 MALE  "2020-08-07" 2020-08-07       2020-08-10 </span>
+<span class="co">#&gt;  7 C970007     47 45 to 49 MALE  "2020-05-06" 2020-05-08       2020-05-29 </span>
+<span class="co">#&gt;  8 C220019     32 30 to 34 MALE  "2020-03-10" 2020-07-12       2020-07-18 </span>
+<span class="co">#&gt;  9 C690794     35 35 to 39 MALE  "2020-07-14" 2020-07-16       2020-07-19 </span>
+<span class="co">#&gt; 10 C475319     27 25 to 29 MALE  "2020-07-16" 2020-07-25       2020-08-01 </span>
+<span class="co">#&gt; # … with 415,057 more rows, and 15 more variables: DateDied &lt;chr&gt;,</span>
 <span class="co">#&gt; #   DateRecover &lt;chr&gt;, RemovalType &lt;chr&gt;, Admitted &lt;chr&gt;, RegionRes &lt;chr&gt;,</span>
 <span class="co">#&gt; #   ProvRes &lt;chr&gt;, CityMunRes &lt;chr&gt;, CityMuniPSGC &lt;chr&gt;, BarangayRes &lt;chr&gt;,</span>
 <span class="co">#&gt; #   BarangayPSGC &lt;chr&gt;, HealthStatus &lt;chr&gt;, Quarantined &lt;chr&gt;, DateOnset &lt;chr&gt;,</span>
