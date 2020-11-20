@@ -12,6 +12,9 @@ template:
 
 home:
   links:
+  - text: Visit the Philippines Department of Health Data Drop
+    href: https://bit.ly/DataDropPH
+
   - text: Read about CoMo Philippines
     href: https://como-ph.github.io/
 
