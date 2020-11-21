@@ -14,9 +14,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-
-library(googledrive)
-googledrive::drive_deauth()
 ```
 
 # covidphdata: An Interface to the Philippines Department of Health COVID-19 Data Drop <img src="man/figures/logo.png" width="200px" align="right" />
@@ -87,7 +84,7 @@ remotes::install_github("como-ph/covidphdata")
 
 ### Google authentication
 
-The **DoH Data Drop** is distributed via *Google Drive* as shared folders and files that can be accessed by anyone with a link. From a user who accesses the **DoH Data Drop** interactively (i.e., clicking the **DoH Data Drop** daily link and then accessing the folders and files on *Google Drive* on the browser), this would mean that one doesn't have to be an authorised user to access the files. On the other hand, for an [R](https://cran.r-project.org) user, it would be convenient to be able to access and retrieve the **DoH Data Drop** folders and files within [R](https://cran.r-project.org) without having to do a seprate steps of dealing with going to a browser and downloading the data from the **DoH Data Drop** before being able to access them in [R](https://cran.r-project.org). This is the main use case for the `covidphdata` package.
+The **DoH Data Drop** is distributed via *Google Drive* as shared folders and files that can be accessed by anyone with a link. From a user who accesses the **DoH Data Drop** interactively (i.e., clicking the **DoH Data Drop** daily link and then accessing the folders and files on *Google Drive* on the browser), this would mean that one doesn't have to be an authorised user to access the files. On the other hand, for an [R](https://cran.r-project.org) user, it would be convenient to be able to access and retrieve the **DoH Data Drop** folders and files within [R](https://cran.r-project.org) without having to do separate steps of dealing with going to a browser and downloading the data from the **DoH Data Drop** before being able to access them in [R](https://cran.r-project.org). This is the main use case for the `covidphdata` package.
 
 The `covidphdata` is built on the key functionalities of the `googledrive` package and follows the basic workflow of data retrieval from *Google Drive*. The `googledrive` package requires authenticating with *Google Drive* and has functions that facilitate this specifically its `drive_auth` function. So, the easiest way to authenticate as a *Google Drive* user is to make a call to the `drive_auth` function as follows:
 
