@@ -17,6 +17,9 @@
 #' @examples
 #' library(googledrive)
 #'
+#' ## Authentication
+#' googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'
 #' ## Deauthorise
 #' googledrive::drive_deauth()
 #'
@@ -63,6 +66,9 @@ datadrop_ls <- function(id) {
 #'
 #' @examples
 #' library(googledrive)
+#'
+#' ## Authentication
+#' googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
 #'
 #' ## Deauthorise
 #' googledrive::drive_deauth()
