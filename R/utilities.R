@@ -15,7 +15,7 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #'   library(googledrive)
 #'
 #'   ## Authentication
@@ -67,7 +67,7 @@ datadrop_ls <- function(id) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #'   library(googledrive)
 #'
 #'   ## Authentication

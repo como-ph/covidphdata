@@ -41,7 +41,7 @@
 #'  `path`.
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #'   library(googledrive)
 #'
 #'   ## Authentication

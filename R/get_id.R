@@ -54,7 +54,7 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #'   library(googledrive)
 #'
 #'   ## Deauthorise
@@ -324,7 +324,7 @@ datadrop_id <- function(verbose = TRUE,
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' dontrun{
+#' \dontrun{
 #'   library(googledrive)
 #'
 #'   ## Authentication
