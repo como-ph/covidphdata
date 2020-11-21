@@ -15,19 +15,21 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' library(googledrive)
+#' dontrun{
+#'   library(googledrive)
 #'
-#' ## Authentication
-#' googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
 #'
-#' ## Deauthorise
-#' googledrive::drive_deauth()
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
 #'
-#' ## Get Google Drive ID of latest DoH Data Drop
-#' id <- datadrop_id_latest()
+#'   ## Get Google Drive ID of latest DoH Data Drop
+#'   id <- datadrop_id_latest()
 #'
-#' ## List the contents of the latest DoH Data Drop in Google Drive
-#' datadrop_ls(id = id)
+#'   ## List the contents of the latest DoH Data Drop in Google Drive
+#'   datadrop_ls(id = id)
+#' }
 #'
 #' @export
 #'
@@ -65,20 +67,22 @@ datadrop_ls <- function(id) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' library(googledrive)
+#' dontrun{
+#'   library(googledrive)
 #'
-#' ## Authentication
-#' googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
 #'
-#' ## Deauthorise
-#' googledrive::drive_deauth()
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
 #'
-#' ## Get Google Drive ID for Case Information file in latest DoH Data Drop
-#' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-#'                        fn = "Metadata - Sheets.csv")
+#'   ## Get Google Drive ID for Case Information file in latest DoH Data Drop
+#'   id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
+#'                          fn = "Metadata - Sheets.csv")
 #'
-#' ## Download the Case Information file into tempfile()
-#' datadrop_download(id = id, path = tempfile())
+#'   ## Download the Case Information file into tempfile()
+#'   datadrop_download(id = id, path = tempfile())
+#' }
 #'
 #' @export
 #'

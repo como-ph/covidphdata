@@ -54,19 +54,21 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' library(googledrive)
+#' dontrun{
+#'   library(googledrive)
 #'
-#' ## Deauthorise
-#' googledrive::drive_deauth()
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
 #'
-#' ## Two ways to get the Google Drive ID of the latest DoH Data Drop
-#' datadrop_id_latest()
-#' datadrop_id()
+#'   ## Two ways to get the Google Drive ID of the latest DoH Data Drop
+#'   datadrop_id_latest()
+#'   datadrop_id()
 #'
-#' ## Two ways to get the Google Drive ID of the archive DoH Data Drop for
-#' ## 1 November 2020
-#' datadrop_id_archive(.date = "2020-11-01")
-#' datadrop_id(version = "archive", .date = "2020-11-01")
+#'   ## Two ways to get the Google Drive ID of the archive DoH Data Drop for
+#'   ## 1 November 2020
+#'   datadrop_id_archive(.date = "2020-11-01")
+#'   datadrop_id(version = "archive", .date = "2020-11-01")
+#' }
 #'
 #' @rdname datadrop_id
 #' @export
@@ -201,9 +203,6 @@ datadrop_id_archive <- function(verbose = TRUE,
     dplyr::select(id) %>%
     as.character()
 
-  ## Get dropDate
-  #dropDate <- .date
-
   ## List contents of Data Drop Archive Google Drive Folder
   dropArchive <- googledrive::drive_get(id = y) %>%
     googledrive::drive_ls()
@@ -325,25 +324,27 @@ datadrop_id <- function(verbose = TRUE,
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' library(googledrive)
+#' dontrun{
+#'   library(googledrive)
 #'
-#' ## Authentication
-#' googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
 #'
-#' ## Deauthorise
-#' googledrive::drive_deauth()
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
 #'
-#' ## Typical workflow
-#' tbl <- datadrop_ls(id = datadrop_id())
-#' datadrop_id_file(tbl = tbl, fn = "Case Information")
+#'   ## Typical workflow
+#'   tbl <- datadrop_ls(id = datadrop_id())
+#'   datadrop_id_file(tbl = tbl, fn = "Case Information")
 #'
-#' ## Piped workflow using magrittr %>%
-#' library(magrittr)
+#'   ## Piped workflow using magrittr %>%
+#'   library(magrittr)
 #'
-#' ## Get the id for the latest Case Information file
-#' datadrop_id() %>%
-#'   datadrop_ls() %>%
-#'   datadrop_id_file(fn = "Case Information")
+#'   ## Get the id for the latest Case Information file
+#'   datadrop_id() %>%
+#'     datadrop_ls() %>%
+#'     datadrop_id_file(fn = "Case Information")
+#' }
 #'
 #' @rdname datadrop_id
 #' @export
