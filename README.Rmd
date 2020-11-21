@@ -225,7 +225,7 @@ datadrop_get(tbl = tab, fn = "Case Information", path = tempfile())
 
 The `covidphdata` package is in active development. Following are the planned development milestones for `covidphdata` in order of priority:
 
-* [X] **Develop data retrieval functions** - done
+* [X] **Develop data retrieval functions** - done; undergoing use tests by author and other potential users.
 
 * [ ] **Develop basic data cleaning, processing and structuring functions** - It should be noted that the current functions available for the `covidphdata` data retrieval workflow gets the data from the **DoH Data Drop** as is; that is no other processing or manipulation is done to the data. This component will be served by another set of functions for *cleaning*, *processing* and *structuring* of the retrieved datasets. These functions are currently under development.
 
