@@ -90,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">covidphdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -176,17 +176,20 @@ to TRUE.</p></td>
     <pre class="examples"><div class='input'><span class='co'>## Get Google Drive ID for Case Information file in latest DoH Data Drop</span>
 <span class='va'>id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id_file</a></span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'><a href='datadrop_id_latest.html'>datadrop_id</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
                        fn <span class='op'>=</span> <span class='st'>"Metadata - Sheets.csv"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-20.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_20).pdf</span>
+</div><div class='output co'>#&gt; <span class='message'>Using an auto-discovered, cached token.</span>
+#&gt; <span class='message'>To suppress this message, modify your code or options to clearly consent to the use of a cached token.</span>
+#&gt; <span class='message'>See gargle's "Non-interactive auth" vignette for more details:</span>
+#&gt; <span class='message'>https://gargle.r-lib.org/articles/non-interactive-auth.html</span></div><div class='output co'>#&gt; <span class='message'>The googledrive package is using a cached token for ernest@guevarra.io.</span></div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
+#&gt; <span class='message'>2020-11-21.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
+#&gt; <span class='message'>  * 01 READ ME FIRST (11_21).pdf</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f2f532d9b</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpIEboI1/filefc752316bd16</span></div><div class='input'>
 <span class='co'>## Download the Case Information file into tempfile()</span>
 <span class='fu'>datadrop_download</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>, path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201120 - 02 Metadata - Sheets.csv</span>
+#&gt; <span class='message'>  * DOH COVID Data Drop_ 20201121 - 02 Metadata - Sheets.csv</span>
 #&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f7dd73362</span></div><div class='input'>
+#&gt; <span class='message'>  * /var/folders/fk/s0yv8hhn2cs_nfsmzhm4dmhc0000gn/T//RtmpIEboI1/filefc7529d80159</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
