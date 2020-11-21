@@ -101,6 +101,11 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
                       overwrite = overwrite,
                       verbose = verbose)
 
+    ## Check if path is NULL
+    if (is.null(path)) {
+      path <- get_path(tbl = tbl, id = id)
+    }
+
     ## Check file extension
     if(ext == ".csv") {
       x <- read.csv(file = path)
@@ -112,6 +117,11 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
 
       ## Rename output
       names(x) <- c("List of Changes", "Most Common Changes")
+    }
+
+    ## Keep file?
+    if (!keep) {
+      unlink(path)
     }
   } else {
     x <- NULL
