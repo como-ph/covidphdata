@@ -21,11 +21,21 @@ the specified \emph{Google Drive} for \strong{DoH Data Drop}.
 List files and folders within a specified DoH Data Drop Google Drive folder
 }
 \examples{
-## Get Google Drive ID of latest DoH Data Drop
-id <- datadrop_id_latest()
+\dontrun{
+  library(googledrive)
 
-## List the contents of the latest DoH Data Drop in Google Drive
-datadrop_ls(id = id)
+  ## Authentication
+  googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+
+  ## Deauthorise
+  googledrive::drive_deauth()
+
+  ## Get Google Drive ID of latest DoH Data Drop
+  id <- datadrop_id_latest()
+
+  ## List the contents of the latest DoH Data Drop in Google Drive
+  datadrop_ls(id = id)
+}
 
 }
 \author{

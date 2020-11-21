@@ -82,26 +82,43 @@ With this \emph{Google Drive} ID, other functions can then be used to retrieve
 information and data from the \emph{Google Drive} specified by this ID.
 }
 \examples{
-## Two ways to get the Google Drive ID of the latest DoH Data Drop
-datadrop_id_latest()
-datadrop_id()
+\dontrun{
+  library(googledrive)
 
-## Two ways to get the Google Drive ID of the archive DoH Data Drop for
-## 1 November 2020
-datadrop_id_archive(.date = "2020-11-01")
-datadrop_id(version = "archive", .date = "2020-11-01")
+  ## Deauthorise
+  googledrive::drive_deauth()
 
-## Typical workflow
-tbl <- datadrop_ls(id = datadrop_id())
-datadrop_id_file(tbl = tbl, fn = "Case Information")
+  ## Two ways to get the Google Drive ID of the latest DoH Data Drop
+  datadrop_id_latest()
+  datadrop_id()
 
-## Piped workflow using magrittr \%>\%
-library(magrittr)
+  ## Two ways to get the Google Drive ID of the archive DoH Data Drop for
+  ## 1 November 2020
+  datadrop_id_archive(.date = "2020-11-01")
+  datadrop_id(version = "archive", .date = "2020-11-01")
+}
 
-## Get the id for the latest Case Information file
-datadrop_id() \%>\%
-  datadrop_ls() \%>\%
-  datadrop_id_file(fn = "Case Information")
+\dontrun{
+  library(googledrive)
+
+  ## Authentication
+  googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+
+  ## Deauthorise
+  googledrive::drive_deauth()
+
+  ## Typical workflow
+  tbl <- datadrop_ls(id = datadrop_id())
+  datadrop_id_file(tbl = tbl, fn = "Case Information")
+
+  ## Piped workflow using magrittr \%>\%
+  library(magrittr)
+
+  ## Get the id for the latest Case Information file
+  datadrop_id() \%>\%
+    datadrop_ls() \%>\%
+    datadrop_id_file(fn = "Case Information")
+}
 
 }
 \author{
