@@ -28,7 +28,7 @@
 
 datadrop_ls <- function(id) {
   ## Google Drive deauthorisation
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Get Google Drive directory structure and information
   y <- googledrive::drive_ls(googledrive::drive_get(id = id))
@@ -141,6 +141,13 @@ get_ext <- function(tbl, fn) {
 
   ##
   return(ext)
+}
+
+##
+## Get default path
+##
+get_path <- function(tbl, id) {
+  path <- paste(getwd(), tbl$name[tbl$id == id], sep = "/")
 }
 
 
