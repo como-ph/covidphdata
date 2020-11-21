@@ -54,6 +54,11 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' library(googledrive)
+#'
+#' ## Deauthorise
+#' googledrive::drive_deauth()
+#'
 #' ## Two ways to get the Google Drive ID of the latest DoH Data Drop
 #' datadrop_id_latest()
 #' datadrop_id()
@@ -320,6 +325,11 @@ datadrop_id <- function(verbose = TRUE,
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' library(googledrive)
+#'
+#' ## Deauthorise
+#' googledrive::drive_deauth()
+#'
 #' ## Typical workflow
 #' tbl <- datadrop_ls(id = datadrop_id())
 #' datadrop_id_file(tbl = tbl, fn = "Case Information")

@@ -41,6 +41,11 @@
 #'  `path`.
 #'
 #' @examples
+#' library(googledrive)
+#'
+#' ## Deauthorise
+#' googledrive::drive_deauth()
+#'
 #' ## Get tbl for files in latest Data Drop
 #' library(magrittr)
 #' x <- datadrop_id() %>% datadrop_ls()

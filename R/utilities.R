@@ -15,6 +15,11 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' library(googledrive)
+#'
+#' ## Deauthorise
+#' googledrive::drive_deauth()
+#'
 #' ## Get Google Drive ID of latest DoH Data Drop
 #' id <- datadrop_id_latest()
 #'
@@ -57,6 +62,11 @@ datadrop_ls <- function(id) {
 #' @author Ernest Guevarra
 #'
 #' @examples
+#' library(googledrive)
+#'
+#' ## Deauthorise
+#' googledrive::drive_deauth()
+#'
 #' ## Get Google Drive ID for Case Information file in latest DoH Data Drop
 #' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
 #'                        fn = "Metadata - Sheets.csv")
