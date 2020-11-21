@@ -92,7 +92,7 @@ into the same persistent Google Drive folder." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">covidphdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -227,43 +227,44 @@ information and data from the <em>Google Drive</em> specified by this ID.</p>
 <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Two ways to get the Google Drive ID of the latest DoH Data Drop</span>
-<span class='fu'>datadrop_id_latest</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-20.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_20).pdf</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f215421d3</span></div><div class='output co'>#&gt; [1] "1MRLll1P9ltqg1nNmUFVr_xGjKkA6BFEX"</div><div class='input'><span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-20.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_20).pdf</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f1a78b4bd</span></div><div class='output co'>#&gt; [1] "1MRLll1P9ltqg1nNmUFVr_xGjKkA6BFEX"</div><div class='input'>
-<span class='co'>## Two ways to get the Google Drive ID of the archive DoH Data Drop for</span>
-<span class='co'>## 1 November 2020</span>
-<span class='fu'>datadrop_id_archive</span><span class='op'>(</span>.date <span class='op'>=</span> <span class='st'>"2020-11-01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the DoH Data Drop archive for 2020-11-01</span></div><div class='output co'>#&gt; [1] "1O2Gt_MUPKtWWPK6ainagRiehK0pCH7Nv"</div><div class='input'><span class='fu'>datadrop_id</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"archive"</span>, .date <span class='op'>=</span> <span class='st'>"2020-11-01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the DoH Data Drop archive for 2020-11-01</span></div><div class='output co'>#&gt; [1] "1O2Gt_MUPKtWWPK6ainagRiehK0pCH7Nv"</div><div class='input'>
-<span class='co'>## Typical workflow</span>
-<span class='va'>tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-20.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_20).pdf</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f6aa1f1de</span></div><div class='input'><span class='fu'>datadrop_id_file</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>tbl</span>, fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "17WTf4KrQA-usbnTC_D1jufSWp3AMVHtE"</div><div class='input'>
-<span class='co'>## Piped workflow using magrittr %&gt;%</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://googledrive.tidyverse.org'>googledrive</a></span><span class='op'>)</span>
 
-<span class='co'>## Get the id for the latest Case Information file</span>
-<span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>datadrop_id_file</span><span class='op'>(</span>fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Getting the Google Drive ID for the latest available DoH Data Drop for</span>
-#&gt; <span class='message'>2020-11-20.</span></div><div class='output co'>#&gt; <span class='message'>File downloaded:</span>
-#&gt; <span class='message'>  * 01 READ ME FIRST (11_20).pdf</span>
-#&gt; <span class='message'>Saved locally as:</span>
-#&gt; <span class='message'>  * /var/folders/rx/nr32tl5n6f3d_86tn0tc7kc00000gp/T//RtmphXmxsg/filebb2f2e0e5c83</span></div><div class='output co'>#&gt; [1] "17WTf4KrQA-usbnTC_D1jufSWp3AMVHtE"</div><div class='input'>
+  <span class='co'>## Deauthorise</span>
+  <span class='fu'>googledrive</span><span class='fu'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_deauth.html'>drive_deauth</a></span><span class='op'>(</span><span class='op'>)</span>
+
+  <span class='co'>## Two ways to get the Google Drive ID of the latest DoH Data Drop</span>
+  <span class='fu'>datadrop_id_latest</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span>
+
+  <span class='co'>## Two ways to get the Google Drive ID of the archive DoH Data Drop for</span>
+  <span class='co'>## 1 November 2020</span>
+  <span class='fu'>datadrop_id_archive</span><span class='op'>(</span>.date <span class='op'>=</span> <span class='st'>"2020-11-01"</span><span class='op'>)</span>
+  <span class='fu'>datadrop_id</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"archive"</span>, .date <span class='op'>=</span> <span class='st'>"2020-11-01"</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://googledrive.tidyverse.org'>googledrive</a></span><span class='op'>)</span>
+
+  <span class='co'>## Authentication</span>
+  <span class='fu'>googledrive</span><span class='fu'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_auth_configure.html'>drive_auth_configure</a></span><span class='op'>(</span>api_key <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"GOOGLEDRIVE_TOKEN"</span><span class='op'>)</span><span class='op'>)</span>
+
+  <span class='co'>## Deauthorise</span>
+  <span class='fu'>googledrive</span><span class='fu'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_deauth.html'>drive_deauth</a></span><span class='op'>(</span><span class='op'>)</span>
+
+  <span class='co'>## Typical workflow</span>
+  <span class='va'>tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'>datadrop_id_file</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='va'>tbl</span>, fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
+
+  <span class='co'>## Piped workflow using magrittr %&gt;%</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
+
+  <span class='co'>## Get the id for the latest Case Information file</span>
+  <span class='fu'>datadrop_id</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='datadrop_ls.html'>datadrop_ls</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>datadrop_id_file</span><span class='op'>(</span>fn <span class='op'>=</span> <span class='st'>"Case Information"</span><span class='op'>)</span>
+<span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

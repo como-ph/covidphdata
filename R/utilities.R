@@ -15,11 +15,21 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' ## Get Google Drive ID of latest DoH Data Drop
-#' id <- datadrop_id_latest()
+#' \dontrun{
+#'   library(googledrive)
 #'
-#' ## List the contents of the latest DoH Data Drop in Google Drive
-#' datadrop_ls(id = id)
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
+#'
+#'   ## Get Google Drive ID of latest DoH Data Drop
+#'   id <- datadrop_id_latest()
+#'
+#'   ## List the contents of the latest DoH Data Drop in Google Drive
+#'   datadrop_ls(id = id)
+#' }
 #'
 #' @export
 #'
@@ -28,7 +38,7 @@
 
 datadrop_ls <- function(id) {
   ## Google Drive deauthorisation
-  googledrive::drive_deauth()
+  #googledrive::drive_deauth()
 
   ## Get Google Drive directory structure and information
   y <- googledrive::drive_ls(googledrive::drive_get(id = id))
@@ -57,12 +67,22 @@ datadrop_ls <- function(id) {
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' ## Get Google Drive ID for Case Information file in latest DoH Data Drop
-#' id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-#'                        fn = "Metadata - Sheets.csv")
+#' \dontrun{
+#'   library(googledrive)
 #'
-#' ## Download the Case Information file into tempfile()
-#' datadrop_download(id = id, path = tempfile())
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+#'
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
+#'
+#'   ## Get Google Drive ID for Case Information file in latest DoH Data Drop
+#'   id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
+#'                          fn = "Metadata - Sheets.csv")
+#'
+#'   ## Download the Case Information file into tempfile()
+#'   datadrop_download(id = id, path = tempfile())
+#' }
 #'
 #' @export
 #'
@@ -141,6 +161,13 @@ get_ext <- function(tbl, fn) {
 
   ##
   return(ext)
+}
+
+##
+## Get default path
+##
+get_path <- function(tbl, id) {
+  path <- paste(getwd(), tbl$name[tbl$id == id], sep = "/")
 }
 
 

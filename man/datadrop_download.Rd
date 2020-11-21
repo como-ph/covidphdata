@@ -26,12 +26,22 @@ A file downloaded into specified path
 Download DoH Data Drop file via its Google Drive ID
 }
 \examples{
-## Get Google Drive ID for Case Information file in latest DoH Data Drop
-id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
-                       fn = "Metadata - Sheets.csv")
+\dontrun{
+  library(googledrive)
 
-## Download the Case Information file into tempfile()
-datadrop_download(id = id, path = tempfile())
+  ## Authentication
+  googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
+
+  ## Deauthorise
+  googledrive::drive_deauth()
+
+  ## Get Google Drive ID for Case Information file in latest DoH Data Drop
+  id <- datadrop_id_file(tbl = datadrop_ls(id = datadrop_id()),
+                         fn = "Metadata - Sheets.csv")
+
+  ## Download the Case Information file into tempfile()
+  datadrop_download(id = id, path = tempfile())
+}
 
 }
 \author{

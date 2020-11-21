@@ -41,39 +41,49 @@
 #'  `path`.
 #'
 #' @examples
-#' ## Get tbl for files in latest Data Drop
-#' library(magrittr)
-#' x <- datadrop_id() %>% datadrop_ls()
+#' \dontrun{
+#'   library(googledrive)
 #'
-#' ## Retrieve case information data
-#' datadrop_get(tbl = x, fn = "Case Information", path = tempfile())
+#'   ## Authentication
+#'   googledrive::drive_auth_configure(api_key = Sys.getenv("GOOGLEDRIVE_TOKEN"))
 #'
-#' ## Retrieve latest changelog information
-#' datadrop_get_changelog(tbl = x, path = tempfile())
+#'   ## Deauthorise
+#'   googledrive::drive_deauth()
 #'
-#' ## Retrieve latest metadata - sheets information
-#' datadrop_get_sheets(tbl = x, path = tempfile())
+#'   ## Get tbl for files in latest Data Drop
+#'   library(magrittr)
+#'   x <- datadrop_id() %>% datadrop_ls()
 #'
-#' ## Retrieve latest metadata - fields information
-#' datadrop_get_fields(tbl = x, path = tempfile())
+#'   ## Retrieve case information data
+#'   datadrop_get(tbl = x, fn = "Case Information", path = tempfile())
 #'
-#' ## Retrieve latest cases information (same results as first example)
-#' datadrop_get_cases(tbl = x, path = tempfile())
+#'   ## Retrieve latest changelog information
+#'   datadrop_get_changelog(tbl = x, path = tempfile())
 #'
-#' ## Retrieve latest daily hospital beds and mechanical ventilators information
-#' datadrop_get_cdaily(tbl = x, path = tempfile())
+#'   ## Retrieve latest metadata - sheets information
+#'   datadrop_get_sheets(tbl = x, path = tempfile())
 #'
-#' ## Retrieve latest weekly PPE and other related equipment information
-#' datadrop_get_cweekly(tbl = x, path = tempfile())
+#'   ## Retrieve latest metadata - fields information
+#'   datadrop_get_fields(tbl = x, path = tempfile())
 #'
-#' ## Retrieve latest testing aggregates information
-#' datadrop_get_tests(tbl = x, path = tempfile())
+#'   ## Retrieve latest cases information (same results as first example)
+#'   datadrop_get_cases(tbl = x, path = tempfile())
 #'
-#' ## Retrieve latest daily quarantine facility beds and mechanical ventilators
-#' datadrop_get_qdaily(tbl = x, path = tempfile())
+#'   ## Retrieve latest daily hospital beds and mechanical ventilators information
+#'   datadrop_get_cdaily(tbl = x, path = tempfile())
 #'
-#' ## Retrieve latest weekly quarantine facility PPE and other related equipment
-#' datadrop_get_qweekly(tbl = x, path = tempfile())
+#'   ## Retrieve latest weekly PPE and other related equipment information
+#'   datadrop_get_cweekly(tbl = x, path = tempfile())
+#'
+#'   ## Retrieve latest testing aggregates information
+#'   datadrop_get_tests(tbl = x, path = tempfile())
+#'
+#'   ## Retrieve latest daily quarantine facility beds and mechanical ventilators
+#'   datadrop_get_qdaily(tbl = x, path = tempfile())
+#'
+#'   ## Retrieve latest weekly quarantine facility PPE and other related equipment
+#'   datadrop_get_qweekly(tbl = x, path = tempfile())
+#' }
 #'
 #' #datadrop_get_collectV3(tbl = x, path = tempfile())
 #' #datadrop_get_collectV4(tbl = x, path = tempfile())
@@ -101,6 +111,11 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
                       overwrite = overwrite,
                       verbose = verbose)
 
+    ## Check if path is NULL
+    if (is.null(path)) {
+      path <- get_path(tbl = tbl, id = id)
+    }
+
     ## Check file extension
     if(ext == ".csv") {
       x <- read.csv(file = path)
@@ -112,6 +127,11 @@ datadrop_get <- function(tbl, fn, path = NULL, keep = FALSE,
 
       ## Rename output
       names(x) <- c("List of Changes", "Most Common Changes")
+    }
+
+    ## Keep file?
+    if (!keep) {
+      unlink(path)
     }
   } else {
     x <- NULL
